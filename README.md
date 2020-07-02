@@ -1,24 +1,26 @@
-# README
+# クリーンエース
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+野球用ユニフォームの販売サイト兼草野球チーム結果掲載、メンバー募集サイト
+野球道具、業務用ユニフォーム
 
-Things you may want to cover:
+### サイトテーマ
+ユーザーがオリジナルユニフォームを購入でき、草野球の情報が掲載、確認できる
 
-* Ruby version
+### テーマを選んだ理由
+父の実家がユニフォーム屋を営んでいます。Webサイトはあるものの、10年前に作ったもので、現在有効活用できているとは
+いえません。そのため、新しいWebサイトを作るとともに運営している草野球チームの結果などを記載できるようにし、さらには
+草野球チームの永遠の課題で見ある人数集めを解消できる機能を盛り込みたいと思います。
+数か月前にユニフォーム素材で作ったマスクを販売して爆売れしたが、その際にWebサイトに商品情報を記載していなかったため
+Webサイトを有効活用していればもっと売れたのではないかと思ったいました。
 
-* System dependencies
+### ターゲットユーザ
+草野球野球、学生野球チームの運営者、プレーヤー。
 
-* Configuration
+### 主な利用シーン
+ユニフォーム、野球道具、その他業務用ユニーフォームの購入時
 
-* Database creation
+## 設計書
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1at4qigZqaPWk2W33Qlh02g6vwIdFAvKwUfmeqh5HfqM/edit#gid=0
