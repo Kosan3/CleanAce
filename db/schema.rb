@@ -10,7 +10,127 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_075357) do
+ActiveRecord::Schema.define(version: 2020_07_07_152640) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "kana_last_name"
+    t.string "kana_first_name"
+    t.string "postal_code"
+    t.string "address"
+    t.string "email"
+    t.string "phone_number"
+    t.string "position"
+    t.string "age"
+    t.text "other"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "name"
+    t.string "en_name"
+    t.string "position"
+    t.text "introduction"
+    t.integer "uniform_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.integer "taxed_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "fare"
+    t.integer "billing_total"
+    t.integer "payment_method"
+    t.string "postal_code"
+    t.string "address"
+    t.string "address_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_colors", force: :cascade do |t|
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_names", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_sizes", force: :cascade do |t|
+    t.string "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "type_id"
+    t.integer "product_name_id"
+    t.integer "product_color_id"
+    t.integer "product_size_id"
+    t.text "introduction"
+    t.string "image_id"
+    t.integer "non_taxed_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.string "opponent_team"
+    t.integer "top_first"
+    t.integer "bottom_first"
+    t.integer "top_second"
+    t.integer "bottom_second"
+    t.integer "top_third"
+    t.integer "bottom_third"
+    t.integer "top_fourth"
+    t.integer "bottom_fourth"
+    t.integer "top_fifth"
+    t.integer "bottom_fifth"
+    t.integer "top_sixth"
+    t.integer "bottom_sixth"
+    t.integer "top_seventh"
+    t.integer "bottom_seventh"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ships", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "postal_code"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "type_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
