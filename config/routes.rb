@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     post '/password', to: 'users/passwords#create'
   end
 
+  # ルートパス
+  root 'products#top'
+
   # ユーザー
   resource :users, only: [:show, :edit, :update]
   namespace :admin do
