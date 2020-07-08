@@ -13,11 +13,16 @@
     <header>
       <h2>CleanAce</h2>
       <ul>
-        <li><%= link_to '商品一覧', products_path %></li>
-        <li><%= link_to 'マイページ', users_path %></li>
-        <li><%= link_to 'ログイン', sign_in_path %></li>
-        <li><%= link_to '新規登録', sign_up_path %></li>
-        <li><%= link_to 'ログアウト', sign_out_path, method: :delete %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to '商品一覧', products_path %></li>
+          <li><%= link_to 'マイカート', carts_path %></li>
+          <li><%= link_to 'マイページ', users_path %></li>
+          <li><%= link_to 'ログアウト', sign_out_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to '商品一覧', products_path %></li>
+          <li><%= link_to '新規登録', sign_up_path %></li>
+          <li><%= link_to 'ログイン', sign_in_path %></li>
+        <% end %>
       </ul>
     </header>
     <div class="container">
