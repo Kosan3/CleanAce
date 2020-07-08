@@ -13,10 +13,11 @@
     <header>
       <h2>CleanAce</h2>
       <ul>
-        <li>商品一覧</li>
-        <li>マイページ</li>
-        <li>ログイン</li>
-        <li>新規登録</li>
+        <li><%= link_to '商品一覧', products_path %></li>
+        <li><%= link_to 'マイページ', users_path %></li>
+        <li><%= link_to 'ログイン', sign_in_path %></li>
+        <li><%= link_to '新規登録', sign_up_path %></li>
+        <li><%= link_to 'ログアウト', sign_out_path, method: :delete %></li>
       </ul>
     </header>
     <div class="container">
