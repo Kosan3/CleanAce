@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>マイページ</h2><br>
+
+<table class="table-bordered">
+  <tbody>
+    <tr>
+      <td>名前</td>
+      <th><%= @user.last_name + ' ' + @user.first_name %></th>
+    </tr>
+    <tr>
+      <td>フリガナ</td>
+      <th><%= @user.kana_last_name + '  ' + @user.kana_first_name %></th>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <th><%= @user.email %></th>
+    </tr>
+    <tr>
+      <td>郵便番号</td>
+      <th><%= @user.postal_code.first(3) + '-' + @user.postal_code.last(4) %></th>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <th><%= @user.address %></th>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <th><%= @user.phone_number.first(3) + '-' + @user.phone_number[3,3] + '-' + @user.phone_number[6,4] %></th>
+    </tr>
+  </tbody>
+</table>
