@@ -21,6 +21,7 @@
           <li><%= link_to '商品一覧', products_path %></li>
           <li><%= link_to 'マイページ', users_path %></li>
           <% if current_user.admin? %>
+            <li><%= link_to '商品登録', new_admin_product_path %></li>
             <li><%= link_to 'ユーザー一覧', admin_users_path %></li>
           <% else %>
             <li><%= link_to 'マイカート', carts_path %></li>

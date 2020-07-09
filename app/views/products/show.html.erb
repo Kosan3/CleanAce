@@ -1,2 +1,16 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="row">
+  <div class="col-sm-1">
+    <div class="box" style="width: 5px; height: 20px; background-color: #FF55FF;"></div>
+  </div>
+  <div class="col-sm-3">
+    <%= @product.product_name.name %>
+  </div>
+</div>
+<div class="row">
+  <% @products.each do |product| %>
+    <%= attachment_image_tag product, :image, :fill, 100, 100, format: 'jpg' %>
+  <% end %>
+</div>
+<div class="row">
+  <p><%= @product.introduction %></p>
+</div>

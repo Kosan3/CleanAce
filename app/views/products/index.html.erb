@@ -1,2 +1,11 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="row">
+  <div class="col-sm-1">
+    <div class="box" style="width: 5px; height: 20px; background-color: #FF55FF;"></div>
+  </div>
+  <div class="col-sm-3">
+    <% @products.each do |product| %>
+      <p><%= link_to product.product_name.name, product_path(product.product_name_id) %><p>
+      <p><%= Product.find_by(product_name_id: product.product_name_id).product_size.size %></p>
+    <% end %>
+  </div>
+</div>
