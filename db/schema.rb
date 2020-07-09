@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_084624) do
 
   create_table "product_names", force: :cascade do |t|
     t.string "name"
+    t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -97,7 +98,6 @@ ActiveRecord::Schema.define(version: 2020_07_08_084624) do
     t.integer "product_name_id"
     t.integer "product_color_id"
     t.integer "product_size_id"
-    t.text "introduction"
     t.string "image_id"
     t.integer "non_taxed_price"
     t.datetime "created_at", null: false
