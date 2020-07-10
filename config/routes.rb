@@ -71,4 +71,9 @@ Rails.application.routes.draw do
     resources :entries, only: [:index, :show]
   end
 
+  # 写真
+  namespace :admin do
+    post '/image', to: 'product_images#create'
+  end
+
 end

@@ -21,13 +21,6 @@
         </div>
       <% end %>
 
-      <%= f.fields_for :product_image do |i| %>
-        <div class="form">
-          <%= i.label :image, '写真' %>
-          <%= i.attachment_field :image %>
-        </div>
-      <% end %>
-
       <div class="form">
         <%= f.label :non_taxed_price, '税込み価格' %>
         <%= f.text_field :non_taxed_price %>

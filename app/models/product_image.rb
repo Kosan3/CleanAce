@@ -1,4 +1,4 @@
 class ProductImage < ApplicationRecord
   attachment :image
-  has_many :products
+  belongs_to :type
 end

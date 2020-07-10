@@ -19,17 +19,6 @@ User.find_or_create_by!(email: 't@t') do |user|
   user.admin = true
 end
 
-Type.create! do |type|
-  type.type_name = 'グランドコート'
-end
-
-Type.create! do |type|
-  type.type_name = 'アンダーシャツ'
-end
-
-Type.create! do |type|
-  type.type_name = 'マスク'
-end
 
 
 

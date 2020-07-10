@@ -1,40 +1,35 @@
 <div class="row">
-  <h3>親商品一覧</h3>
-  <div class="col-sm-12">
-    <% @types.each do |type| %>
-      <%= type.type_name %>
-      <%= link_to type.image_url, 'data-lightbox' => type.image_id do %>
-        <%= attachment_image_tag type, :image, :fill, 290.45, 250 %>
-      <% end %>
-      <div>
-        <%= type.introduction %>
-      </div>
-    <% end %>
-  </div>
-</div><br>
-
-<div class="row">
-  <h3>親商品新規登録</h3>
-  <div class="col-sm-12">
+  <div class="col-4">
+    <h4>親商品新規登録</h4>
     <%= form_with model: @type, url: admin_types_path, method: :post, local: true do |f| %>
       <div class="form">
-        <%= f.label :type_name, '商品名' %>
+        <%= f.label :type_name, '商品名' %><br>
         <%= f.text_field :type_name %>
       </div>
 
       <div class="form">
-        <%= f.label :introduction, '商品名' %>
+        <%= f.label :introduction, '商品説明' %><br>
         <%= f.text_area :introduction %>
       </div>
 
       <div class="form">
-        <%= f.label :image, '写真' %>
+        <%= f.label :image, '写真' %><br>
         <%= f.attachment_field :image %>
       </div>
-
+      <br>
       <div class="submit">
         <%= f.submit '登録' %>
       </div>
     <% end %>
+  </div>
+  <div class="col-8">
+    <h3>親商品一覧</h3>
+      <% @types.each do |type| %>
+        <div><%= link_to type.type_name, admin_product_path(type.id) %></div>
+        <%= link_to type.image_url, 'data-lightbox' => type.image_id do %>
+          <div><%= attachment_image_tag type, :image, :fill, 290.45, 250 %></div>
+        <% end %>
+        <div><%= type.introduction %></div>
+      <% end %>
   </div>
 </div>

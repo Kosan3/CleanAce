@@ -81,7 +81,9 @@ ActiveRecord::Schema.define(version: 2020_07_10_011748) do
   end
 
   create_table "product_images", force: :cascade do |t|
+    t.integer "type_id"
     t.string "image_id"
+    t.string "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,7 +104,6 @@ ActiveRecord::Schema.define(version: 2020_07_10_011748) do
     t.integer "type_id"
     t.integer "product_color_id"
     t.integer "product_size_id"
-    t.integer "product_image_id"
     t.integer "non_taxed_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
