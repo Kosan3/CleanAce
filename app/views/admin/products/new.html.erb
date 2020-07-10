@@ -1,37 +1,40 @@
 <div class="row">
   <div class="col-sm-6">
     <%= form_with model: @product, url: admin_products_path, method: :post, local: true do |f| %>
-      <%= f.fields_for :product_name do |i| %>
-        <div class="field">
-          <%= i.label :name, '商品名' %>
-          <%= i.text_field :name %>
-        </div>
-      <% end %>
+
+      <div class="form">
+        <%= f.label :type_id, '商品名' %>
+        <%= f.collection_select :type_id, Type.all, :id, :type_name, prompt: "--選択してください--", class: "collection_select" %>
+      </div>
+
       <%= f.fields_for :product_size do |i| %>
-        <div class="field">
+        <div class="form">
           <%= i.label :size, 'サイズ' %>
           <%= i.text_field :size %>
         </div>
       <% end %>
+
       <%= f.fields_for :product_color do |i| %>
-        <div class="field">
+        <div class="form">
           <%= i.label :color, 'カラー' %>
           <%= i.text_field :color %>
         </div>
       <% end %>
-      <div class="form">
-        <%= f.label :image, '写真' %>
-        <%= f.attachment_field :image %>
-      </div>
-      <div class="form">
-        <%= f.label :type_id, '種類' %>
-        <%= f.collection_select :type_id, Type.all, :id, :type_name, prompt: "--選択したください--", class: "collection_select" %>
-      </div>
+
+      <%= f.fields_for :product_image do |i| %>
+        <div class="form">
+          <%= i.label :image, '写真' %>
+          <%= i.attachment_field :image %>
+        </div>
+      <% end %>
+
       <div class="form">
         <%= f.label :non_taxed_price, '税込み価格' %>
         <%= f.text_field :non_taxed_price %>
       </div>
+
       <%= f.submit %>
+
     <% end %>
   </div>
 </div>

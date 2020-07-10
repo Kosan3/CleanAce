@@ -23,3 +23,13 @@ Type.create! do |type|
   type.type_name = 'グランドコート'
 end
 
+Type.create! do |type|
+  type.type_name = 'アンダーシャツ'
+end
+
+Type.create! do |type|
+  type.type_name = 'マスク'
+end
+
+
+

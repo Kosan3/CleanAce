@@ -7,6 +7,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
   </head>
 
   <body>
@@ -21,7 +24,8 @@
           <li><%= link_to '商品一覧', products_path %></li>
           <li><%= link_to 'マイページ', users_path %></li>
           <% if current_user.admin? %>
-            <li><%= link_to '商品登録', new_admin_product_path %></li>
+            <li><%= link_to '親商品情報', admin_types_path %></li>
+            <li><%= link_to '商品詳細登録', new_admin_product_path %></li>
             <li><%= link_to 'ユーザー一覧', admin_users_path %></li>
           <% else %>
             <li><%= link_to 'マイカート', carts_path %></li>

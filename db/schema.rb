@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_084624) do
+ActiveRecord::Schema.define(version: 2020_07_10_011748) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
@@ -80,9 +80,14 @@ ActiveRecord::Schema.define(version: 2020_07_08_084624) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_images", force: :cascade do |t|
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_names", force: :cascade do |t|
     t.string "name"
-    t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,10 +100,9 @@ ActiveRecord::Schema.define(version: 2020_07_08_084624) do
 
   create_table "products", force: :cascade do |t|
     t.integer "type_id"
-    t.integer "product_name_id"
     t.integer "product_color_id"
     t.integer "product_size_id"
-    t.string "image_id"
+    t.integer "product_image_id"
     t.integer "non_taxed_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -135,6 +139,8 @@ ActiveRecord::Schema.define(version: 2020_07_08_084624) do
 
   create_table "types", force: :cascade do |t|
     t.string "type_name"
+    t.text "introduction"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
