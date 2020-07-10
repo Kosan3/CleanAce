@@ -23,7 +23,7 @@
     <% end %>
   </div>
   <div class="col-8">
-    <h3>親商品一覧</h3>
+    <h3>商品一覧</h3>
       <% @types.each do |type| %>
         <div><%= link_to type.type_name, admin_product_path(type.id) %></div>
         <%= link_to type.image_url, 'data-lightbox' => type.image_id do %>
