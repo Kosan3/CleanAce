@@ -5,7 +5,6 @@
   <div class="col-sm-3">
     <% @products.each do |product| %>
       <p><%= link_to product.product_name.name, product_path(product.product_name_id) %><p>
-      <p><%= Product.find_by(product_name_id: product.product_name_id).product_size.size %></p>
     <% end %>
   </div>
 </div>

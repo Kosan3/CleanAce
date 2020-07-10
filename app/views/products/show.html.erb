@@ -4,6 +4,7 @@
   </div>
   <div class="col-sm-3">
     <%= @product.product_name.name %>
+    <p><%= Product.find_by(product_name_id: @product.product_name_id).product_size.size %></p>
   </div>
 </div>
 <div class="row">

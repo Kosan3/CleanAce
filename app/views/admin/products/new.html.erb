@@ -20,7 +20,11 @@
         </div>
       <% end %>
       <div class="form">
-        <%= f.label :type_id %>
+        <%= f.label :image, '写真' %>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="form">
+        <%= f.label :type_id, '種類' %>
         <%= f.collection_select :type_id, Type.all, :id, :type_name, prompt: "--選択したください--", class: "collection_select" %>
       </div>
       <div class="form">
