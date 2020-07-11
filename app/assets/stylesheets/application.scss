@@ -1,11 +1,19 @@
 @import "bootstrap";
 
+// 全体
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
+// ヘッダー
 header {
   width: 890px;
   margin: 0px auto;
@@ -32,6 +40,7 @@ header {
   padding: 0px;
 }
 
+// サイドバー
 .side-bar {
   height: 100%;
   .box {
@@ -104,6 +113,7 @@ header {
   }
 }
 
+// トップ画面
 .main-wrapper {
   .image {
     width: 100%;
@@ -132,21 +142,26 @@ header {
     ul {
       padding: 0;
       li {
-        width: 24.5%;
+        width: 23.5%;
         height: 220px;
-        display: inline-block;
+        display: block;
+        float: left;
 
         .image {
-          height: 168px;
+          height: 155px;
           weight: 100%;
-          background:url('151026M_095r_TP_V4.jpg');
-          background-size: cover;
+          background-color: blue;
+          .image-size {
+            width: 100%;
+            height: 100%;
+          }
         }
         .image-title {
-          height: 52px;
-          background-color: gray;
-
+          height: 60px;
         }
+      }
+      .padding {
+        margin-right: 2%;
       }
     }
   }
@@ -155,9 +170,10 @@ header {
     ul {
       padding: 0;
       li {
-        width: 49.6%;
+        width: 49%;
         height: 220px;
-        display: inline-block;
+        display: block;
+        float: left;
 
         .image {
           height: 168px;
@@ -165,11 +181,37 @@ header {
         }
         .image-title {
           height: 52px;
-          background-color: gray;
-
         }
       }
     }
+    .padding {
+      margin-right: 2%;
+    }
   }
 
+}
+
+
+// product#show
+.product {
+  h3 {
+    border-bottom: solid 2px black;
+  }
+  .product-top {
+
+  }
+  .product-images {
+    width: 50%;
+    text-align: center;
+    float: left;
+    .main-image {
+      margin-bottom: 10px;
+    }
+  }
+
+  .cart {
+    width: 50%;
+    float: left;
+    background-color: blue;
+  }
 }

@@ -1,14 +1,97 @@
 <div class="row">
-  <div class="col-sm-1">
-    <div class="box" style="width: 5px; height: 20px; background-color: #FF55FF;"></div>
+
+
+  <!-- サイドバー -->
+  <div class="col-3 side-bar">
+    <div class="box">
+      <p>大雨によるお荷物のお届けについて>></p>
+    </div>
+    <div class="side-pickup">
+      <ul>
+        <li><i class="fas fa-baseball-ball"></i>  CleanAceについて</li>
+        <li><i class="fas fa-baseball-ball"></i>  ユニフォーム工程紹介</li>
+        <li><i class="fas fa-baseball-ball"></i>  会社概要</li>
+        <li><i class="fas fa-baseball-ball"></i>  お問い合わせ</li>
+        <li><i class="fas fa-baseball-ball"></i>  小坂店長ブログ</li>
+        <li><i class="fas fa-baseball-ball"></i>  小坂店長への相談メール</li>
+        <li><i class="fas fa-baseball-ball"></i>  おすすめ商品</li>
+      </ul>
+    </div>
+
+    <!-- 商品一覧 -->
+    <div class="side-bar-bar"><p>商品一覧</p></div>
+    <div class="side-product">
+      <ul>
+        <li><i class="fas fa-caret-right"></i> CleanAceについて</li>
+        <li><i class="fas fa-caret-right"></i> ユニフォーム工程紹介</li>
+        <li><i class="fas fa-caret-right"></i> 会社概要</li>
+        <li><i class="fas fa-caret-right"></i> お問い合わせ</li>
+        <li><i class="fas fa-caret-right"></i> 小坂店長ブログ</li>
+        <li><i class="fas fa-caret-right"></i> 小坂店長への相談メール</li>
+        <li><i class="fas fa-caret-right"></i> おすすめ商品</li>
+      </ul>
+    </div>
+
+    <!-- ご案内 -->
+    <div class="side-bar-bar"><p>ご案内</p></div>
+    <div class="side-bar-list">
+      <ul>
+        <li>スタッフ紹介</li>
+        <li>町おこし</li>
+        <li>鬼が住む町、羽生</li>
+        <li>スタッフ紹介</li>
+      </ul>
+    </div>
   </div>
-  <div class="col-sm-3">
-    <%= @product.product_name.name %>
-    <p><%= Product.find_by(product_name_id: @product.product_name_id).product_size.size %></p>
+
+
+  <!-- メイン部分 -->
+  <div class="col-9 product">
+    <h3><%= @type.type_name %></h3>
+    <div class="product-top clearfix">
+      <div class="product-images">
+        <div class="main-image">
+          <%= link_to @type.image_url, 'data-lightbox' => @type.image_id do %>
+            <%= attachment_image_tag @type, :image, :fill, 220, 220 %>
+          <% end %>
+        </div>
+        <div>
+          <% @images.each do |image| %>
+            <%= link_to image.image_url, 'data-lightbox' => image.image_id do %>
+              <%= attachment_image_tag image, :image, :fill, 70, 70 %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="cart">
+        <h1>カート機能カート機能カート機能カート機能カート機能カート機能カート機能カート機能カート機能カート</h1>
+      </div>
+    </div>
+
+    <p>商品説明</p>
+    <p style="border-bottom: solid 1px black;"><%= @type.introduction %></p><br>
+    <p>一覧</p>
+
+    <table class="table table-border">
+      <thead>
+        <tr>
+          <th width='150' height='20'>カラー</th>
+          <th width='150' height='20'>サイズ</th>
+          <th width='150' height='20'>税抜き価格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+        <tr>
+          <td><%= product.product_color.color %></td>
+          <td><%= product.product_size.size %></td>
+          <td><%= product.non_taxed_price %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   </div>
-</div>
-<div class="row">
-  <% @products.each do |product| %>
-    <%= attachment_image_tag product, :image, :fill, 100, 100, format: 'jpg' %>
-  <% end %>
+
+
 </div>
