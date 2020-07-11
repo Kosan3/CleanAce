@@ -1,26 +1,175 @@
 @import "bootstrap";
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 
 header {
-  width: 980px;
+  width: 890px;
   margin: 0px auto;
   height: 100px;
-  background-color: gray;
   padding: 0px;
+
+  #header-title {
+    display: inline-block;
+  }
   ul {
     li {
       list-style: none;
       display: inline-block;
       padding: 10px 10px;
-      float: right;
     }
   }
 }
 
 #main-container {
-  width: 980px;
+  width: 890px;
   margin: 0px auto;
   height: 100%;
-  background-color: pink;
+  background-color: white;
   padding: 0px;
+}
+
+.side-bar {
+  height: 100%;
+  .box {
+    padding: 0 18px;
+    margin: 0 0 35px 0;
+    width: 100%;
+    border: solid 1px gray;
+    text-align: center;
+
+  }
+  p {
+    padding-top: 13px;
+    font-size: 12px;
+  }
+
+  .side-pickup {
+    ul {
+      padding: 0;
+      li {
+        margin: 0 0 14px;
+        border-bottom: 1px solid #dddddd;
+        padding: 0 0 14px;
+        list-style: none;
+        font-size: 12px;
+        padding-bottom: 20px;
+      }
+    }
+  }
+  .side-bar-bar {
+    width: 100%;
+    height: 38px;
+    background-color: #333333;
+    padding: 0 0 0 13px;
+    p {
+      color: white;
+      font-size: 14px;
+      line-height: 12px;
+      font-weight: bolder;
+    }
+  }
+
+  .side-product {
+    ul {
+      padding: 16px 0 0 0;
+      li {
+        list-style: none;
+        font-size: 12px;
+        padding: 0 0 7px 0;
+      }
+    }
+  }
+
+  .side-bar-list {
+    ul {
+      padding: 0;
+      margin: 10px 0 0 0;
+      li {
+        display: inline-block;
+        height: 42px;
+        background-color: #DCDCDC;
+        list-style: none;
+        width: 100%;
+        margin: 0 0 9px 0;
+        padding: 9px;
+        font-weight: bold;
+        line-height: 25px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.main-wrapper {
+  .image {
+    width: 100%;
+    height: 330px;
+  }
+
+  .image-bottom {
+    padding: 10px 0 0 0;
+    font-weight: bold
+  }
+
+  .bar {
+    margin: 50px 0 10px 0;
+    padding: 0 15px;
+    border: solid 1px #D3D3D3;
+    width: 100%;
+    height: 45px;
+    p {
+      font-weight: bolder;
+      font-size: 20px;
+      line-height: 40px;
+    }
+  }
+
+  .images {
+    ul {
+      padding: 0;
+      li {
+        width: 24.5%;
+        height: 220px;
+        display: inline-block;
+
+        .image {
+          height: 168px;
+          weight: 100%;
+          background:url('151026M_095r_TP_V4.jpg');
+          background-size: cover;
+        }
+        .image-title {
+          height: 52px;
+          background-color: gray;
+
+        }
+      }
+    }
+  }
+
+  .images-quattro {
+    ul {
+      padding: 0;
+      li {
+        width: 49.6%;
+        height: 220px;
+        display: inline-block;
+
+        .image {
+          height: 168px;
+          background-color: blue;
+        }
+        .image-title {
+          height: 52px;
+          background-color: gray;
+
+        }
+      }
+    }
+  }
+
 }
