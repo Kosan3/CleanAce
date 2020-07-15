@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  opponent_team: MyString
+  top_first: 1
+  bottom_first: 1
+  top_second: 1
+  bottom_second: 1
+  top_third: 1
+  bottom_third: 1
+  top_fourth: 1
+  bottom_fourth: 1
+  top_fifth: 1
+  bottom_fifth: 1
+  top_sixth: 1
+  bottom_sixth: 1
+  top_seventh: 1
+  bottom_seventh: 1
+
+two:
+  opponent_team: MyString
+  top_first: 1
+  bottom_first: 1
+  top_second: 1
+  bottom_second: 1
+  top_third: 1
+  bottom_third: 1
+  top_fourth: 1
+  bottom_fourth: 1
+  top_fifth: 1
+  bottom_fifth: 1
+  top_sixth: 1
+  bottom_sixth: 1
+  top_seventh: 1
+  bottom_seventh: 1

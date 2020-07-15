@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-4">
+    <div>
+      <%= form_with model: @product, url: admin_products_path, method: :post, local: true do |f| %>
+
+        <div class="form">
+          <%= f.label :type_id, '商品名' %><br>
+          <%= f.collection_select :type_id, Type.all, :id, :type_name, prompt: "--選択してください--", class: "collection_select" %>
+        </div>
+        <br>
+        <%= f.fields_for :product_size do |i| %>
+          <div class="form">
+            <%= i.label :size, 'サイズ' %><br>
+            <%= i.text_field :size %>
+          </div>
+        <% end %>
+        <br>
+        <%= f.fields_for :product_color do |i| %>
+          <div class="form">
+            <%= i.label :color, 'カラー' %><br>
+            <%= i.text_field :color %>
+          </div>
+        <% end %>
+        <br>
+        <div class="form">
+          <%= f.label :non_taxed_price, '税込み価格' %><br>
+          <%= f.text_field :non_taxed_price %>
+        </div>
+        <br>
+        <%= f.submit '商品詳細登録' %>
+      <% end %>
+    </div>
+    <br>
+    <div>
+      <%= form_with model: @image, url: admin_image_path(type_id: params[:id]), method: :post, local: true do |f| %>
+        <div class="form">
+          <%= f.label :image, '写真' %><br>
+          <%= f.attachment_field :image %>
+        </div>
+
+        <div class="form">
+          <%= f.label :caption, '説明文' %><br>
+          <%= f.text_field :caption %>
+        </div>
+
+        <div class="submit">
+          <%= f.submit '写真を登録' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-8">
+    <h3><%= @type.type_name %></h3>
+
+    <%= link_to @type.image_url, 'data-lightbox' => @type.image_id do %>
+      <%= attachment_image_tag @type, :image, :fill, 200, 200 %>
+    <% end %>
+    <% @images.each do |image| %>
+      <%= link_to image.image_url, 'data-lightbox' => image.image_id do %>
+        <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+      <% end %>
+    <% end %>
+    <p>商品説明</p>
+    <p style="border-bottom: solid 1px black;"><%= @type.introduction %></p><br>
+    <p>一覧</p>
+
+    <table class="table table-border">
+      <thead>
+        <tr>
+          <th width='150' height='20'>カラー</th>
+          <th width='150' height='20'>サイズ</th>
+          <th width='150' height='20'>税抜き価格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+        <tr>
+          <td><%= product.product_color.color %></td>
+          <td><%= product.product_size.size %></td>
+          <td><%= product.non_taxed_price %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
