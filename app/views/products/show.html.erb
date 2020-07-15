@@ -48,7 +48,9 @@
   <!-- メイン部分 -->
   <div class="col-9 product">
     <h3><%= @type.type_name %></h3>
+    <!-- トップ部分 -->
     <div class="product-top clearfix">
+      <!-- 画像欄 -->
       <div class="product-images">
         <div class="main-image">
           <%= link_to @type.image_url, 'data-lightbox' => @type.image_id do %>
@@ -63,8 +65,26 @@
           <% end %>
         </div>
       </div>
+      <!-- カート欄 -->
       <div class="cart">
-        <h1>カート機能カート機能カート機能カート機能カート機能カート機能カート機能カート機能カート機能カート</h1>
+        <p class="product-name"><%= @type.type_name %></p>
+        <div><span>価格:  </span><%= @type.products.first.non_taxed_price %><span>円~</span></div>
+        <!-- カートに入れる機能 -->
+        <%= form_with model: [@type, @cart], url: carts_path(product_id: params[:id]), method: :post, local: true do |f| %>
+          <div class="form">
+            <%= f.label :size, 'サイズ' %>
+            <%= f.select :size, @type.product_sizes.distinct.pluck(:size), include_blank: "選択してください" %>
+          </div>
+          <div class="form">
+            <%= f.label :color, 'カラー' %>
+            <%= f.select :color, @type.product_colors.distinct.pluck(:color), include_blank: "選択してください" %>
+          </div>
+          <div><span>購入数:  </span><%= f.select :quantity, [*(1..10)], {selected: 1} %></div>
+          <div class="submit">
+            <%= f.submit 'カートに入れる' %>
+          </div>
+        <% end %>
+
       </div>
     </div>
 
