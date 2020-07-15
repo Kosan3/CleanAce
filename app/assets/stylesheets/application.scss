@@ -141,11 +141,13 @@ header {
   .images {
     ul {
       padding: 0;
+
       li {
         width: 23.5%;
         height: 220px;
         display: block;
         float: left;
+        margin-right: 2%;
 
         .image {
           height: 155px;
@@ -158,11 +160,10 @@ header {
         }
         .image-title {
           height: 60px;
+          font-size: 11px;
         }
       }
-      .padding {
-        margin-right: 2%;
-      }
+      li:nth-child(4n) {margin-right: 0;}
     }
   }
 

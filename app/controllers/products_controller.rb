@@ -10,5 +10,6 @@ class ProductsController < ApplicationController
   end
 
   def top
+    @types = Type.all
   end
 end
