@@ -69,3 +69,6 @@ gem 'kaminari', '~> 0.17.0'
 gem 'pry-byebug'
 gem 'rails-i18n'
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
