@@ -6,9 +6,9 @@
       <button class="shoping-continew">買い物を続ける</button>
     <% end %>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered cart-table">
       <thead>
-        <tr class="table-info">
+        <tr>
           <th>商品名</th>
           <th>単価(税込)</th>
           <th>サイズ</th>
@@ -44,7 +44,15 @@
         </tr>
         <% end %>
       </tbody>
-    </table>
+    </table><br>
+
+    <div class="cart-procedure">
+      <%= link_to "購入手続きへ進む", new_order_path, class: "btn" %>
+    </div><br>
+
+    <div class="cart-ad">
+      
+    </div>
 
   </div>
 

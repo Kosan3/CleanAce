@@ -5,9 +5,26 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :carts
+  has_many :ships
+  has_many :orders
 
 
   def has_in_cart(value)
     carts.find_by(product_id: value.id)
   end
+
+  def full_name
+    self.last_name + "    " + self.first_name
+  end
+
+  def phone_number_break
+    if self.phone_number.length == 10
+      self.phone_number.first(3) + "-" + self.phone_number[3,3] + "-" + self.phone_number.last(4)
+    elsif self.phone_number.length == 11
+      self.phone_number.first(3) + "-" + self.phone_number[3,4] + "-" + self.phone_number.last(4)
+    else
+      self.phone_number.first(3) + "-" + self.phone_number[3,3] + "-" + self.phone_number.last(4)
+    end
+  end
+
 end

@@ -1,2 +1,99 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="row">
+  <div class="col-9 cart-index">
+    <p class="shoping-cart">ショッピングカート</p>
+
+    <span>ご注文内容</span>
+
+    <table class="table table-bordered cart-table">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>サイズ</th>
+          <th>カラー</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @carts.each do |cart| %>
+        <tr>
+          <td class="table-light align-middle">
+            <%= attachment_image_tag cart.product.type, :image, :fill, 50, 50, format: 'jpeg'%>
+
+            <%= cart.product.type.type_name %>
+          </td>
+          <td class="table-light align-middle">
+            <% tax_price = cart.product.non_taxed_price * 1.1 %>
+            <%= tax_price.floor.to_s(:delimited) %>
+          </td>
+          <td class="table-light align-middle"><%= cart.product.product_size.size %></td>
+          <td class="table-light align-middle"><%= cart.product.product_color.color %></td>
+          <td class="table-light align-middle">
+            <%= cart.quantity %>個
+          </td>
+          <% subtotal = tax_price * cart.quantity %>
+          <td class="table-light align-middle"><%= subtotal.floor.to_s(:delimited) %>円</td>
+          <td class="table-light text-center"><%= link_to '削除する', carts_path(cart.product.id), method: :delete, class: "btn btn" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table><br>
+
+    <span>ご購入手続き</span><br><br>
+
+    <%= form_with model: @order, url: confirmation_new_order_path, local: true do |f| %>
+
+      <label><%= radio_button_tag :address_key, 'my_address', checked: "checked" %> ご自身の住所に送る</label>
+      <table class="order-table my-address">
+        <tbody>
+          <tr>
+            <td id="one">郵便番号</td>
+            <td id="two">〒<%= @user.postal_code %></td>
+          </tr>
+          <tr>
+            <td id="one">住所</td>
+            <td id="two"><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td id="one">名前</td>
+            <td id="two"><%= @user.full_name %></td>
+          </tr>
+          <tr>
+            <td id="one">電話番号</td>
+            <td id="two"><%= @user.phone_number_break %></td>
+          </tr>
+        </tbody>
+      </table><br><br>
+
+      <div>
+        <label><%= radio_button_tag :address_key, 'other_address' %> 登録済みの住所から選択する</label><br>
+        <%= f.collection_select :ship, @user.ships, :id, :order_address_data, include_blank: "選択してください", class:"aaa" %>
+      </div><br><br>
+
+      <div>
+        <label><%= radio_button_tag :address_key, 'new_address' %> 別の住所へ送る</label>
+        <table class="order-table other-address">
+          <tbody>
+            <tr>
+              <td id="one">郵便番号</td>
+              <td id="two">〒<%= f.text_field :postal_code %></td>
+            </tr>
+            <tr>
+              <td id="one">住所</td>
+              <td id="two">　<%= f.text_field :address %></td>
+            </tr>
+            <tr>
+              <td id="one">名前</td>
+              <td id="two">　<%= f.text_field :address_name %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div><br>
+
+      <%= f.submit "次へ", class: "submit" %>
+
+    <% end %>
+
+</div>
