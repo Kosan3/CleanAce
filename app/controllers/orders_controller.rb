@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   TAX = 1.1
 
   def index
+    @orders = current_user.orders
   end
 
   def show
@@ -27,8 +28,12 @@ class OrdersController < ApplicationController
   def create
     order = @user.orders.new(order_params)
     order.fare = 800
-    binding.pry
     order.billing_total = order.fare + @carts.sum(&:subtotal) * TAX
+    order.payment_method = "transfer"
+    order.save
+    order.create_order_products(current_user)
+    @carts.each(&:destroy)
+    redirect_to complete_orders_path
   end
 
   def complete

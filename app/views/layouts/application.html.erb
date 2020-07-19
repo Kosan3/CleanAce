@@ -27,13 +27,14 @@
               <li><%= link_to '商品情報一覧', admin_types_path %></li>
               <li><%= link_to 'ユーザー一覧', admin_users_path %></li>
             <% else %>
-              <li><%= link_to '商品一覧', products_path %></li>
+              <li><%= link_to '商品一覧', root_path %></li>
               <li><%= link_to 'マイカート', carts_path %></li>
+              <li><%= link_to '注文履歴', orders_path %></li>
             <% end %>
             <li><%= link_to 'マイページ', users_path %></li>
             <li><%= link_to 'ログアウト', sign_out_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to '商品一覧', products_path %></li>
+            <li><%= link_to '商品一覧', root_path %></li>
             <li><%= link_to '新規登録', sign_up_path %></li>
             <li><%= link_to 'ログイン', sign_in_path %></li>
           <% end %>
@@ -48,7 +49,7 @@
 
     <div class="container">
       <footer>
-        
+
       </footer>
     </div>
   </body>
