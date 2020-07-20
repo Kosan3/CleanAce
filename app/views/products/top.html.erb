@@ -75,20 +75,28 @@
     <div class="images-quattro clearfix">
       <ul>
         <li  class="padding">
-          <div class="image"></div>
-          <p class="image-title">aaaaaaaa</p>
+          
+            <div class="image"><%= image_tag "2e28a9ac8b65bede6bfea28796e3400f_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">クリーンエースとは</p>
+          
         </li>
         <li>
-          <div class="image"></div>
-          <p class="image-title"></p>
+          <%= link_to members_path do %>
+            <div class="image"><%= image_tag "3f74661803417de4f257d6a95485d026_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">チームメンバー</p>
+          <% end %>
         </li>
         <li  class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
+          <%= link_to results_path do %>
+            <div class="image"><%= image_tag "d1437536651306d6cd5c46c0a20c0499_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">チーム戦績</p>
+          <% end %>
         </li>
         <li>
-          <div class="image"></div>
-          <p class="image-title"></p>
+          <%= link_to new_entry_path do %>
+            <div class="image"><%= image_tag "6f1e6899140bfa633be57d17ad530602_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">メンバー募集</p>
+          <% end %>
         </li>
       </ul>
     </div>
