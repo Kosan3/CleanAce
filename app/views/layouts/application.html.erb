@@ -26,6 +26,8 @@
             <% if current_user.admin? %>
               <li><%= link_to '商品情報一覧', admin_types_path %></li>
               <li><%= link_to 'ユーザー一覧', admin_users_path %></li>
+              <li><%= link_to '草野球チーム', new_admin_member_path %></li>
+              <li><%= link_to '試合結果登録', new_admin_result_path %></li>
             <% else %>
               <li><%= link_to '商品一覧', root_path %></li>
               <li><%= link_to 'マイカート', carts_path %></li>
