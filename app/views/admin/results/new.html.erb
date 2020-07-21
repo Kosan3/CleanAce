@@ -1,2 +1,52 @@
-<h1>Admin::Results#new</h1>
-<p>Find me in app/views/admin/results/new.html.erb</p>
+<div class="row">
+  <div class="member-bar">
+    <p>試合結果登録</p>
+  </div>
+  <%= form_with model: @result, url: admin_results_path, local: true do |f| %>
+    <table class="result-box">
+      <tbody>
+        <tr>
+          <th id="team-name">TEAM</th>
+          <th id="one" class="ining">1</th>
+          <th id="two" class="ining">2</th>
+          <th id="three" class="ining">3</th>
+          <th id="fourth" class="ining" class="ining">4</th>
+          <th id="fifth" class="ining">5</th>
+          <th id="sixth" class="ining">6</th>
+          <th id="seventh" class="ining">7</th>
+        </tr>
+        <tr>
+          <td><%= f.text_field :first_team, placeholder: "クリーンエース", id: "field-team-name" %></td>
+          <td><%= f.text_field :top_first, id: "field-ining" %></td>
+          <td><%= f.text_field :top_second, id: "field-ining" %></td>
+          <td><%= f.text_field :top_third, id: "field-ining" %></td>
+          <td><%= f.text_field :top_fourth, id: "field-ining" %></td>
+          <td><%= f.text_field :top_fifth, id: "field-ining" %></td>
+          <td><%= f.text_field :top_sixth, id: "field-ining" %></td>
+          <td><%= f.text_field :top_seventh, id: "field-ining" %></td>
+        </tr>
+        <tr>
+          <td><%= f.text_field :second_team, placeholder: "クリーンエース", id: "field-team-name" %></td>
+          <td><%= f.text_field :bottom_first, id: "field-ining" %></td>
+          <td><%= f.text_field :bottom_second, id: "field-ining" %></td>
+          <td><%= f.text_field :bottom_third, id: "field-ining" %></td>
+          <td><%= f.text_field :bottom_fourth, id: "field-ining" %></td>
+          <td><%= f.text_field :bottom_fifth, id: "field-ining" %></td>
+          <td><%= f.text_field :bottom_sixth, id: "field-ining" %></td>
+          <td><%= f.text_field :bottom_seventh, id: "field-ining" %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="form">
+      <%= f.label :opponent_team, '対戦相手' %>
+      <%= f.text_field :opponent_team %>
+    </div>
+    <div class="form">
+      <%= f.label :description, '試合詳細' %><br>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+
+    <%= f.submit "登録" %>
+  <% end %>
+</div>

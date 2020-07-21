@@ -333,10 +333,17 @@ header {
   }
 }
 
+
+// 試合結果
 .result-box {
+  border-bottom: solid 1px black;
+  padding-top: 15px;
+  table {
+    border: solid 1px black;
+  }
   tr {
     border: solid 1px black;
-    height: 25px;
+    height: 35px;
   }
   th {
     border: solid 1px black;
@@ -344,16 +351,35 @@ header {
   td {
     border: solid 1px black;
     text-align: center;
-    font-size: 12px;
+    font-size: 18px;
   }
   #team-name {
-    width: 100px;
+    width: 130px;
     text-align: center;
   }
   .ining {
-    width: 30px;
+    width: 55px;
     text-align: center;
   }
+}
+#first-team,
+#second-team {
+  font-size: 15px;
+}
+.result-description {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+// アドミン試合結果
+#field-team-name {
+  height: 35px;
+}
+#field-ining {
+  width: 45px;
+  height: 35px;
+  text-align: center;
+  font-size: 18px;
 }
 
 
