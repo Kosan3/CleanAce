@@ -245,6 +245,15 @@ header {
   background-color: black;
 }
 
+.btn {
+    background-color: #eee;
+    line-height: 10px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 30%;
+}
+
 .cart-procedure {
   border :solid 1px black;
   text-align: center;
@@ -380,6 +389,46 @@ header {
   height: 35px;
   text-align: center;
   font-size: 18px;
+}
+
+
+// 募集
+.entry {
+  .entry-title {
+    border-bottom: 2px solid #ccc;
+  }
+
+  .entry-form {
+    table {
+      width: 100%;
+      tr {
+        height: 70px;
+        border: solid 2px #ccc;
+        td {
+          border: solid 2px #ccc;
+          padding: 5px;
+        }
+      }
+      .address-form,
+      .email-form {
+        width: 85%;
+      }
+      .other-form {
+        width: 100%;
+        height: 80px;
+      }
+      .required {
+        color: red;
+        font-size: 6px;
+        display: inline-block;
+        padding-left: 6px;
+      }
+    }
+  }
+  .entry-submit {
+    text-align: center;
+    padding: 20px;
+  }
 }
 
 

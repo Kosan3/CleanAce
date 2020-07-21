@@ -1,6 +1,6 @@
 class ResultsController < ApplicationController
   def index
-    @results = Result.all
+    @results = Result.all.order(created_at: :desc)
   end
 
   def show

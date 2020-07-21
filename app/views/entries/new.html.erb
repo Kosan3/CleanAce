@@ -1,2 +1,57 @@
-<h1>Entries#new</h1>
-<p>Find me in app/views/entries/new.html.erb</p>
+<div class="row">
+  <%= render 'shared/side' %>
+  <div class="col-9 entry">
+    <h4 class="entry-title">あなたも野球をしませんか？</h4>
+    <p>クリーンエースでは草野球選手を探しています！<br>
+      成人男性で少しでも野球経験があればどなたでも加入できます。<br>
+      まずは、一度試合を見に来てください。<br>
+    下記フォームでご連絡いただければこちらからご連絡します。</p>
+    <div class="entry-form">
+      <%= form_with model: @entry, url: entries_path, local: true do |f| %>
+        <table>
+          <tbody>
+            <tr>
+              <td><%= f.label :last_name, "お名前" %><span class="required">必須</span></td>
+              <td><%= f.text_field :last_name, placeholder: "例） 山田" %> <%= f.text_field :first_name, placeholder: "例）太郎" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :kana_last_name, "お名前（カナ）" %><span class="required">必須</span></td>
+              <td><%= f.text_field :kana_last_name, placeholder: "例）ヤマダ" %> <%= f.text_field :kana_first_name, placeholder: "例）タロウ" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :age, '年齢' %><span class="required">必須</span></td>
+              <td><%= f.text_field :age, placeholder: '例）30' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :postal_code, "郵便番号" %><span class="required">必須</span></td>
+              <td><%= f.text_field :postal_code, placeholder: "例）1000000" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :address, "住所" %><span class="required">必須</span></td>
+              <td><%= f.text_field :address, placeholder: "例）埼玉県羽生市手小林1-1", class: "address-form" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :email, 'メールアドレス' %><span class="required">必須</span></td>
+              <td><%= f.text_field :email, placeholder: "例）yamada@example.com", class: "email-form" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :phone_number, '電話番号' %><span class="required">必須</span></td>
+              <td><%= f.text_field :phone_number, placeholder: "例）03000000000" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :position, '希望ポジション&経験ポジション' %></td>
+              <td><%= f.text_field :position, placeholder: "例）スタンドオフ" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :other, "その他" %></td>
+              <td><%= f.text_field :other, placeholder: "例）肩を壊しているのですが大丈夫でしょうか？", class: "other-form" %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="entry-submit">
+          <%= f.submit "申し込む" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
