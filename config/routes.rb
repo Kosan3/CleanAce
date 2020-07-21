@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'admins/top'
+  end
   # デバイス
   devise_for :users, skip: :all
   devise_scope :user do
@@ -74,6 +77,11 @@ Rails.application.routes.draw do
   # 写真
   namespace :admin do
     post '/image', to: 'product_images#create'
+  end
+
+  # アドミントップ
+  namespace :admin do
+    get 'admins/top', as: 'admin'
   end
 
 end

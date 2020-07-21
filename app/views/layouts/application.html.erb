@@ -17,7 +17,9 @@
     <div class="container">
       <header>
         <% if current_user&.admin? %>
-          <span>CleanAce(管理者モード)</span>
+          <%= link_to admin_admin_path do %>
+            <span>CleanAce(管理者モード)</span>
+          <% end %>
         <% else %>
           <h2 id="header-title">CleanAce</h2>
         <% end %>

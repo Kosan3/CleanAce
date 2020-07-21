@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-9">
+    <table>
+      <tbody>
+        <% @entries.each do |entry| %>
+          <tr>
+            <td><%= entry.last_name + '　' + entry.first_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

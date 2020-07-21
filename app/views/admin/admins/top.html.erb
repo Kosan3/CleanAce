@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-6">
+    <h3>注文情報</h3>
+    <ul>
+      <li>本日の注文</li>
+      <li>未確認の注文</li>
+    </ul>
+  </div>
+  <div class="col-6">
+    <h3>メンバー募集情報</h3>
+    <ul>
+      <%= link_to admin_entries_path do %>
+        <li>本日の応募　<%= @entry.count %>件</li>
+      <% end %>
+      <li>未確認の応募</li>
+    </ul>
+  </div>
+</div>
+<%= @time %>
