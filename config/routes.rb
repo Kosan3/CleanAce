@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'admins/top'
-  end
   # デバイス
   devise_for :users, skip: :all
   devise_scope :user do
@@ -83,5 +80,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'admins/top', as: 'admin'
   end
+
+  # 検索
+  get '/search', to: 'search#search', as: 'search'
 
 end

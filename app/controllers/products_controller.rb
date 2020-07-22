@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def top
-    if request.referer.include?('/sign_in') && current_user.admin?
+    if request.referer&.include?('/sign_in') && current_user&.admin?
       redirect_to admin_admin_path
     end
     @types = Type.all

@@ -23,12 +23,26 @@
           </div>
         </div>
         <div class="header-right">
-          <ul>
-            <li class="gray-link"><i class="fas fa-plus-circle"></i> 新規登録</li>
-            <li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログイン</li>
-            <li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li>
-            <li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li>
-          </ul>
+          <% if signed_in? %>
+            <ul>
+              <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-plus-circle"></i> 羽生市</li><% end %>
+              <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
+              <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
+              <li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li>
+            </ul>
+          <% else %>
+            <ul>
+              <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-plus-circle"></i> 新規登録</li><% end %>
+              <%= link_to sign_in_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログイン</li><% end %>
+              <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
+              <li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li>
+            </ul>
+          <% end %>
+          <%= form_with url: search_path, method: :get, scope: :search, local: true do |f| %>
+            <div id="search-submit">
+              <%= f.text_field :content, placeholder: "キーワードで探す", id: "search-field" %><%= button_tag type: 'submit', id: 'search' do %><i class="fas fa-search"></i><% end %>
+            </div>
+          <% end %>
         </div>
       </header>
     </div>

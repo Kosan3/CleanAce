@@ -34,6 +34,9 @@ header {
   .header-right {
     width: 50%;
     float: left;
+    .header-link {
+      color: black;
+    }
     .gray-link {
       list-style: none;
       display: inline-block;
@@ -470,6 +473,34 @@ header {
 // アドミンサイドバー
 .admin-link {
   color: black;
+}
+
+// 検索
+#search-submit {
+  margin: 21px 0 0 5px;
+}
+#search-field {
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+  width: 65%;
+  height: 33px;
+  font-size: 15px;
+  padding: 0 0 0 5px;
+}
+#search {
+  display: inline-block;
+  color: white;
+  width: 32px;
+  height: 33px;
+  background-color: black;
+  font-size: 20px;
+  padding: 0 5px;
+  border-radius: 0 5px 5px 0;
+  border: solid 0.5px black;
+
+
 }
 
 
