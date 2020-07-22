@@ -15,34 +15,21 @@
 
   <body>
     <div class="container">
-      <header>
-        <% if current_user&.admin? %>
-          <%= link_to admin_admin_path do %>
-            <span>CleanAce(管理者モード)</span>
-          <% end %>
-        <% else %>
-          <h2 id="header-title">CleanAce</h2>
-        <% end %>
-        <ul>
-          <% if user_signed_in? %>
-            <% if current_user.admin? %>
-              <li><%= link_to '商品情報一覧', admin_types_path %></li>
-              <li><%= link_to 'ユーザー一覧', admin_users_path %></li>
-              <li><%= link_to '草野球チーム', new_admin_member_path %></li>
-              <li><%= link_to '試合結果登録', new_admin_result_path %></li>
-            <% else %>
-              <li><%= link_to '商品一覧', root_path %></li>
-              <li><%= link_to 'マイカート', carts_path %></li>
-              <li><%= link_to '注文履歴', orders_path %></li>
-            <% end %>
-            <li><%= link_to 'マイページ', users_path %></li>
-            <li><%= link_to 'ログアウト', sign_out_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to '商品一覧', root_path %></li>
-            <li><%= link_to '新規登録', sign_up_path %></li>
-            <li><%= link_to 'ログイン', sign_in_path %></li>
-          <% end %>
-        </ul>
+      <header class="clearfix">
+        <div class="header-left">
+          <p>CleanAce Webサイト | ユニフォーム制作会社 | 羽生市 小坂被服</p>
+          <div class="header-logo">
+            <%= image_tag "cleanace.png" %>
+          </div>
+        </div>
+        <div class="header-right">
+          <ul>
+            <li class="gray-link"><i class="fas fa-plus-circle"></i> 新規登録</li>
+            <li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログイン</li>
+            <li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li>
+            <li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li>
+          </ul>
+        </div>
       </header>
     </div>
     <div class="container-fluid">

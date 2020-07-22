@@ -18,18 +18,38 @@
 // ヘッダー
 header {
   width: 890px;
-  margin: 0px auto;
-  height: 100px;
-  padding: 0px;
+  margin: 0 auto 10px;
+  .header-left {
+    width: 50%;
+    float: left;
+    p {
+      font-size: 13px;
+      padding: 6px 0 0 6px;
+    }
+    .header-logo {
+      padding-left: 40px;
 
-  #header-title {
-    display: inline-block;
+    }
   }
-  ul {
-    li {
+  .header-right {
+    width: 50%;
+    float: left;
+    .gray-link {
       list-style: none;
       display: inline-block;
-      padding: 10px 10px;
+      background-color: #ccc;
+      width: 95px;
+      height: 30px;
+      font-size: 14px;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+    }
+    .right-link {
+      list-style: none;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 14px;
     }
   }
 }
@@ -429,6 +449,27 @@ header {
     text-align: center;
     padding: 20px;
   }
+}
+.admin-entry-form {
+  table {
+    width: 180%;
+    tr {
+      height: 70px;
+      border: solid 2px #ccc;
+      td {
+        border: solid 2px #ccc;
+        padding: 5px;
+      }
+    }
+    #one,#two {
+      width: 50%;
+    }
+  }
+}
+
+// アドミンサイドバー
+.admin-link {
+  color: black;
 }
 
 

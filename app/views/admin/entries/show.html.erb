@@ -1,2 +1,44 @@
-<h1>Admin::Entries#show</h1>
-<p>Find me in app/views/admin/entries/show.html.erb</p>
+<div class="row">
+  <div class="admin-entry-form">
+    <table>
+      <tbody>
+        <tr>
+          <td id="one">お名前</td>
+          <td id="two"><%= @entry.full_name %></td>
+        </tr>
+        <tr>
+          <td>お名前（カナ）</td>
+          <td><%= @entry.kana_full_name %></td>
+        </tr>
+        <tr>
+          <td>年齢</td>
+          <td><%= @entry.age %> 歳</td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= @entry.postal_code %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @entry.address %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @entry.email %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= @entry.phone_number %></td>
+        </tr>
+        <tr>
+          <td>希望ポジション&経験ポジション</td>
+          <td><%= @entry.position %></td>
+        </tr>
+        <tr>
+          <td>その他</td>
+          <td><%= @entry.other %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,8 +1,11 @@
 class Order < ApplicationRecord
 
   has_many :order_products
+  belongs_to :user
 
   enum payment_method: { credit_card: 0, transfer: 1 }
+
+  scope :today_orders, -> { where(created_at: Time.zone.now.all_day) }
 
   def get_shipping_informations_from(resource)
     class_name = resource.class.name

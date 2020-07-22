@@ -1,2 +1,26 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<div class="row">
+  <div class="col-9">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>受信時刻</th>
+          <th>購入数</th>
+        </tr>
+      </thead>
+      <% count = 1 %>
+      <% @orders.each do |order| %>
+        <tbody>
+          <tr>
+            <td><%= link_to count, admin_order_path(order) %></td>
+            <td><%= link_to order.user.full_name, admin_order_path(order) %></td>
+            <td><%= link_to order.created_at.strftime("%m/%d　%k:%M"), admin_order_path(order) %></td>
+            <td><%= link_to order.order_products.sum(:quantity), admin_order_path(order) %></td>
+          </tr>
+        </tbody>
+        <% count += 1 %>
+      <% end %>
+    </table>
+  </div>
+</div>
