@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
     <script src="<%= ENV['KEY'] %>"  crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
   </head>
 
   <body>
@@ -19,7 +20,9 @@
         <div class="header-left">
           <p>CleanAce Webサイト | ユニフォーム制作会社 | 羽生市 小坂被服</p>
           <div class="header-logo">
-            <%= image_tag "cleanace.png" %>
+            <%= link_to root_path do %>
+              <%= image_tag "cleanace.png" %>
+            <% end %>
           </div>
         </div>
         <div class="header-right">

@@ -84,4 +84,7 @@ Rails.application.routes.draw do
   # 検索
   get '/search', to: 'search#search', as: 'search'
 
+  # 会社
+  get '/overview', to: 'company#overview', as: 'overview'
+
 end

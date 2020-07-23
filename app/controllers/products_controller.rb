@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def show
     @type = Type.find(params[:id])
-    @products = Product.where(type_id: params[:id])
+    @products = Product.where(type_id: params[:id]).includes(:product_color,:product_size,:type)
     @images = ProductImage.where(type_id: params[:id])
     @cart = Cart.new
   end
