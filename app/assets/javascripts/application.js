@@ -21,13 +21,24 @@ $(function() {
         dots: true,
         autoplay: true,
         autoplaySpeed: 2500,
-        infinite: true,
-        speed: 1000,
-        fade: true,
-        cssEase: 'linear',
         prevArrow:'<div class="prev"><i class="fas fa-angle-left" id="prev-arrow"></i></div>',
         nextArrow:'<div class="next"><i class="fas fa-angle-right" id="next-arrow"></i></div>'
     });
+});
+
+$(function(){
+  $('#top-images').mouseover(function(){
+    $('#top-images').css({
+      'opacity': '0.6',
+      'transition-duration': '0.5s'
+    });
+  });
+  $('#top-images').mouseout(function(){
+    $('#top-images').css({
+      'opacity': '1',
+      'transition-duration': '0.5s'
+    });
+  });
 });
 
 
