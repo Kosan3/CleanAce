@@ -20,9 +20,9 @@ $(function() {
     $('#top-images').slick({
         dots: true,
         autoplay: true,
-        dots: true,
+        autoplaySpeed: 2500,
         infinite: true,
-        speed: 1500,
+        speed: 1000,
         fade: true,
         cssEase: 'linear',
         prevArrow:'<div class="prev"><i class="fas fa-angle-left" id="prev-arrow"></i></div>',
