@@ -10,18 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
-
-function initMap(){
-  let map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 36.161411, lng: 139.507679 },
-    zoom: 17
-  });
-};
 
 $(function() {
     $('.a').slick({
@@ -34,3 +27,11 @@ $(function() {
         cssEase: 'linear'
     });
 });
+
+
+function initMap(){
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 36.161411, lng: 139.507679 },
+    zoom: 17
+  });
+};
