@@ -32,12 +32,16 @@ $(function(){
       'opacity': '0.6',
       'transition-duration': '0.5s'
     });
+    $('#prev-arrow').show();
+    $('#next-arrow').show();
   });
   $('#top-images').mouseout(function(){
     $('#top-images').css({
       'opacity': '1',
       'transition-duration': '0.5s'
     });
+    $('#prev-arrow').hide();
+    $('#next-arrow').hide();
   });
 });
 

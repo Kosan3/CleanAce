@@ -32,10 +32,10 @@
   opacity: 0.6;
 }
 #prev-arrow {
-  
+  display: none;
 }
 #next-arrow {
-  
+  display: none;
 }
 
 .next {
@@ -266,6 +266,7 @@ header {
         .image-title {
           height: 60px;
           font-size: 11px;
+          color: black;
         }
       }
       li:nth-child(4n) {margin-right: 0;}
@@ -287,6 +288,7 @@ header {
         }
         .image-title {
           height: 52px;
+          color: black;
         }
       }
     }
