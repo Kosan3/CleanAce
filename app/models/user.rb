@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :carts
   has_many :ships
   has_many :orders
+  has_many :favorites, dependent: :destroy
 
 
   def has_in_cart(value)
