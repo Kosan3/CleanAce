@@ -12,9 +12,35 @@
   display: block;
   clear: both;
 }
-.c {
+
+// スライド
+.top-image {
   height: 330px;
   width: 100%;
+}
+.top-images {
+  position: relative;
+}
+.prev {
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  left: 5px;
+  font-size: 80px;
+  color: #bbb;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.next {
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  right: 5px;
+  font-size: 80px;
+  color: #bbb;
+  cursor: pointer;
+  opacity: 0.6;
 }
 // レイアウトが乱れた場合要修正
 .bar {

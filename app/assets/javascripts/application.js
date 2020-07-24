@@ -17,14 +17,16 @@
 //= require_tree .
 
 $(function() {
-    $('.a').slick({
+    $('#top-images').slick({
         dots: true,
         autoplay: true,
         dots: true,
         infinite: true,
         speed: 1500,
         fade: true,
-        cssEase: 'linear'
+        cssEase: 'linear',
+        prevArrow:'<div class="prev"><i class="fas fa-angle-left" id="prev-arrow"></i></div>',
+        nextArrow:'<div class="next"><i class="fas fa-angle-right" id="next-arrow"></i></div>'
     });
 });
 
