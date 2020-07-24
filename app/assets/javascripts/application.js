@@ -22,7 +22,8 @@ $(function() {
         autoplay: true,
         autoplaySpeed: 2500,
         prevArrow:'<div class="prev"><i class="fas fa-angle-left" id="prev-arrow"></i></div>',
-        nextArrow:'<div class="next"><i class="fas fa-angle-right" id="next-arrow"></i></div>'
+        nextArrow:'<div class="next"><i class="fas fa-angle-right" id="next-arrow"></i></div>',
+        pauseOnHover: false
     });
 });
 
