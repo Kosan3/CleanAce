@@ -3,6 +3,7 @@
 
   <div class="col-9 search">
     <p class="search-title">商品一覧</p>
+    <div class="sort"><%= sort_link @q, :type_name, '商品名', {}, id: 'sort-link' %></div>
     <div class="search-index">
       <ul>
         <% @types.last(8).each do |type| %>

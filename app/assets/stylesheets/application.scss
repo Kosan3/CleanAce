@@ -629,6 +629,20 @@ header {
     }
   }
 }
+.sort {
+  border: solid 1px black;
+  border-radius: 5px;
+  display: inline-block;
+  background-color: #ccc;
+  height: 28px;
+  width: 76px;
+  text-align: center;
+  #sort-link {
+    color: black;
+    font-weight: bold;
+    line-height: 28px;
+  }
+}
 
 
 // フッター
