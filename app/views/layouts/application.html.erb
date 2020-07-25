@@ -30,12 +30,21 @@
         </div>
         <div class="header-right">
           <% if signed_in? %>
-            <ul>
-              <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> トップ</li><% end %>
-              <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
-              <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
-              <%= link_to "http://www.ja-fit.com/", class: "jafit-link" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>
-            </ul>
+            <% if current_user.admin? %>
+              <ul>
+                <%= link_to admin_admin_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> トップ</li><% end %>
+                <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
+                <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
+                <%= link_to "http://www.ja-fit.com/", class: "jafit-link" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>
+              </ul>
+            <% else %>
+              <ul>
+                <%= link_to root_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> トップ</li><% end %>
+                <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
+                <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
+                <%= link_to "http://www.ja-fit.com/", class: "jafit-link" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>
+              </ul>
+            <% end %>
           <% else %>
             <ul>
               <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-plus-circle"></i> 新規登録</li><% end %>
