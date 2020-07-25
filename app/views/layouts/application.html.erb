@@ -31,17 +31,17 @@
         <div class="header-right">
           <% if signed_in? %>
             <ul>
-              <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-plus-circle"></i> 羽生市</li><% end %>
+              <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> トップ</li><% end %>
               <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
               <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
-              <li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li>
+              <%= link_to "http://www.ja-fit.com/", class: "jafit-link" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>
             </ul>
           <% else %>
             <ul>
               <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-plus-circle"></i> 新規登録</li><% end %>
               <%= link_to sign_in_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログイン</li><% end %>
               <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
-              <li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li>
+              <%= link_to "http://www.ja-fit.com/", class: "jafit-link" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>
             </ul>
           <% end %>
           <%= form_with url: search_path, method: :get, scope: :search, local: true do |f| %>

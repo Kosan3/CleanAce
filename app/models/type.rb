@@ -1,9 +1,9 @@
 class Type < ApplicationRecord
   attachment :image
-  has_many :products
-  has_many :product_images
-  has_many :product_sizes, through: :products
-  has_many :product_colors, through: :products
+  has_many :products, dependent: :destroy
+  has_many :product_images, dependent: :destroy
+  has_many :product_sizes, through: :products, dependent: :destroy
+  has_many :product_colors, through: :products, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   def squeeze_product(params)
