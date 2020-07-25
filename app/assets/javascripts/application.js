@@ -15,3 +15,41 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+    $('#top-images').slick({
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 2500,
+        prevArrow:'<div class="prev"><i class="fas fa-angle-left" id="prev-arrow"></i></div>',
+        nextArrow:'<div class="next"><i class="fas fa-angle-right" id="next-arrow"></i></div>',
+        pauseOnHover: false
+    });
+});
+
+$(function(){
+  $('#top-images').mouseover(function(){
+    $('#top-images').css({
+      'opacity': '0.6',
+      'transition-duration': '0.5s'
+    });
+    $('#prev-arrow').show();
+    $('#next-arrow').show();
+  });
+  $('#top-images').mouseout(function(){
+    $('#top-images').css({
+      'opacity': '1',
+      'transition-duration': '0.5s'
+    });
+    $('#prev-arrow').hide();
+    $('#next-arrow').hide();
+  });
+});
+
+
+function initMap(){
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 36.161411, lng: 139.507679 },
+    zoom: 17
+  });
+};

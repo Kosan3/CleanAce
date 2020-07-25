@@ -76,4 +76,15 @@ Rails.application.routes.draw do
     post '/image', to: 'product_images#create'
   end
 
+  # アドミントップ
+  namespace :admin do
+    get 'admins/top', as: 'admin'
+  end
+
+  # 検索
+  get '/search', to: 'search#search', as: 'search'
+
+  # 会社
+  get '/overview', to: 'company#overview', as: 'overview'
+
 end

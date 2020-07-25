@@ -1,0 +1,47 @@
+<div class="row">
+  <!-- サイドバー -->
+  <%= render 'shared/side' %>
+
+  <!-- メイン -->
+  <div class="col-9 overview">
+    <div class="bar">
+      <p>会社概要</p>
+    </div>
+    <div class="default-table" id="overview-table">
+      <table>
+        <tbody>
+          <tr>
+            <td id="one">会社名</td>
+            <td id="two">有限会社コサカ</td>
+          </tr>
+          <tr>
+            <td>代表取締役</td>
+            <td>小坂　昭三</td>
+          </tr>
+          <tr>
+            <td>所在地</td>
+            <td>〒348-0000　埼玉県××市××-××</td>
+          </tr>
+          <tr>
+            <td>連絡先</td>
+            <td>TEL: 048-×××-××××<br>
+              FAX: 048-×××-××××<br>
+              email: info@example.com</td>
+          </tr>
+          <tr>
+            <td>営業時間</td>
+            <td>平日: AM9:00~PM6:00<br>
+              土曜日: AM9:00~PM6:00<br>
+            定休日: 日曜日・祝祭日</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bar" id="map-bar">
+        <p>周辺地図</p>
+      </div>
+      <!-- GoogleMap -->
+      <div id="map"></div>
+
+    </div>
+  </div>
+</div>

@@ -1,2 +1,56 @@
-<h1>Admin::Members#new</h1>
-<p>Find me in app/views/admin/members/new.html.erb</p>
+<h1>メンバー登録</h1>
+
+<%= form_with model: @member, url: admin_members_path, local: true do |f| %>
+  <div class="form">
+    <%= f.label :name, '名前' %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div class="form">
+    <%= f.label :en_name, '名前(英)' %>
+    <%= f.text_field :en_name %>
+  </div>
+  <div class="form">
+    <%= f.label :position, 'ポジション' %>
+    <%= f.text_field :position %>
+  </div>
+  <div class="form">
+    <%= f.label :uniform_number, '背番号' %>
+    <%= f.number_field :uniform_number, min:1, max:99, step: 1 %>
+  </div>
+  <div class="form">
+    <%= f.label :introduction, '選手説明' %>
+    <%= f.text_field :introduction %>
+  </div>
+  <div>
+    <%= f.submit "選手登録" %>
+  </div>
+<% end %>
+
+<h1>編集</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>名前(英)</th>
+      <th>ポジション</th>
+      <th>背番号</th>
+      <th>選手説明</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.name %></td>
+        <td><%= member.en_name %></td>
+        <td><%= member.position %></td>
+        <td><%= member.uniform_number %></td>
+        <td><%= member.introduction %></td>
+        <td><%= link_to '編集する', edit_admin_member_path(member.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "一覧画面へ", members_path %>

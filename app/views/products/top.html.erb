@@ -1,55 +1,18 @@
 <div class="row">
-
-
   <!-- サイドバー -->
-  <div class="col-3 side-bar">
-    <div class="box">
-      <p>大雨によるお荷物のお届けについて>></p>
-    </div>
-    <div class="side-pickup">
-      <ul>
-        <li><i class="fas fa-baseball-ball"></i>  CleanAceについて</li>
-        <li><i class="fas fa-baseball-ball"></i>  ユニフォーム工程紹介</li>
-        <li><i class="fas fa-baseball-ball"></i>  会社概要</li>
-        <li><i class="fas fa-baseball-ball"></i>  お問い合わせ</li>
-        <li><i class="fas fa-baseball-ball"></i>  小坂店長ブログ</li>
-        <li><i class="fas fa-baseball-ball"></i>  小坂店長への相談メール</li>
-        <li><i class="fas fa-baseball-ball"></i>  おすすめ商品</li>
-      </ul>
-    </div>
-
-    <!-- 商品一覧 -->
-    <div class="side-bar-bar"><p>商品一覧</p></div>
-    <div class="side-product">
-      <ul>
-        <li><i class="fas fa-caret-right"></i> CleanAceについて</li>
-        <li><i class="fas fa-caret-right"></i> ユニフォーム工程紹介</li>
-        <li><i class="fas fa-caret-right"></i> 会社概要</li>
-        <li><i class="fas fa-caret-right"></i> お問い合わせ</li>
-        <li><i class="fas fa-caret-right"></i> 小坂店長ブログ</li>
-        <li><i class="fas fa-caret-right"></i> 小坂店長への相談メール</li>
-        <li><i class="fas fa-caret-right"></i> おすすめ商品</li>
-      </ul>
-    </div>
-
-    <!-- ご案内 -->
-    <div class="side-bar-bar"><p>ご案内</p></div>
-    <div class="side-bar-list">
-      <ul>
-        <li>スタッフ紹介</li>
-        <li>町おこし</li>
-        <li>鬼が住む町、羽生</li>
-        <li>スタッフ紹介</li>
-      </ul>
-    </div>
-  </div>
-
+  <%= render 'shared/side' %>
 
   <!-- メイン部分 -->
   <div class="col-9 main-wrapper">
+    <!-- フラッシュメッセージ -->
+      <% if flash.notice.present? %>
+        <p><%= flash.notice %></p>
+      <% end %>
     <!-- トップロゴ -->
-    <div class="image">
-      <%= image_tag "set01.jpg", style: "width: 100%; height: 100%;" %>
+    <div id="top-images">
+        <div class="top-image-wrapper"><img class="top-image" src="assets/set01.jpg"></div>
+        <div class="top-image-wrapper"><img class="top-image" src="assets/set02.jpg"></div>
+        <div class="top-image-wrapper"><img class="top-image" src="assets/set03.jpg"></div>
     </div>
     <p class="image-bottom">新潟明訓の夏はまだ終わらない！新商品続々！！</p>
 
@@ -59,38 +22,14 @@
     <!-- コンテンツ -->
     <div class="images clearfix">
       <ul>
-        <li class="padding">
-          <div class="image"><%= image_tag "finetrack_02_TP_V4.jpg", class: "image-size" %></div>
-          <p class="image-title">aaaaaaaaa</p>
-        </li>
-        <li class="padding">
-          <div class="image"><%= image_tag "finetrack_02_TP_V4.jpg", class: "image-size" %></div>
-          <p class="image-title"></p>
-        </li>
-        <li class="padding">
-          <div class="image"><%= image_tag "finetrack_02_TP_V4.jpg", class: "image-size" %></div>
-          <p class="image-title"></p>
-        </li>
-        <li>
-          <div class="image"><%= image_tag "finetrack_02_TP_V4.jpg", class: "image-size" %></div>
-          <p class="image-title"></p>
-        </li>
-        <li class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-        <li class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-        <li class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-        <li>
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
+        <% @types.last(8).each do |type| %>
+          <li class="marging">
+            <%= link_to product_path(type.id) do %>
+              <div class="image"><%= attachment_image_tag type, :image, style: "width: 100%; height: 100%;" %></div>
+              <p class="image-title"><%= type.introduction %></p>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
 
@@ -99,20 +38,28 @@
     <div class="images-quattro clearfix">
       <ul>
         <li  class="padding">
-          <div class="image"></div>
-          <p class="image-title">aaaaaaaa</p>
+          
+            <div class="image"><%= image_tag "2e28a9ac8b65bede6bfea28796e3400f_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">クリーンエースとは</p>
+          
         </li>
         <li>
-          <div class="image"></div>
-          <p class="image-title"></p>
+          <%= link_to members_path do %>
+            <div class="image"><%= image_tag "3f74661803417de4f257d6a95485d026_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">チームメンバー</p>
+          <% end %>
         </li>
         <li  class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
+          <%= link_to results_path do %>
+            <div class="image"><%= image_tag "d1437536651306d6cd5c46c0a20c0499_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">チーム戦績</p>
+          <% end %>
         </li>
         <li>
-          <div class="image"></div>
-          <p class="image-title"></p>
+          <%= link_to new_entry_path do %>
+            <div class="image"><%= image_tag "6f1e6899140bfa633be57d17ad530602_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">メンバー募集</p>
+          <% end %>
         </li>
       </ul>
     </div>

@@ -13,21 +13,151 @@
   clear: both;
 }
 
+// スライド
+.top-image {
+  height: 330px;
+  width: 100%;
+}
+.top-images {
+  position: relative;
+}
+.prev {
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  left: 5px;
+  font-size: 80px;
+  color: #bbb;
+  cursor: pointer;
+  opacity: 0.6;
+}
+#prev-arrow {
+  display: none;
+}
+#next-arrow {
+  display: none;
+}
+
+.next {
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  right: 5px;
+  font-size: 80px;
+  color: #bbb;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+// レイアウトが乱れた場合要修正
+.bar {
+    width: 100%;
+    height: 38px;
+    background-color: #333333;
+    padding: 0 0 0 13px;
+    p {
+      color: white;
+      font-size: 15px;
+      line-height: 38px;
+      font-weight: bolder;
+    }
+  }
+  // 既定のテーブル
+  .default-table {
+    table {
+      width: 100%;
+      tr {
+        border: solid 2px #ccc;
+        td {
+          border: solid 2px #ccc;
+          padding: 5px;
+        }
+        #owe {
+          width: 30%;
+        }
+        #two {
+          width: 70%;
+        }
+      }
+    }
+  }
+  .table-form {
+    table {
+      width: 100%;
+      tr {
+        height: 70px;
+        border: solid 2px #ccc;
+        td {
+          border: solid 2px #ccc;
+          padding: 5px;
+        }
+      }
+      .address-form,
+      .email-form {
+        width: 85%;
+      }
+      .other-form {
+        width: 100%;
+        height: 80px;
+      }
+      .required {
+        color: red;
+        font-size: 6px;
+        display: inline-block;
+        padding-left: 6px;
+      }
+    }
+  }
+  .entry-submit {
+    text-align: center;
+    padding: 20px;
+  }
+
+  // ジャフィットへのリンク
+  .jafit-link {
+    color: black;
+  }
+
+
+
 // ヘッダー
 header {
   width: 890px;
-  margin: 0px auto;
-  height: 100px;
-  padding: 0px;
+  margin: 0 auto 10px;
+  .header-left {
+    width: 50%;
+    float: left;
+    p {
+      font-size: 13px;
+      padding: 6px 0 0 6px;
+    }
+    .header-logo {
+      padding-left: 40px;
 
-  #header-title {
-    display: inline-block;
+    }
   }
-  ul {
-    li {
+  .header-right {
+    width: 50%;
+    float: left;
+    .header-link {
+      color: black;
+    }
+    .gray-link {
       list-style: none;
       display: inline-block;
-      padding: 10px 10px;
+      background-color: #ddd;
+      width: 95px;
+      height: 30px;
+      font-size: 14px;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+    }
+    .right-link {
+      list-style: none;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 14px;
     }
   }
 }
@@ -40,15 +170,21 @@ header {
   padding: 0px;
 }
 
+
+
 // サイドバー
 .side-bar {
   height: 100%;
+  .side-link {
+    color: black;
+  }
   .box {
     padding: 0 18px;
     margin: 0 0 35px 0;
     width: 100%;
     border: solid 1px gray;
     text-align: center;
+    background-color: #ddd;
 
   }
   p {
@@ -113,6 +249,8 @@ header {
   }
 }
 
+
+
 // トップ画面
 .main-wrapper {
   .image {
@@ -141,11 +279,13 @@ header {
   .images {
     ul {
       padding: 0;
+
       li {
         width: 23.5%;
         height: 220px;
         display: block;
         float: left;
+        margin-right: 2%;
 
         .image {
           height: 155px;
@@ -158,11 +298,11 @@ header {
         }
         .image-title {
           height: 60px;
+          font-size: 11px;
+          color: black;
         }
       }
-      .padding {
-        margin-right: 2%;
-      }
+      li:nth-child(4n) {margin-right: 0;}
     }
   }
 
@@ -181,6 +321,7 @@ header {
         }
         .image-title {
           height: 52px;
+          color: black;
         }
       }
     }
@@ -190,6 +331,7 @@ header {
   }
 
 }
+
 
 
 // product#show
@@ -214,10 +356,341 @@ header {
     float: left;
   }
 }
+#iine {
+  text-decoration: none;
+}
+#red-heart {
+  color: red;
+}
+#gray-heart {
+  color: #dcdcdc;
+}
+#iine-count {
+  color: black;
+}
 
 // cart#index
 .cart-index {
   .shoping-cart {
     border-bottom: solid 1px black;
   }
+}
+
+
+
+// カート商品
+.cart-table {
+  th {
+    background-color: gray;
+  }
+}
+
+.cart-ad {
+  width: 100%;
+  height: 160px;
+  background-color: black;
+}
+
+.btn {
+    background-color: #eee;
+    line-height: 10px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 30%;
+}
+
+.cart-procedure {
+  border :solid 1px black;
+  text-align: center;
+  height: 60px;
+  .btn {
+    background-color: #eee;
+    line-height: 10px;
+  }
+}
+
+
+// 注文
+.order-table {
+  width: 100%;
+
+  td {
+    border: solid 1px black;
+  }
+  #one {
+    width: 30%;
+    background-color: #eee;
+  }
+  #two { width: 70%; }
+}
+
+.submit {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+
+// メンバー
+.member-bar {
+  width: 100%;
+  height: 50px;
+  background-color: orange;
+  margin-bottom: 25px;
+  p {
+    color: white;
+    font-size: 23px;
+    line-height: 50px;
+    padding-left: 15px;
+  }
+}
+
+.player-box {
+  background-color: #fff6df;
+  width: 100%;
+  height: 55px;
+  border-bottom: dotted 1px #ddd;
+  .number {
+    text-align: center;
+    color: white;
+    padding: 8px 10px;
+
+    span {
+      background-color: #f27b0f;
+      width: 26px;
+      height: 26px;
+      display: inline-block;
+      margin-top: 15px;
+    }
+  }
+  .name {
+    display: inline-block;
+    width: 20%;
+    span {
+      margin-right: 25px;
+      color: #f27b0f;
+      font-weight: bold;
+    }
+  }
+  .en-name {
+    display: inline-block;
+    width: 15%;
+    font-size: 10px;
+    margin-right: 25px;
+
+  }
+  .position {
+    display: inline-block;
+    width: 9%;
+    color: #f27b0f;
+    margin-right: 25px;
+  }
+}
+
+
+// 試合結果
+.result-box {
+  border-bottom: dotted 1px black;
+  padding-top: 15px;
+  table {
+    border: solid 1px black;
+  }
+  tr {
+    border: solid 1px black;
+    height: 35px;
+  }
+  th {
+    border: solid 1px black;
+  }
+  td {
+    border: solid 1px black;
+    text-align: center;
+    font-size: 18px;
+  }
+  #team-name {
+    width: 130px;
+    text-align: center;
+  }
+  .ining {
+    width: 55px;
+    text-align: center;
+  }
+}
+#first-team,
+#second-team {
+  font-size: 15px;
+}
+.result-description {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+// アドミン試合結果
+#field-team-name {
+  height: 35px;
+}
+#field-ining {
+  width: 45px;
+  height: 35px;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+// 募集
+.entry {
+  .entry-title {
+    border-bottom: 2px solid #ccc;
+  }
+
+  .entry-form {
+    table {
+      width: 100%;
+      tr {
+        height: 70px;
+        border: solid 2px #ccc;
+        td {
+          border: solid 2px #ccc;
+          padding: 5px;
+        }
+      }
+      .address-form,
+      .email-form {
+        width: 85%;
+      }
+      .other-form {
+        width: 100%;
+        height: 80px;
+      }
+      .required {
+        color: red;
+        font-size: 6px;
+        display: inline-block;
+        padding-left: 6px;
+      }
+    }
+  }
+  .entry-submit {
+    text-align: center;
+    padding: 20px;
+  }
+}
+.admin-entry-form {
+  table {
+    width: 180%;
+    tr {
+      height: 70px;
+      border: solid 2px #ccc;
+      td {
+        border: solid 2px #ccc;
+        padding: 5px;
+      }
+    }
+    #one,#two {
+      width: 50%;
+    }
+  }
+}
+
+// アドミンサイドバー
+.admin-link {
+  color: black;
+}
+
+// 検索
+#search-submit {
+  margin: 21px 0 0 5px;
+}
+#search-field {
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+  width: 65%;
+  height: 33px;
+  font-size: 15px;
+  padding: 0 0 0 5px;
+}
+#search {
+  display: inline-block;
+  color: white;
+  width: 32px;
+  height: 33px;
+  background-color: black;
+  font-size: 20px;
+  padding: 0 5px;
+  border-radius: 0 5px 5px 0;
+  border: solid 0.5px black;
+}
+
+// 会社概要
+#overview-table {
+  padding: 10px 0 0 0;
+}
+#map-bar {
+  margin-top: 16px;
+}
+#map {
+  height: 400px;
+}
+
+// 検索結果page
+.search {
+  .search-title {
+    border-bottom: solid 1px black;
+  }
+
+  .search-index {
+    width: 100%;
+    background-color: red;
+
+    ul {
+      padding: 0;
+
+      li {
+        width: 23.5%;
+        height: 220px;
+        display: block;
+        float: left;
+        margin-right: 2%;
+
+        .image {
+          height: 155px;
+          weight: 100%;
+          background-color: blue;
+          .image-size {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .image-title {
+          height: 60px;
+          font-size: 11px;
+          color: black;
+        }
+      }
+      li:nth-child(4n) {margin-right: 0;}
+    }
+  }
+}
+.sort {
+  border: solid 1px black;
+  border-radius: 5px;
+  display: inline-block;
+  background-color: #ccc;
+  height: 28px;
+  width: 76px;
+  text-align: center;
+  #sort-link {
+    color: black;
+    font-weight: bold;
+    line-height: 28px;
+  }
+}
+
+
+// フッター
+footer {
+  height: 200px;
 }
