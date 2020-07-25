@@ -7,6 +7,13 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+        last_name: 姓
+        first_name: 名
+        kana_last_name: カナ(姓)
+        kana_first_name: カナ(名)
+        postal_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
     models:
       user: "ユーザ"
   devise:
