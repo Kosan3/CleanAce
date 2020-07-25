@@ -21,7 +21,11 @@
     <div class="container">
       <header class="clearfix">
         <div class="header-left">
-          <p>CleanAce Webサイト | ユニフォーム制作会社 | 羽生市 小坂被服</p>
+          <% if current_user&.admin? %>
+            <p>CleanAce Webサイト | ユニフォーム制作会社 | 管理者 モード</p>
+          <% else %>
+            <p>CleanAce Webサイト | ユニフォーム制作会社 | 羽生市 小坂被服</p>
+          <% end %>
           <div class="header-logo">
             <%= link_to root_path do %>
               <%= image_tag "cleanace.png" %>
