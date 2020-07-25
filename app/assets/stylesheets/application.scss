@@ -81,6 +81,7 @@
       }
     }
   }
+  // 標準テーブル
   .table-form {
     table {
       width: 100%;
@@ -383,6 +384,24 @@ header {
   th {
     background-color: gray;
   }
+  td {
+    text-align: center;
+  }
+
+  #cart_size {
+    padding-top: 25px;
+  }
+
+  #cart_color {
+    padding-top: 25px;
+  }
+
+  .btn {
+    background-color: #eee;
+    display: inline-block;
+    text-align: center;
+    margin: 7px auto 0;
+  }
 }
 
 .cart-ad {
@@ -391,14 +410,7 @@ header {
   background-color: black;
 }
 
-.btn {
-    background-color: #eee;
-    line-height: 10px;
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    width: 30%;
-}
+
 
 .cart-procedure {
   border :solid 1px black;
