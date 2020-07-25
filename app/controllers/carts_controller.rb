@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :cart_authenticate_user!
   before_action :set_current_user
 
   def index
@@ -37,6 +37,12 @@ class CartsController < ApplicationController
 
   def set_current_user
     @user = current_user
+  end
+
+  def cart_authenticate_user!
+    unless current_user
+      redirect_to sign_in_path, alert: "カートを利用するにはログインしてください"
+    end
   end
 
 end

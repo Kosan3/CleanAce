@@ -1,4 +1,16 @@
 class Entry < ApplicationRecord
+
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :kana_last_name, presence: true
+  validates :kana_first_name, presence: true
+  validates :age, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :email, presence: true
+  validates :phone_number, presence: true
+
+
   scope :today_entries, -> { where(created_at: Time.zone.now.all_day) }
 
   def full_name

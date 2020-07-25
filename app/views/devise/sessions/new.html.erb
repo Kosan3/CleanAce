@@ -1,5 +1,9 @@
 <h2>ログイン</h2>
 
+<% if flash.alert.present? %>
+  <p class="flash-message"><%= flash.alert %></p>
+<% end %>
+
 <%= form_for(resource, as: resource_name, url: sign_in_path) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
