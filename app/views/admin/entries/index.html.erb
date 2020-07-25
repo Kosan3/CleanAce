@@ -1,2 +1,24 @@
-<h1>Admin::Entries#index</h1>
-<p>Find me in app/views/admin/entries/index.html.erb</p>
+<div class="row">
+  <div class="col-9">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>受信時刻</th>
+        </tr>
+      </thead>
+      <% count = 1 %>
+      <% @entries.each do |entry| %>
+        <tbody>
+          <tr>
+            <td><%= link_to count, admin_entry_path(entry) %></td>
+            <td><%= link_to entry.last_name + '　' + entry.first_name, admin_entry_path(entry) %></td>
+            <td><%= link_to entry.created_at.strftime("%m/%d　%k:%M"), admin_entry_path(entry) %></td>
+          </tr>
+        </tbody>
+        <% count += 1 %>
+      <% end %>
+    </table>
+  </div>
+</div>

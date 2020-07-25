@@ -1,117 +1,86 @@
 <div class="row">
-
-
   <!-- サイドバー -->
-  <div class="col-3 side-bar">
-    <div class="box">
-      <p>大雨によるお荷物のお届けについて>></p>
-    </div>
-    <div class="side-pickup">
-      <ul>
-        <li><i class="fas fa-baseball-ball"></i>  CleanAceについて</li>
-        <li><i class="fas fa-baseball-ball"></i>  ユニフォーム工程紹介</li>
-        <li><i class="fas fa-baseball-ball"></i>  会社概要</li>
-        <li><i class="fas fa-baseball-ball"></i>  お問い合わせ</li>
-        <li><i class="fas fa-baseball-ball"></i>  小坂店長ブログ</li>
-        <li><i class="fas fa-baseball-ball"></i>  小坂店長への相談メール</li>
-        <li><i class="fas fa-baseball-ball"></i>  おすすめ商品</li>
-      </ul>
-    </div>
-
-    <!-- 商品一覧 -->
-    <div class="side-bar-bar"><p>商品一覧</p></div>
-    <div class="side-product">
-      <ul>
-        <li><i class="fas fa-caret-right"></i> CleanAceについて</li>
-        <li><i class="fas fa-caret-right"></i> ユニフォーム工程紹介</li>
-        <li><i class="fas fa-caret-right"></i> 会社概要</li>
-        <li><i class="fas fa-caret-right"></i> お問い合わせ</li>
-        <li><i class="fas fa-caret-right"></i> 小坂店長ブログ</li>
-        <li><i class="fas fa-caret-right"></i> 小坂店長への相談メール</li>
-        <li><i class="fas fa-caret-right"></i> おすすめ商品</li>
-      </ul>
-    </div>
-
-    <!-- ご案内 -->
-    <div class="side-bar-bar"><p>ご案内</p></div>
-    <div class="side-bar-list">
-      <ul>
-        <li>スタッフ紹介</li>
-        <li>町おこし</li>
-        <li>鬼が住む町、羽生</li>
-        <li>スタッフ紹介</li>
-      </ul>
-    </div>
-  </div>
-
+  <%= render 'shared/side' %>
 
   <!-- メイン部分 -->
   <div class="col-9 product">
     <h3><%= @type.type_name %></h3>
-    <!-- トップ部分 -->
-    <div class="product-top clearfix">
-      <!-- 画像欄 -->
-      <div class="product-images">
-        <div class="main-image">
-          <%= link_to @type.image_url, 'data-lightbox' => @type.image_id do %>
-            <%= attachment_image_tag @type, :image, :fill, 220, 220 %>
-          <% end %>
-        </div>
-        <div>
-          <% @images.each do |image| %>
-            <%= link_to image.image_url, 'data-lightbox' => image.image_id do %>
-              <%= attachment_image_tag image, :image, :fill, 70, 70 %>
+    <!-- 商品詳細が登録されていなければ表示しない -->
+    <% if @type.products.present? %>
+      <!-- トップ部分 -->
+      <div class="product-top clearfix">
+        <!-- 画像欄 -->
+        <div class="product-images">
+          <div class="main-image">
+            <%= link_to @type.image_url, 'data-lightbox' => @type.image_id do %>
+              <%= attachment_image_tag @type, :image, :fill, 220, 220 %>
             <% end %>
+          </div>
+          <div>
+            <% @images.each do |image| %>
+              <%= link_to image.image_url, 'data-lightbox' => image.image_id do %>
+                <%= attachment_image_tag image, :image, :fill, 70, 70 %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <!-- カート欄 -->
+        <div class="cart">
+          <p class="product-name"><%= @type.type_name %></p>
+          <div><span>価格:  </span><%= @type.products.first.non_taxed_price %><span>円~</span></div>
+          <!-- カートに入れる機能 -->
+          <%= form_with model: [@type, @cart], url: carts_path(product_id: params[:id]), method: :post, local: true do |f| %>
+            <div class="form">
+              <%= f.label :size, 'サイズ' %>
+              <%= f.select :size, @type.product_sizes.distinct.pluck(:size), include_blank: "選択してください" %>
+            </div>
+            <div class="form">
+              <%= f.label :color, 'カラー' %>
+              <%= f.select :color, @type.product_colors.distinct.pluck(:color), include_blank: "選択してください" %>
+            </div>
+            <div><span>購入数:  </span><%= f.select :quantity, [*(1..10)], {selected: 1} %></div>
+            <div class="submit">
+              <%= f.submit 'カートに入れる' %>
+            </div>
           <% end %>
+
+          <!-- いいね -->
+          <div id="favorite">
+            <%= render 'favorites/favorite', type: @type %>
+          </div>
+
         </div>
       </div>
-      <!-- カート欄 -->
-      <div class="cart">
-        <p class="product-name"><%= @type.type_name %></p>
-        <div><span>価格:  </span><%= @type.products.first.non_taxed_price %><span>円~</span></div>
-        <!-- カートに入れる機能 -->
-        <%= form_with model: [@type, @cart], url: carts_path(product_id: params[:id]), method: :post, local: true do |f| %>
-          <div class="form">
-            <%= f.label :size, 'サイズ' %>
-            <%= f.select :size, @type.product_sizes.distinct.pluck(:size), include_blank: "選択してください" %>
-          </div>
-          <div class="form">
-            <%= f.label :color, 'カラー' %>
-            <%= f.select :color, @type.product_colors.distinct.pluck(:color), include_blank: "選択してください" %>
-          </div>
-          <div><span>購入数:  </span><%= f.select :quantity, [*(1..10)], {selected: 1} %></div>
-          <div class="submit">
-            <%= f.submit 'カートに入れる' %>
-          </div>
-        <% end %>
 
-      </div>
+      <p>商品説明</p>
+      <p style="border-bottom: solid 1px black;"><%= @type.introduction %></p><br>
+      <p>一覧</p>
+
+      <table class="table table-border">
+        <thead>
+          <tr>
+            <th width='150' height='20'>カラー</th>
+            <th width='150' height='20'>サイズ</th>
+            <th width='150' height='20'>税抜き価格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+          <tr>
+            <td><%= product.product_color.color %></td>
+            <td><%= product.product_size.size %></td>
+            <td><%= product.non_taxed_price %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>
-
-    <p>商品説明</p>
-    <p style="border-bottom: solid 1px black;"><%= @type.introduction %></p><br>
-    <p>一覧</p>
-
-    <table class="table table-border">
-      <thead>
-        <tr>
-          <th width='150' height='20'>カラー</th>
-          <th width='150' height='20'>サイズ</th>
-          <th width='150' height='20'>税抜き価格</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @products.each do |product| %>
-        <tr>
-          <td><%= product.product_color.color %></td>
-          <td><%= product.product_size.size %></td>
-          <td><%= product.non_taxed_price %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-  </div>
+  <% else %>
+    <br><br>
+    <p>申し訳ございません。現在こちらの商品は販売されておりません。</p>
+    <%= link_to "戻る", :back %>
+  <% end %>
 
 
 </div>

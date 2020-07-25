@@ -1,2 +1,54 @@
-<h1>Results#index</h1>
-<p>Find me in app/views/results/index.html.erb</p>
+<div class="row">
+  <%= render 'shared/side' %>
+
+  <div class="col-9">
+    <div class="member-bar">
+      <p>試合結果</p>
+    </div>
+
+    <% @results.each do |result| %>
+      <div class="result-box">
+        <h5>対 <%= result.opponent_team %>　<span><%= result.created_at.strftime("%Y年%m月%d日") %></span>　<span><%= result.result_name %></span></h5>
+        <table>
+          <tbody>
+            <tr>
+              <th id="team-name">TEAM</th>
+              <th id="one" class="ining">1</th>
+              <th id="two" class="ining">2</th>
+              <th id="three" class="ining">3</th>
+              <th id="fourth" class="ining" class="ining">4</th>
+              <th id="fifth" class="ining">5</th>
+              <th id="sixth" class="ining">6</th>
+              <th id="seventh" class="ining">7</th>
+              <th id="r" class="ining">R</th>
+            </tr>
+            <tr>
+              <td id="first-team"><%= result.first_team %></td>
+              <td><%= result.top_first %></td>
+              <td><%= result.top_second %></td>
+              <td><%= result.top_third %></td>
+              <td><%= result.top_fourth %></td>
+              <td><%= result.top_fifth %></td>
+              <td><%= result.top_sixth %></td>
+              <td><%= result.top_seventh %></td>
+              <td><%= result.first_team_total_score %></td>
+            </tr>
+            <tr>
+              <td id="second-team"><%= result.second_team %></td>
+              <td><%= result.bottom_first %></td>
+              <td><%= result.bottom_second %></td>
+              <td><%= result.bottom_third %></td>
+              <td><%= result.bottom_fourth %></td>
+              <td><%= result.bottom_fifth %></td>
+              <td><%= result.bottom_sixth %></td>
+              <td><%= result.bottom_seventh %></td>
+              <td><%= result.second_team_total_score %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="result-description"><%= simple_format(h(result.description), {}, sanitize: false, wrapper_tag: "div") %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,3 +1,3 @@
 class OrderProduct < ApplicationRecord
-  has_many :product
+  belongs_to :product
 end

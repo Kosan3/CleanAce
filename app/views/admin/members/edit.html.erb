@@ -1,2 +1,27 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+<h1>メンバー登録</h1>
+
+<%= form_with model: @member, url: admin_member_path , local: true do |f| %>
+  <div class="form">
+    <%= f.label :name, '名前' %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div class="form">
+    <%= f.label :en_name, '名前(英)' %>
+    <%= f.text_field :en_name %>
+  </div>
+  <div class="form">
+    <%= f.label :position, 'ポジション' %>
+    <%= f.text_field :position %>
+  </div>
+  <div class="form">
+    <%= f.label :uniform_number, '背番号' %>
+    <%= f.number_field :uniform_number, min:1, max:99, step: 1 %>
+  </div>
+  <div class="form">
+    <%= f.label :introduction, '選手説明' %>
+    <%= f.text_field :introduction %>
+  </div>
+  <div>
+    <%= f.submit "選手登録" %>
+  </div>
+<% end %>
