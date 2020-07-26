@@ -1,13 +1,13 @@
 class FavoritesController < ApplicationController
   def create
-    @type = Type.find(params[:product_id])
-    favorite = current_user.favorites.new(type_id: @type.id)
+    @product = Product.find(params[:product_detail_id])
+    favorite = current_user.favorites.new(product_id: @product.id)
     favorite.save
   end
 
   def destroy
-    @type = Type.find(params[:product_id])
-    favorite = current_user.favorites.find_by(type_id: @type.id)
+    @type = Product.find(params[:product_detail_id])
+    favorite = current_user.favorites.find_by(product_id: @product.id)
     favorite.destroy
   end
 end

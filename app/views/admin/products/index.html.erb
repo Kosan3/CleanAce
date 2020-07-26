@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-4">
+    <h4>親商品新規登録</h4>
+    <%= form_with model: @product, url: admin_products_path, method: :post, local: true do |f| %>
+      <div class="form">
+        <%= f.label :type_name, '商品名' %><br>
+        <%= f.text_field :product_name %>
+      </div>
+
+      <div class="form">
+        <%= f.label :introduction, '商品説明' %><br>
+        <%= f.text_area :introduction %>
+      </div>
+
+      <div class="form">
+        <%= f.label :image, '写真' %><br>
+        <%= f.attachment_field :image %>
+      </div>
+      <br>
+      <div class="submit">
+        <%= f.submit '登録' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-8">
+    <h3>商品一覧</h3>
+      <% @products.each do |product| %>
+        <div><%= link_to product.product_name, admin_product_path(product.id) %></div>
+        <%= link_to product.image_url, 'data-lightbox' => product.image_id do %>
+          <div><%= attachment_image_tag product, :image, :fill, 290.45, 250 %></div>
+        <% end %>
+        <div><%= product.introduction %></div>
+      <% end %>
+  </div>
+</div>

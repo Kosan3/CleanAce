@@ -29,9 +29,9 @@ class Order < ApplicationRecord
     carts.each do |cart|
       OrderProduct.create!(
         order_id: id,
-        product_id: cart.product.id,
+        product_detail_id: cart.product_detail.id,
         quantity: cart.quantity,
-        taxed_price: cart.product.non_taxed_price
+        taxed_price: cart.product_detail.non_taxed_price
       )
     end
   end

@@ -3,9 +3,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @type = Type.find(params[:id])
-    @products = Product.where(type_id: params[:id]).includes(:product_color,:product_size,:type)
-    @images = ProductImage.where(type_id: params[:id])
+    @product = Product.find(params[:id])
+    @products = ProductDetail.where(product_id: params[:id]).includes(:product_color,:product_size,:product)
+    @images = ProductImage.where(product_id: params[:id])
     @cart = Cart.new
   end
 
@@ -13,6 +13,6 @@ class ProductsController < ApplicationController
     if request.referer&.include?('/sign_in') && current_user&.admin?
       redirect_to admin_admin_path
     end
-    @types = Type.all
+    @types = Product.all
   end
 end
