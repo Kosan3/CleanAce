@@ -6,8 +6,8 @@
   <div class="col-9 product">
     <h3><%= @product.product_name %></h3>
     <!-- フラッシュメッセージ -->
-    <% if flash.alert.present? %>
-      <p><%= flash.alert %></p>
+    <% if flash.now[:alert].present? %>
+      <p><%= flash.now[:alert] %></p>
     <% end %>
     <!-- 商品詳細が登録されていなければ表示しない -->
     <% if @product.product_details.present? %>
