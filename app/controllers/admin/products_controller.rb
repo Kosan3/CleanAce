@@ -7,7 +7,17 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.save
-    redirect_to admin_types_path
+    redirect_to admin_products_path
+  end
+
+  def show
+    @product_detail = ProductDetail.new
+    @product_detail.build_product_size
+    @product_detail.build_product_color
+    @product = Product.find(params[:id])
+    @product_details = ProductDetail.where(product_id: params[:id])
+    @image = ProductImage.new
+    @images = ProductImage.where(product_id: params[:id])
   end
 
   def edit
@@ -21,6 +31,5 @@ class Admin::ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:product_name,:introduction,:image)
-    endermit(:introduction, :image, :non_taxed_price, :type_id, product_size_attributes: [:size], product_color_attributes: [:color])
   end
 end

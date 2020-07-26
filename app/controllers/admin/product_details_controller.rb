@@ -1,4 +1,4 @@
-class Admin::ProductsDetailsController < ApplicationController
+class Admin::ProductDetailsController < ApplicationController
   def index
   end
 
@@ -9,10 +9,9 @@ class Admin::ProductsDetailsController < ApplicationController
   end
 
   def create
-    params[:product_id]
     @product_detail = ProductDetail.new(product_detail_params)
-    @product.save
-    redirect_to admin_product_path(@product.product_id)
+    @product_detail.save
+    redirect_to admin_product_path(@product_detail.product_id)
   end
 
   def show

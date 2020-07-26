@@ -31,12 +31,12 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   namespace :admin do
-    resources :products
+    resources :product_details
   end
 
   # 商品
   namespace :admin do
-    resources :products, only: [:index, :create, :edit, :update]
+    resources :products, only: [:index, :create, :show, :edit, :update]
   end
 
   # カート
