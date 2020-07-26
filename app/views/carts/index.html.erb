@@ -42,15 +42,17 @@
             </td class="table-light align-middle">
             <% subtotal = tax_price * cart.quantity %>
             <td class="table-light align-middle"><%= subtotal.floor.to_s(:delimited) %></td>
-            <td class="table-light text-center"><%= link_to '削除する', carts_path(cart.product.id), method: :delete, class: "btn" %></td>
+            <td class="table-light text-center"><%= link_to '削除する', cart_path(cart.product.id), method: :delete, class: "btn", style: "border: solid 1px black;" %></td>
           </tr>
           <% end %>
         </tbody>
       </table><br>
 
-      <%= link_to "購入手続きへ進む", new_order_path, class: "btn" %><br>
+      <div class="to-confirmation-submit-wrapper">
+        <%= link_to "購入手続きへ進む", new_order_path, id: "carts-submit" %>
+      </div>
     <% end %>
-
+    <br>
     <div class="cart-ad">
       
     </div>
