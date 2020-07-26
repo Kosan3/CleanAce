@@ -19,16 +19,16 @@
         <% @carts.each do |cart| %>
         <tr>
           <td class="table-light align-middle">
-            <%= attachment_image_tag cart.product.type, :image, :fill, 50, 50, format: 'jpeg'%>
+            <%= attachment_image_tag cart.product_detail.product, :image, :fill, 50, 50, format: 'jpeg'%>
 
-            <%= cart.product.type.type_name %>
+            <%= cart.product_detail.product.product_name %>
           </td>
           <td class="table-light align-middle">
-            <% tax_price = cart.product.non_taxed_price * 1.1 %>
+            <% tax_price = cart.product_detail.non_taxed_price * 1.1 %>
             <%= tax_price.floor.to_s(:delimited) %>
           </td>
-          <td class="table-light align-middle"><%= cart.product.product_size.size %></td>
-          <td class="table-light align-middle"><%= cart.product.product_color.color %></td>
+          <td class="table-light align-middle"><%= cart.product_detail.product_size.size %></td>
+          <td class="table-light align-middle"><%= cart.product_detail.product_color.color %></td>
           <td class="table-light align-middle">
             <%= cart.quantity %>個
           </td>

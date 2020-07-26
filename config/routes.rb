@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   # 商品
   resources :products, only: [:index, :show] do
     get :top, on: :collection
+    # 新カート
+    resources :carts, only: [:create]
     # いいね
     resource :favorites, only: [:create, :destroy]
   end
@@ -40,7 +42,7 @@ Rails.application.routes.draw do
   end
 
   # カート
-  resources :carts, only: [:index, :create, :update, :destroy] do
+  resources :carts, only: [:index, :update, :destroy] do
     delete :destroy_all
   end
 

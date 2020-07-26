@@ -33,7 +33,7 @@
           <p class="product-name"><%= @product.product_name %></p>
           <div><span>価格:  </span><%= @product.product_details.first.non_taxed_price %><span>円~</span></div>
           <!-- カートに入れる機能 -->
-          <%= form_with model: [@product, @cart], url: carts_path(product_id: params[:id]), method: :post, local: true do |f| %>
+          <%= form_with model: [@product, @cart] , local: true do |f| %>
             <div class="form">
               <%= f.label :size, 'サイズ' %>
               <%= f.select :size, @product.product_sizes.distinct.pluck(:size), include_blank: "選択してください" %>

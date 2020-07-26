@@ -7,7 +7,6 @@ class CartsController < ApplicationController
   end
 
   def create
-    binding.pry
     product = Product.find(params[:product_id])
     if select_product = product.squeeze_product(params)
       if @user.has_in_cart(select_product)
