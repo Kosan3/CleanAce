@@ -24,17 +24,17 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
   end
 
-  # 商品詳細
-  resources :product_details, only: [:index, :show] do
-    get :top, on: :collection
-    # いいね
-    resource :favorites, only: [:create, :destroy]
-  end
+  # 商品
   namespace :admin do
     resources :product_details
   end
 
   # 商品
+  resources :products, only: [:index, :show] do
+    get :top, on: :collection
+    # いいね
+    resource :favorites, only: [:create, :destroy]
+  end
   namespace :admin do
     resources :products, only: [:index, :create, :show, :edit, :update]
   end

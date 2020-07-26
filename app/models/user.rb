@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
 
   def has_in_cart(value)
-    carts.find_by(product_id: value.id)
+    carts.find_by(product_detail_id: value.id)
   end
 
   def full_name

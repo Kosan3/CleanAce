@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @products = ProductDetail.where(product_id: params[:id]).includes(:product_color,:product_size,:product)
+    @product_details = ProductDetail.where(product_id: params[:id]).includes(:product_color,:product_size,:product)
     @images = ProductImage.where(product_id: params[:id])
     @cart = Cart.new
   end
@@ -13,6 +13,6 @@ class ProductsController < ApplicationController
     if request.referer&.include?('/sign_in') && current_user&.admin?
       redirect_to admin_admin_path
     end
-    @types = Product.all
+    @products = Product.all.last(8)
   end
 end

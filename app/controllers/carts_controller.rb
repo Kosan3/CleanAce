@@ -7,7 +7,8 @@ class CartsController < ApplicationController
   end
 
   def create
-    type = Type.find(params[:product_id])
+    binding.pry
+    product = Product.find(params[:product_id])
     if select_product = product.squeeze_product(params)
       if @user.has_in_cart(select_product)
         in_cart = @user.has_in_cart(select_product)
@@ -19,7 +20,7 @@ class CartsController < ApplicationController
       end
       redirect_to carts_path
     else
-      redirect_to product_path(type), alert: "サイズとカラーを選択してください"
+      redirect_to product_path(product), alert: "サイズとカラーを選択してください"
     end
   end
 
