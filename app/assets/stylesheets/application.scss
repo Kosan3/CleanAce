@@ -432,10 +432,14 @@ header {
 
 
 
-.cart-ad {
+.ad {
   width: 100%;
   height: 160px;
   background-color: black;
+  .ad-image {
+    height: 160px;
+    width: 100%;
+  }
 }
 
 

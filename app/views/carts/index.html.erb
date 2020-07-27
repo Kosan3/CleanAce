@@ -51,10 +51,12 @@
       <div class="to-confirmation-submit-wrapper">
         <%= link_to "購入手続きへ進む", new_order_path, id: "carts-submit" %>
       </div>
+    <% else %>
+      <p>現在カートに商品はございません</p>
     <% end %>
     <br>
-    <div class="cart-ad">
-      
+    <div class="ad">
+      <%= image_tag "publicdomainq-0041931kpo", class: "ad-image" %>
     </div>
 
   </div>

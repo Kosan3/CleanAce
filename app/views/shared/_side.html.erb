@@ -4,12 +4,12 @@
   </div>
   <div class="side-pickup">
     <ul>
-      <li><i class="fas fa-baseball-ball"></i>  CleanAceについて</li>
-      <li><i class="fas fa-baseball-ball"></i>  ユニフォーム工程紹介</li>
+      <%= link_to root_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  CleanAceについて</li><% end %>
+      <%= link_to "http://www.ja-fit.com/file/factory.html", class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  ユニフォーム工程紹介</li><% end %>
+      <%= link_to members_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  チームメンバー</li><% end %>
+      <%= link_to results_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  チーム戦績</li><% end %>
+      <%= link_to new_entry_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  メンバー募集</li><% end %>
       <%= link_to overview_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  会社概要</li><% end %>
-      <li><i class="fas fa-baseball-ball"></i>  お問い合わせ</li>
-      <li><i class="fas fa-baseball-ball"></i>  小坂店長ブログ</li>
-      <li><i class="fas fa-baseball-ball"></i>  小坂店長への相談メール</li>
       <%= link_to users_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  マイページ</li><% end %>
     </ul>
   </div>
