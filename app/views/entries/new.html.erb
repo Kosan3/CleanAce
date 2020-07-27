@@ -3,17 +3,11 @@
   <div class="col-9 entry">
     <h4 class="entry-title">あなたも野球をしませんか？</h4>
     <p>クリーンエースでは草野球選手を探しています！<br>
-      成人男性で少しでも野球経験があればどなたでも加入できます。<br>
+      少しでも野球経験があればどなたでも加入できます。<br>
       まずは、一度試合を見に来てください。<br>
     下記フォームでご連絡いただければこちらからご連絡します。</p>
 
-    <% if @entry.errors.present? %>
-      <ul class="errors">
-        <% @entry.errors.full_messages.each do |m| %>
-          <li><%= m %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= render 'shared/error', resource: @entry %>
 
     <div class="entry-form">
       <%= form_with model: @entry, url: entries_path, local: true do |f| %>
