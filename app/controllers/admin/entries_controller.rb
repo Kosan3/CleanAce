@@ -1,4 +1,6 @@
 class Admin::EntriesController < ApplicationController
+  before_action :protect_admin
+
   def index
     if params[:page] == 'today'
       @entries = Entry.today_entries

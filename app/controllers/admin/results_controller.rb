@@ -1,4 +1,6 @@
 class Admin::ResultsController < ApplicationController
+  before_action :protect_admin
+
   def new
     @result = Result.new
   end

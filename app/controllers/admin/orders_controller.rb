@@ -1,4 +1,6 @@
 class Admin::OrdersController < ApplicationController
+  before_action :protect_admin
+
   def index
     if params[:page] == 'today'
       @orders = Order.today_orders

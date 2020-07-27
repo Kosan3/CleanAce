@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+  before_action :protect_admin
+
   def index
     @products = Product.all
     @product = Product.new
