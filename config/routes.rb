@@ -25,11 +25,6 @@ Rails.application.routes.draw do
   end
 
   # 商品
-  namespace :admin do
-    resources :product_details
-  end
-
-  # 商品
   resources :products, only: [:index, :show] do
     get :top, on: :collection
     # 新カート
@@ -38,7 +33,10 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   namespace :admin do
-    resources :products, only: [:index, :create, :show, :edit, :update]
+    resources :products, only: [:index, :create, :show, :edit, :update] do
+      # 商品詳細
+      resources :product_details, only: [:create, :edit, :update, :destroy]
+    end
   end
 
   # カート

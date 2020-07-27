@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-4">
     <div>
-      <%= form_with model: @product_detail, url: admin_product_details_path, method: :post, local: true do |f| %>
+      <%= form_with model: @product_detail, url: admin_product_product_details_path(@product), local: true do |f| %>
 
         <div class="form">
-          <%= f.label :type_id, '商品名' %><br>
-          <%= f.collection_select :product_id, Product.all, :id, :product_name, prompt: "--選択してください--", class: "collection_select" %>
+          <%= f.label :product_id, '商品名' %><br>
+          <%= @product.product_name %>
         </div>
         <br>
         <%= f.fields_for :product_size do |i| %>
@@ -23,14 +23,14 @@
         <% end %>
         <br>
         <div class="form">
-          <%= f.label :non_taxed_price, '税込み価格' %><br>
+          <%= f.label :non_taxed_price, '税抜き価格' %><br>
           <%= f.text_field :non_taxed_price %>
         </div>
         <br>
         <%= f.submit '商品詳細登録' %>
       <% end %>
     </div>
-    <br>
+    <br><br>
     <div>
       <%= form_with model: @image, url: admin_image_path(product_id: params[:id]), method: :post, local: true do |f| %>
         <div class="form">
@@ -68,14 +68,16 @@
           <th width='150' height='20'>カラー</th>
           <th width='150' height='20'>サイズ</th>
           <th width='150' height='20'>税抜き価格</th>
+          <th width='150' height='20'></th>
         </tr>
       </thead>
       <tbody>
-        <% @product_details.each do |product| %>
+        <% @product_details.each do |product_detail| %>
         <tr>
-          <td><%= product.product_color.color %></td>
-          <td><%= product.product_size.size %></td>
-          <td><%= product.non_taxed_price %></td>
+          <td><%= product_detail.product_color.color %></td>
+          <td><%= product_detail.product_size.size %></td>
+          <td><%= product_detail.non_taxed_price %></td>
+          <td><%= link_to "編集", edit_admin_product_product_detail_path(params[:id], product_detail) %></td>
         </tr>
         <% end %>
       </tbody>

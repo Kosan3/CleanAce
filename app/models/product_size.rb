@@ -1,3 +1,3 @@
 class ProductSize < ApplicationRecord
-  has_many :products
+  validates :size, presence: true
 end

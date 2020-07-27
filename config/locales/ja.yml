@@ -10,6 +10,10 @@ ja:
       user: ユーザー
       entry: 募集
       member: メンバー
+      product: 商品
+      product_detail: 商品詳細
+      product_color:
+      product_size:
     attributes:
       user:
         id: ID
@@ -40,6 +44,18 @@ ja:
         position: ポジション
         uniform_number: 背番号
         introduction: 説明文
+      product:
+        product_name: 商品名
+        caption: 説明文
+        image_id: 写真
+      product_detail:
+        introduction: 説明文
+        image_id: 写真
+        non_taxed_price: 税抜き価格
+      product_color:
+        color: カラー
+      product_size:
+        size: サイズ
   date:
     abbr_day_names:
     - 日

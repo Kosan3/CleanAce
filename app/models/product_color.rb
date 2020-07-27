@@ -1,3 +1,3 @@
 class ProductColor < ApplicationRecord
-  has_many :products
+  validates :color, presence: true
 end

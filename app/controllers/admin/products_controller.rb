@@ -15,7 +15,7 @@ class Admin::ProductsController < ApplicationController
     @product_detail.build_product_size
     @product_detail.build_product_color
     @product = Product.find(params[:id])
-    @product_details = ProductDetail.where(product_id: params[:id])
+    @product_details = ProductDetail.where(product_id: params[:id]).includes(:product_color, :product_size)
     @image = ProductImage.new
     @images = ProductImage.where(product_id: params[:id])
   end
