@@ -41,11 +41,9 @@
         <div class="form">
           <%= f.label :caption, '説明文' %><br>
           <%= f.text_field :caption %>
-        </div>
+        </div><br>
 
-        <div class="submit">
-          <%= f.submit '写真を登録' %>
-        </div>
+        <%= f.submit '写真を登録' %>
       <% end %>
     </div>
   </div>
@@ -53,11 +51,11 @@
     <h3><%= @product.product_name %></h3>
 
     <%= link_to @product.image_url, 'data-lightbox' => @product.image_id do %>
-      <%= attachment_image_tag @product, :image, :fill, 200, 200 %>
+      <%= attachment_image_tag @product, :image, :fill, 191, 200 %>
     <% end %>
     <% @images.each do |image| %>
       <%= link_to image.image_url, 'data-lightbox' => image.image_id do %>
-        <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+        <%= attachment_image_tag image, :image, :fill, 191, 200 %>
       <% end %>
     <% end %>
     <p>商品説明</p>
