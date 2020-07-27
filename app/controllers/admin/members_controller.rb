@@ -28,6 +28,9 @@ class Admin::MembersController < ApplicationController
   end
 
   def destroy
+    member = Member.find(params[:id])
+    member.destroy
+    redirect_to new_admin_member_path
   end
 
   private
