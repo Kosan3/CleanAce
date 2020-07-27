@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
   end
 
   def set_carts
-    @carts = @user.carts.includes(product: [:type, :product_color, :product_size])
+    @carts = @user.carts.includes(product_detail: [:product, :product_color, :product_size])
   end
 
   def order_params

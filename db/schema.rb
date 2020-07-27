@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_082117) do
+ActiveRecord::Schema.define(version: 2020_07_26_020438) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "product_id"
+    t.integer "product_detail_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2020_07_24_082117) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "type_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_082117) do
 
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id"
-    t.integer "product_id"
+    t.integer "product_detail_id"
     t.integer "quantity"
     t.integer "taxed_price"
     t.datetime "created_at", null: false
@@ -80,16 +80,19 @@ ActiveRecord::Schema.define(version: 2020_07_24_082117) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_images", force: :cascade do |t|
-    t.integer "type_id"
-    t.string "image_id"
-    t.string "caption"
+  create_table "product_details", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "product_color_id"
+    t.integer "product_size_id"
+    t.integer "non_taxed_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_names", force: :cascade do |t|
-    t.string "name"
+  create_table "product_images", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "image_id"
+    t.string "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -101,10 +104,9 @@ ActiveRecord::Schema.define(version: 2020_07_24_082117) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "type_id"
-    t.integer "product_color_id"
-    t.integer "product_size_id"
-    t.integer "non_taxed_price"
+    t.string "product_name"
+    t.text "introduction"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -137,14 +139,6 @@ ActiveRecord::Schema.define(version: 2020_07_24_082117) do
     t.string "name"
     t.string "postal_code"
     t.string "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.string "type_name"
-    t.text "introduction"
-    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

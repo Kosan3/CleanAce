@@ -1,9 +1,9 @@
 class Admin::ProductImagesController < ApplicationController
   def create
     image = ProductImage.new(product_image_params)
-    image.type_id = params[:type_id]
+    image.product_id = params[:product_id]
     image.save
-    redirect_to admin_product_path(params[:type_id])
+    redirect_to admin_product_path(params[:product_id])
   end
 
   private

@@ -1,13 +1,13 @@
 <% if signed_in? %>
-  <% if type.favorited_by?(current_user) %>
-    <%= link_to product_favorites_path(type), method: :delete, remote: true, id: 'iine' do %>
-      <i class="fas fa-heart" id="red-heart"></i>　<span id="iine-count"><%= type.favorites.count %></span>
+  <% if product.favorited_by?(current_user) %>
+    <%= link_to product_favorites_path(product), method: :delete, remote: true, id: 'iine' do %>
+      <i class="fas fa-heart" id="red-heart"></i>　<span id="iine-count"><%= product.favorites.count %></span>
     <% end %>
   <% else %>
-    <%= link_to product_favorites_path(type), method: :post, remote: true, id: 'iine' do %>
-      <i class="fas fa-heart" id="gray-heart"></i>　<span id="iine-count"><%= type.favorites.count %></span>
+    <%= link_to product_favorites_path(product), method: :post, remote: true, id: 'iine' do %>
+      <i class="fas fa-heart" id="gray-heart"></i>　<span id="iine-count"><%= product.favorites.count %></span>
     <% end %>
   <% end %>
 <% else %>
-  <i class="fas fa-heart" id="red-heart"></i>　<span id="iine-count"><%= type.favorites.count %></span>
+  <i class="fas fa-heart" id="red-heart"></i>　<span id="iine-count"><%= product.favorites.count %></span>
 <% end %>

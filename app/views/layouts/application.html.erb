@@ -21,7 +21,11 @@
     <div class="container">
       <header class="clearfix">
         <div class="header-left">
-          <p>CleanAce Webサイト | ユニフォーム制作会社 | 羽生市 小坂被服</p>
+          <% if current_user&.admin? %>
+            <p>CleanAce Webサイト | ユニフォーム制作会社 | 管理者 モード</p>
+          <% else %>
+            <p>CleanAce Webサイト | ユニフォーム制作会社 | 羽生市 小坂被服</p>
+          <% end %>
           <div class="header-logo">
             <%= link_to root_path do %>
               <%= image_tag "cleanace.png" %>
@@ -30,12 +34,21 @@
         </div>
         <div class="header-right">
           <% if signed_in? %>
-            <ul>
-              <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> トップ</li><% end %>
-              <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
-              <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
-              <%= link_to "http://www.ja-fit.com/", class: "jafit-link" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>
-            </ul>
+            <% if current_user.admin? %>
+              <ul>
+                <%= link_to admin_admin_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> トップ</li><% end %>
+                <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
+                <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
+                <%= link_to "http://www.ja-fit.com/", class: "jafit-link" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>
+              </ul>
+            <% else %>
+              <ul>
+                <%= link_to root_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> トップ</li><% end %>
+                <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
+                <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
+                <%= link_to "http://www.ja-fit.com/", class: "jafit-link" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>
+              </ul>
+            <% end %>
           <% else %>
             <ul>
               <%= link_to sign_up_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-plus-circle"></i> 新規登録</li><% end %>

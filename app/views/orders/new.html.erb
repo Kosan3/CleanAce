@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-9 cart-index">
+  <div class="col-12 cart-index">
     <p class="shoping-cart">ショッピングカート</p>
 
     <span>ご注文内容</span>
@@ -13,29 +13,27 @@
           <th>カラー</th>
           <th>数量</th>
           <th>小計</th>
-          <th>削除</th>
         </tr>
       </thead>
       <tbody>
         <% @carts.each do |cart| %>
         <tr>
           <td class="table-light align-middle">
-            <%= attachment_image_tag cart.product.type, :image, :fill, 50, 50, format: 'jpeg'%>
+            <%= attachment_image_tag cart.product_detail.product, :image, :fill, 50, 50, format: 'jpeg'%>
 
-            <%= cart.product.type.type_name %>
+            <%= cart.product_detail.product.product_name %>
           </td>
           <td class="table-light align-middle">
-            <% tax_price = cart.product.non_taxed_price * 1.1 %>
+            <% tax_price = cart.product_detail.non_taxed_price * 1.1 %>
             <%= tax_price.floor.to_s(:delimited) %>
           </td>
-          <td class="table-light align-middle"><%= cart.product.product_size.size %></td>
-          <td class="table-light align-middle"><%= cart.product.product_color.color %></td>
+          <td class="table-light align-middle"><%= cart.product_detail.product_size.size %></td>
+          <td class="table-light align-middle"><%= cart.product_detail.product_color.color %></td>
           <td class="table-light align-middle">
             <%= cart.quantity %>個
           </td>
           <% subtotal = tax_price * cart.quantity %>
           <td class="table-light align-middle"><%= subtotal.floor.to_s(:delimited) %>円</td>
-          <td class="table-light text-center"><%= link_to '削除する', carts_path(cart.product.id), method: :delete, class: "btn btn" %></td>
         </tr>
         <% end %>
       </tbody>

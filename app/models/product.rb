@@ -1,8 +1,16 @@
 class Product < ApplicationRecord
-  belongs_to :type
-  belongs_to :product_size
-  belongs_to :product_color
-  has_many :carts, dependent: :destroy
-  belongs_to :order_products
-  accepts_nested_attributes_for  :product_size, :product_color
+  attachment :image
+  has_many :product_details, dependent: :destroy
+  has_many :product_images, dependent: :destroy
+  has_many :product_sizes, through: :product_details, dependent: :destroy
+  has_many :product_colors, through: :product_details, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  def squeeze_product(params)
+    product_details.includes(:product_size, :product_color).find_by(product_sizes: { size: params[:cart][:size] }, product_colors: { color: params[:cart][:color] })
+  end
+
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 end

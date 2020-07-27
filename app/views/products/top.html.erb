@@ -10,9 +10,9 @@
       <% end %>
     <!-- トップロゴ -->
     <div id="top-images">
-        <div class="top-image-wrapper"><img class="top-image" src="assets/set01.jpg"></div>
-        <div class="top-image-wrapper"><img class="top-image" src="assets/set02.jpg"></div>
-        <div class="top-image-wrapper"><img class="top-image" src="assets/set03.jpg"></div>
+        <div class="top-image-wrapper"><%= image_tag "set01.jpg", class: "top-image" %></div>
+        <div class="top-image-wrapper"><%= image_tag "set02.jpg", class: "top-image" %></div>
+        <div class="top-image-wrapper"><%= image_tag "set03.jpg", class: "top-image" %></div>
     </div>
     <p class="image-bottom">新潟明訓の夏はまだ終わらない！新商品続々！！</p>
 
@@ -22,11 +22,11 @@
     <!-- コンテンツ -->
     <div class="images clearfix">
       <ul>
-        <% @types.last(8).each do |type| %>
+        <% @products.each do |product| %>
           <li class="marging">
-            <%= link_to product_path(type.id) do %>
-              <div class="image"><%= attachment_image_tag type, :image, style: "width: 100%; height: 100%;" %></div>
-              <p class="image-title"><%= type.introduction %></p>
+            <%= link_to product_path(product) do %>
+              <div class="image"><%= attachment_image_tag product, :image, style: "width: 100%; height: 100%;" %></div>
+              <p class="image-title"><%= product.introduction %></p>
             <% end %>
           </li>
         <% end %>

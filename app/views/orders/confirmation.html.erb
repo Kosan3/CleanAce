@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-9 cart-index">
+  <div class="col-12 cart-index">
     <p class="shoping-cart">ご注文確認画面</p>
 
     <span>ご注文内容</span>
@@ -19,16 +19,16 @@
         <% @carts.each do |cart| %>
         <tr>
           <td class="table-light align-middle">
-            <%= attachment_image_tag cart.product.type, :image, :fill, 50, 50, format: 'jpeg'%>
+            <%= attachment_image_tag cart.product_detail.product, :image, :fill, 50, 50, format: 'jpeg'%>
 
-            <%= cart.product.type.type_name %>
+            <%= cart.product_detail.product.product_name %>
           </td>
           <td class="table-light align-middle">
-            <% tax_price = cart.product.non_taxed_price * 1.1 %>
+            <% tax_price = cart.product_detail.non_taxed_price * 1.1 %>
             <%= tax_price.floor.to_s(:delimited) %>
           </td>
-          <td class="table-light align-middle"><%= cart.product.product_size.size %></td>
-          <td class="table-light align-middle"><%= cart.product.product_color.color %></td>
+          <td class="table-light align-middle"><%= cart.product_detail.product_size.size %></td>
+          <td class="table-light align-middle"><%= cart.product_detail.product_color.color %></td>
           <td class="table-light align-middle">
             <%= cart.quantity %>個
           </td>
@@ -69,7 +69,9 @@
       <%= f.hidden_field :postal_code, value: @order.postal_code %>
       <%= f.hidden_field :address, value: @order.address %>
       <%= f.hidden_field :address_name, value: @order.address_name %>
-      <%= f.submit "次へ" %>
+      <div class="order-submit-wrapper">
+        <%= f.submit "注文を確定する", data: { confirm: "注文を確定しますか？" }, id: "order-submit" %>
+      </div>
     <% end %>
   </div>
 </div>

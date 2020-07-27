@@ -11,11 +11,19 @@ class User < ApplicationRecord
 
 
   def has_in_cart(value)
-    carts.find_by(product_id: value.id)
+    carts.find_by(product_detail_id: value.id)
   end
 
   def full_name
-    self.last_name + "    " + self.first_name
+    self.last_name + "　" + self.first_name
+  end
+
+  def kana_full_name
+    self.kana_last_name + "　" + self.kana_first_name
+  end
+
+  def postal_code_break
+    self.postal_code.first(3) + '-' + self.postal_code.last(4)
   end
 
   def phone_number_break

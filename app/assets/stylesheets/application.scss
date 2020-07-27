@@ -49,7 +49,7 @@
   opacity: 0.6;
 }
 
-// レイアウトが乱れた場合要修正
+// バー
 .bar {
     width: 100%;
     height: 38px;
@@ -81,6 +81,7 @@
       }
     }
   }
+  // 標準テーブル
   .table-form {
     table {
       width: 100%;
@@ -116,6 +117,18 @@
   // ジャフィットへのリンク
   .jafit-link {
     color: black;
+  }
+
+  // エラーメッセージ
+  #errors {
+    list-style: none;
+  }
+
+  // ボタン
+  .simple-btn {
+    background-color: #eee;
+    color: black;
+    border: solid 1px black;
   }
 
 
@@ -383,22 +396,53 @@ header {
   th {
     background-color: gray;
   }
+  td {
+    text-align: center;
+  }
+
+  #cart_size {
+    padding-top: 25px;
+  }
+
+  #cart_color {
+    padding-top: 25px;
+  }
+
+  .btn {
+    background-color: #eee;
+    display: inline-block;
+    text-align: center;
+    margin: 7px auto 0;
+  }
 }
 
-.cart-ad {
+.to-confirmation-submit-wrapper {
+  text-align: center;
+  #carts-submit {
+  border: solid 1px black;
+  color: black;
+  background-color: #eee;
+  }
+}
+
+.order-submit-wrapper {
+  margin: 25px 0;
+  text-align: center;
+}
+
+
+
+.ad {
   width: 100%;
   height: 160px;
   background-color: black;
+  .ad-image {
+    height: 160px;
+    width: 100%;
+  }
 }
 
-.btn {
-    background-color: #eee;
-    line-height: 10px;
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    width: 30%;
-}
+
 
 .cart-procedure {
   border :solid 1px black;
@@ -432,7 +476,7 @@ header {
 }
 
 
-// メンバー
+// メンバー(public)
 .member-bar {
   width: 100%;
   height: 50px;
@@ -486,6 +530,11 @@ header {
     color: #f27b0f;
     margin-right: 25px;
   }
+}
+
+// メンバー（アドミン）
+.member-table {
+  width: 660px;
 }
 
 

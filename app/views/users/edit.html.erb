@@ -1,33 +1,45 @@
-<h2>編集画面</h2><br>
+<div class="row">
+  <div class="col-9">
 
-<%= form_with model: @user, url: users_path, local: true do |f| %>
-  <div class="form">
-    <%= f.label :last_name, '姓' %>
-    <%= f.text_field :last_name, autofocus: true %>
-    <%= f.label :first_name, '名' %>
-    <%= f.text_field :first_name %>
+    <h2>編集画面</h2><br>
+
+    <div class="table-form">
+
+      <%= form_with model: @user, url: users_path, local: true do |f| %>
+        <table>
+          <tbody>
+            <tr>
+              <td><%= f.label :last_name, 'お名前' %></td>
+              <td><%= f.text_field :last_name, autofocus: true %> <%= f.text_field :first_name %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :kana_last_name, 'お名前（カナ）' %></td>
+              <td><%= f.text_field :kana_last_name %> <%= f.text_field :kana_first_name %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :email %></td>
+              <td><%= f.text_field :email %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :postal_code %></td>
+              <td><%= f.text_field :postal_code %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :address %></td>
+              <td><%= f.text_field :address %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :phone_number %></td>
+              <td><%= f.text_field :phone_number %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="entry-submit"><%= f.submit '変更する' %></div>
+
+      <% end %>
+
+    </div>
   </div>
-  <div class="form">
-    <%= f.label :kana_last_name, 'セイ' %>
-    <%= f.text_field :kana_last_name %>
-    <%= f.label :kana_first_name, 'メイ' %>
-    <%= f.text_field :kana_first_name %>
-  </div>
-  <div class="form">
-    <%= f.label :email, 'メールアドレス' %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="form">
-    <%= f.label :postal_code, '郵便番号' %>
-    <%= f.text_field :postal_code %>
-  </div>
-  <div class="form">
-    <%= f.label :address, '住所' %>
-    <%= f.text_field :address %>
-  </div>
-  <div class="form">
-    <%= f.label :phone_number, '電話番号' %>
-    <%= f.text_field :phone_number %>
-  </div>
-  <%= f.submit '変更する' %>
-<% end %>
+
+</div>

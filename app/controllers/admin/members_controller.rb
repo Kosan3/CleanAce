@@ -1,7 +1,8 @@
 class Admin::MembersController < ApplicationController
+  before_action :set_all_members, only: [:new,:create]
+
   def new
     @member = Member.new
-    @members = Member.all.order(uniform_number: :asc)
   end
 
   def create
@@ -9,7 +10,7 @@ class Admin::MembersController < ApplicationController
     if @member.save
       redirect_to new_admin_member_path
     else
-      render 'admin/member/new'
+      render 'admin/members/new'
     end
   end
 
@@ -19,16 +20,26 @@ class Admin::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    @member.update(member_params)
-    redirect_to new_admin_member_path
+    if @member.update(member_params)
+      redirect_to new_admin_member_path
+    else
+      render 'admin/members/edit'
+    end
   end
 
   def destroy
+    member = Member.find(params[:id])
+    member.destroy
+    redirect_to new_admin_member_path
   end
 
   private
 
   def member_params
     params.require(:member).permit(:name,:en_name,:position,:introduction,:uniform_number)
+  end
+
+  def set_all_members
+    @members = Member.all.order(uniform_number: :asc)
   end
 end

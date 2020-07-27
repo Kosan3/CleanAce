@@ -1,29 +1,23 @@
 class Admin::ProductsController < ApplicationController
   def index
-  end
-
-  def new
+    @products = Product.all
     @product = Product.new
-    @product.build_product_size
-    @product.build_product_color
   end
 
   def create
-    params[:type_id]
     @product = Product.new(product_params)
-    binding.pry
     @product.save
-    redirect_to admin_product_path(@product.type_id)
+    redirect_to admin_products_path
   end
 
   def show
-    @product = Product.new
-    @product.build_product_size
-    @product.build_product_color
-    @type = Type.find(params[:id])
-    @products = Product.where(type_id: params[:id])
+    @product_detail = ProductDetail.new
+    @product_detail.build_product_size
+    @product_detail.build_product_color
+    @product = Product.find(params[:id])
+    @product_details = ProductDetail.where(product_id: params[:id]).includes(:product_color, :product_size)
     @image = ProductImage.new
-    @images = ProductImage.where(type_id: params[:id])
+    @images = ProductImage.where(product_id: params[:id])
   end
 
   def edit
@@ -32,11 +26,10 @@ class Admin::ProductsController < ApplicationController
   def update
   end
 
-  def destroy
-  end
 
   private
+
   def product_params
-    params.require(:product).permit(:introduction, :image, :non_taxed_price, :type_id, product_size_attributes: [:size], product_color_attributes: [:color])
+    params.require(:product).permit(:product_name,:introduction,:image)
   end
 end

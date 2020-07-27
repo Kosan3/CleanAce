@@ -4,16 +4,20 @@
 
   <!-- メイン部分 -->
   <div class="col-9 product">
-    <h3><%= @type.type_name %></h3>
+    <h3><%= @product.product_name %></h3>
+    <!-- フラッシュメッセージ -->
+    <% if flash.now[:alert].present? %>
+      <p><%= flash.now[:alert] %></p>
+    <% end %>
     <!-- 商品詳細が登録されていなければ表示しない -->
-    <% if @type.products.present? %>
+    <% if @product.product_details.present? %>
       <!-- トップ部分 -->
       <div class="product-top clearfix">
         <!-- 画像欄 -->
         <div class="product-images">
           <div class="main-image">
-            <%= link_to @type.image_url, 'data-lightbox' => @type.image_id do %>
-              <%= attachment_image_tag @type, :image, :fill, 220, 220 %>
+            <%= link_to @product.image_url, 'data-lightbox' => @product.image_id do %>
+              <%= attachment_image_tag @product, :image, :fill, 220, 220 %>
             <% end %>
           </div>
           <div>
@@ -26,17 +30,17 @@
         </div>
         <!-- カート欄 -->
         <div class="cart">
-          <p class="product-name"><%= @type.type_name %></p>
-          <div><span>価格:  </span><%= @type.products.first.non_taxed_price %><span>円~</span></div>
+          <p class="product-name"><%= @product.product_name %></p>
+          <div><span>価格:  </span><%= @product.product_details.first.non_taxed_price %><span>円~</span></div>
           <!-- カートに入れる機能 -->
-          <%= form_with model: [@type, @cart], url: carts_path(product_id: params[:id]), method: :post, local: true do |f| %>
+          <%= form_with model: [@product, @cart] , local: true do |f| %>
             <div class="form">
               <%= f.label :size, 'サイズ' %>
-              <%= f.select :size, @type.product_sizes.distinct.pluck(:size), include_blank: "選択してください" %>
+              <%= f.select :size, @product.product_sizes.distinct.pluck(:size), include_blank: "選択してください" %>
             </div>
             <div class="form">
               <%= f.label :color, 'カラー' %>
-              <%= f.select :color, @type.product_colors.distinct.pluck(:color), include_blank: "選択してください" %>
+              <%= f.select :color, @product.product_colors.distinct.pluck(:color), include_blank: "選択してください" %>
             </div>
             <div><span>購入数:  </span><%= f.select :quantity, [*(1..10)], {selected: 1} %></div>
             <div class="submit">
@@ -46,14 +50,14 @@
 
           <!-- いいね -->
           <div id="favorite">
-            <%= render 'favorites/favorite', type: @type %>
+            <%= render 'favorites/favorite', product: @product %>
           </div>
 
         </div>
       </div>
 
       <p>商品説明</p>
-      <p style="border-bottom: solid 1px black;"><%= @type.introduction %></p><br>
+      <p style="border-bottom: solid 1px black;"><%= @product.introduction %></p><br>
       <p>一覧</p>
 
       <table class="table table-border">
@@ -65,11 +69,11 @@
           </tr>
         </thead>
         <tbody>
-          <% @products.each do |product| %>
+          <% @product_details.each do |product_detail| %>
           <tr>
-            <td><%= product.product_color.color %></td>
-            <td><%= product.product_size.size %></td>
-            <td><%= product.non_taxed_price %></td>
+            <td><%= product_detail.product_color.color %></td>
+            <td><%= product_detail.product_size.size %></td>
+            <td><%= product_detail.non_taxed_price %></td>
           </tr>
           <% end %>
         </tbody>

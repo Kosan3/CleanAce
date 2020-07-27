@@ -4,11 +4,11 @@
   <tbody>
     <tr>
       <td>名前</td>
-      <th><%= @user.last_name + ' ' + @user.first_name %></th>
+      <th><%= @user.full_name %></th>
     </tr>
     <tr>
       <td>フリガナ</td>
-      <th><%= @user.kana_last_name + '  ' + @user.kana_first_name %></th>
+      <th><%= @user.kana_full_name %></th>
     </tr>
     <tr>
       <td>メールアドレス</td>
@@ -16,7 +16,7 @@
     </tr>
     <tr>
       <td>郵便番号</td>
-      <th><%= @user.postal_code.first(3) + '-' + @user.postal_code.last(4) %></th>
+      <th><%= @user.postal_code_break %></th>
     </tr>
     <tr>
       <td>住所</td>
@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <td>電話番号</td>
-      <th><%= @user.phone_number.first(3) + '-' + @user.phone_number[3,3] + '-' + @user.phone_number[6,4] %></th>
+      <th><%= @user.phone_number_break %></th>
     </tr>
   </tbody>
 </table>
