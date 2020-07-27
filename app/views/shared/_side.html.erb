@@ -10,7 +10,9 @@
       <%= link_to results_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  チーム戦績</li><% end %>
       <%= link_to new_entry_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  メンバー募集</li><% end %>
       <%= link_to overview_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  会社概要</li><% end %>
-      <%= link_to users_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  マイページ</li><% end %>
+      <% if signed_in? %>
+        <%= link_to users_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  マイページ</li><% end %>
+      <% end %>
     </ul>
   </div>
 
