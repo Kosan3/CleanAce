@@ -1,4 +1,6 @@
 class Admin::ProductImagesController < ApplicationController
+  before_action :protect_admin
+
   def create
     image = ProductImage.new(product_image_params)
     image.product_id = params[:product_id]
