@@ -7,79 +7,23 @@
 
   <!-- メイン部分 -->
   <div class="col-9 main-wrapper">
-    <!-- トップロゴ -->
-    <div class="image">
-      <%= image_tag "set01.jpg", style: "width: 100%; height: 100%;" %>
-    </div>
-    <p class="image-bottom">新潟明訓の夏はまだ終わらない！新商品続々！！</p>
-
     <!-- バー -->
-    <div class="bar"><p>CleanAceおすすめ商品</p></div>
+    <div class="bar" style="margin: 0;"><p>CleanAce 商品</p></div>
 
     <!-- コンテンツ -->
     <div class="images clearfix">
       <ul>
-        <li class="padding">
-          <div class="image"><%= image_tag "finetrack_02_TP_V4.jpg", class: "image-size" %></div>
-          <p class="image-title">aaaaaaaaa</p>
-        </li>
-        <li class="padding">
-          <div class="image"><%= image_tag "finetrack_02_TP_V4.jpg", class: "image-size" %></div>
-          <p class="image-title"></p>
-        </li>
-        <li class="padding">
-          <div class="image"><%= image_tag "finetrack_02_TP_V4.jpg", class: "image-size" %></div>
-          <p class="image-title"></p>
-        </li>
-        <li>
-          <div class="image"><%= image_tag "finetrack_02_TP_V4.jpg", class: "image-size" %></div>
-          <p class="image-title"></p>
-        </li>
-        <li class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-        <li class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-        <li class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-        <li>
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-      </ul>
-    </div>
-
-    <div class="bar"><p>BASEBALL TEAM</p></div>
-
-    <div class="images-quattro clearfix">
-      <ul>
-        <li  class="padding">
-          <div class="image"></div>
-          <p class="image-title">aaaaaaaa</p>
-        </li>
-        <li>
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-        <li  class="padding">
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
-        <li>
-          <div class="image"></div>
-          <p class="image-title"></p>
-        </li>
+        <% @products.each do |product| %>
+          <li class="marging">
+            <%= link_to product_path(product) do %>
+              <div class="image"><%= attachment_image_tag product, :image, style: "width: 100%; height: 100%;" %></div>
+              <p class="image-title"><%= product.introduction %></p>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
 
   </div>
-
-
-
 
 </div> <!-- row -->
