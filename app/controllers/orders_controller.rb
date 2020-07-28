@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     order.fare = 800
     order.billing_total = order.fare + @carts.sum(&:subtotal) * TAX
     order.payment_method = "transfer"
-    order.save
+    OrderMailer.creation_email(order).deliver_now if order.save
     order.create_order_products(current_user)
     @carts.each(&:destroy)
     redirect_to complete_orders_path
