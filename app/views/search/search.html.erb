@@ -6,11 +6,11 @@
     <div class="sort"><%= sort_link @q, :type_name, '商品名', {}, id: 'sort-link' %></div>
     <div class="search-index">
       <ul>
-        <% @types.last(8).each do |type| %>
+        <% @products.each do |product| %>
           <li class="marging">
-            <%= link_to product_path(type.id) do %>
-              <div class="image"><%= attachment_image_tag type, :image, style: "width: 100%; height: 100%;" %></div>
-              <p class="image-title"><%= type.introduction %></p>
+            <%= link_to product_path(product) do %>
+              <div class="image"><%= attachment_image_tag product, :image, style: "width: 100%; height: 100%;" %></div>
+              <p class="image-title"><%= product.introduction %></p>
             <% end %>
           </li>
         <% end %>
