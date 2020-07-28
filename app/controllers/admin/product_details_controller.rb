@@ -1,6 +1,7 @@
 class Admin::ProductDetailsController < ApplicationController
-  before_action :set_product_data, only: [:edit, :update]
+  before_action :authenticate_user!
   before_action :protect_admin
+  before_action :set_product_data, only: [:edit, :update]
 
   def create
     @product_detail = ProductDetail.new(product_detail_params)

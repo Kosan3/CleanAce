@@ -1,4 +1,5 @@
 class Admin::ProductImagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :protect_admin
 
   def create
