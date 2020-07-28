@@ -1,6 +1,7 @@
 class Admin::MembersController < ApplicationController
-  before_action :set_all_members, only: [:new,:create]
+  before_action :authenticate_user!
   before_action :protect_admin
+  before_action :set_all_members, only: [:new,:create]
 
   def new
     @member = Member.new
