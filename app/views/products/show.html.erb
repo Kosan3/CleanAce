@@ -23,7 +23,7 @@
           <div class="sub-images">
             <% @images.each do |image| %>
               <%= link_to image.image_url, 'data-lightbox' => image.image_id do %>
-                <span class="sub-image"><%= attachment_image_tag image, :image, style: "width: 100%; height: 100%; list-style: none;" %></span>
+                <span class="sub-image"><%= attachment_image_tag image, :image, style: "width: 100%; height: 100%;" %></span>
               <% end %>
             <% end %>
           </div>
