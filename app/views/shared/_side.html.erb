@@ -10,23 +10,21 @@
       <%= link_to results_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  チーム戦績</li><% end %>
       <%= link_to new_entry_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  メンバー募集</li><% end %>
       <%= link_to overview_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  会社概要</li><% end %>
-      <% if signed_in? %>
-        <%= link_to users_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  マイページ</li><% end %>
-      <% end %>
+      <%= link_to products_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  商品一覧</li><% end %>
     </ul>
   </div>
 
   <!-- 商品一覧 -->
-  <div class="side-bar-bar"><p>商品一覧</p></div>
+  <div class="side-bar-bar"><p>メニュー</p></div>
   <div class="side-product">
     <ul>
-      <li><i class="fas fa-caret-right"></i> CleanAceについて</li>
-      <li><i class="fas fa-caret-right"></i> ユニフォーム工程紹介</li>
-      <li><i class="fas fa-caret-right"></i> 会社概要</li>
-      <li><i class="fas fa-caret-right"></i> お問い合わせ</li>
+      <% if signed_in? %>
+        <%= link_to users_path, class: "side-link" do %><li><i class="fas fa-caret-right"></i> マイページ</li><% end %>
+        <%= link_to orders_path, class: "side-link" do %><li><i class="fas fa-caret-right"></i> 注文履歴</li><% end %>
+      <% end %>
+      <%= link_to overview_path, class: "side-link" do %><li><i class="fas fa-caret-right"></i> お問い合わせ</li><% end %>
       <li><i class="fas fa-caret-right"></i> 小坂店長ブログ</li>
-      <li><i class="fas fa-caret-right"></i> 小坂店長への相談メール</li>
-      <li><i class="fas fa-caret-right"></i> おすすめ商品</li>
+      <%= link_to product_path(Product.last), class: "side-link" do %><li><i class="fas fa-caret-right"></i> 新商品</li><% end %>
     </ul>
   </div>
 
@@ -36,8 +34,7 @@
     <ul>
       <li>スタッフ紹介</li>
       <li>町おこし</li>
-      <li>鬼が住む町、羽生</li>
-      <li>スタッフ紹介</li>
+      <%= link_to "https://www.city.hanyu.lg.jp/" do %><li>鬼が住む町、羽生</li><% end %>
     </ul>
   </div>
 </div>

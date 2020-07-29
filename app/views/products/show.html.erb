@@ -17,13 +17,13 @@
         <div class="product-images">
           <div class="main-image">
             <%= link_to @product.image_url, 'data-lightbox' => @product.image_id do %>
-              <%= attachment_image_tag @product, :image, :fill, 220, 220 %>
+              <%= attachment_image_tag @product, :image, style: "width: 100%; height: 100%;" %>
             <% end %>
           </div>
-          <div>
+          <div class="sub-images">
             <% @images.each do |image| %>
               <%= link_to image.image_url, 'data-lightbox' => image.image_id do %>
-                <%= attachment_image_tag image, :image, :fill, 70, 70 %>
+                <span class="sub-image"><%= attachment_image_tag image, :image, style: "width: 100%; height: 100%;" %></span>
               <% end %>
             <% end %>
           </div>
@@ -31,7 +31,7 @@
         <!-- カート欄 -->
         <div class="cart">
           <p class="product-name"><%= @product.product_name %></p>
-          <div><span>価格:  </span><%= @product.product_details.first.non_taxed_price %><span>円~</span></div>
+          <div><span>価格:  </span><%= @product.price_display %> 円</div>
           <!-- カートに入れる機能 -->
           <%= form_with model: [@product, @cart] , local: true do |f| %>
             <div class="form">
