@@ -17,8 +17,8 @@
             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= order.address %></td>
             <td>
-              <% order.order_products.each do |op| %>
-                <p><%= op.product.type.type_name %></p>
+              <% order.order_products.each do |order_product| %>
+                <p><%= order_product.product_detail.product.product_name %></p>
               <% end %>
             </td>
             <td><%= order.billing_total %></td>

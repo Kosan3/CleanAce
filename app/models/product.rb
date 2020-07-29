@@ -15,10 +15,11 @@ class Product < ApplicationRecord
   end
 
   def price_display
-    if self.product_details.count == 1
+    count = self.product_details.count
+    if count == 1
       price = self.product_details.first.non_taxed_price*1.1
       price.round
-    elsif self.product_details.count >= 2
+    elsif count >= 2
       if self.product_details.distinct.pluck(:non_taxed_price).count == 1
         product_details.first.non_taxed_price
       else
