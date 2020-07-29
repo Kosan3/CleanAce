@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   TAX = 1.1
 
   def index
-    @orders = current_user.orders
+    @orders = @user.orders.includes(order_products: [product_detail: [ :product]])
   end
 
   def show

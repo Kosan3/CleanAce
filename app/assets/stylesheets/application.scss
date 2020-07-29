@@ -425,6 +425,15 @@ header {
     text-align: center;
     margin: 7px auto 0;
   }
+  .total-price {
+    font-size: 15px;
+    background-color: #eee;
+    height: 20px;
+    td {
+      height: 10px;
+      text-align: right;
+    }
+  }
 }
 
 .to-confirmation-submit-wrapper {
