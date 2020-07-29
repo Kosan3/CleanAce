@@ -16,6 +16,7 @@
         </tr>
       </thead>
       <tbody>
+        <% @total_price = 0 %>
         <% @carts.each do |cart| %>
         <tr>
           <td class="table-light align-middle">
@@ -35,7 +36,12 @@
           <% subtotal = tax_price * cart.quantity %>
           <td class="table-light align-middle"><%= subtotal.floor.to_s(:delimited) %>円</td>
         </tr>
+        <% @total_price += subtotal %>
         <% end %>
+        <tr class="total-price">
+          <td colspan="4">商品合計</td>
+          <td colspan="2"><%= @total_price.floor.to_s(:delimited) %>円</td>
+        </tr>
       </tbody>
     </table><br>
 
