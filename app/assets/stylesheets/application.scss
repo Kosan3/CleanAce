@@ -13,6 +13,16 @@
   clear: both;
 }
 
+// トップバックボタン
+#top_back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  img {
+    width: 50px;
+  }
+}
+
 // スライド
 .top-image {
   height: 330px;

@@ -53,3 +53,12 @@ function initMap(){
     zoom: 17
   });
 };
+
+$(function(){
+  $('#top_back a').on('click', function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
+});
