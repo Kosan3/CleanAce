@@ -9,5 +9,6 @@ FactoryBot.define do
     postal_code {'1111111'}
     address {'千葉県浦安市舞浜1-1'}
     phone_number {'09012341234'}
+    admin {false}
   end
 end
