@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="col-8">
-    <h3><%= @product.product_name %>　<span id="product_delete">　<%= link_to '削除する', admin_product_path(params[:id]), method: :delete, data: { confirm: "本当に削除しますか?" } %></span></h3>
+    <h3><%= @product.product_name %>　<span id="product_delete">　<%= link_to '編集する', edit_admin_product_path(params[:id]) %></span><span id="product_delete">　<%= link_to '削除する', admin_product_path(params[:id]), method: :delete, data: { confirm: "本当に削除しますか?" } %></span></h3>
 
     <%= link_to @product.image_url, 'data-lightbox' => @product.image_id do %>
       <%= attachment_image_tag @product, :image, :fill, 191, 200 %>
