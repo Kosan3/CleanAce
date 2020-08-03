@@ -59,13 +59,13 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-server '3.23.249.132',
+server '18.177.35.238',
    user: "ec2-user",
    roles: %w{app web db},
    ssh_options: {
        port: 22,
        user: "ec2-user", # overrides user setting above
-       keys: %w(~/.ssh/practice-aws.pem),
+       keys: %w(~/.ssh/dmm-aws.pem),
        forward_agent: true
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
