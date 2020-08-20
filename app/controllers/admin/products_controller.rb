@@ -21,6 +21,8 @@ class Admin::ProductsController < ApplicationController
     @product_details = ProductDetail.where(product_id: params[:id]).includes(:product_color, :product_size)
     @image = ProductImage.new
     @images = ProductImage.where(product_id: params[:id])
+    @product_image_url = "https://dmm-test-rsize.s3-ap-northeast-1.amazonaws.com/store/" + @product.image_id + "-thumbnail."
+    @image_url = "https://dmm-test-rsize.s3-ap-northeast-1.amazonaws.com/store/" + @product.image_id + "-thumbnail."
   end
 
   def edit
@@ -29,8 +31,12 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to admin_product_path(params[:id])
+    if @product.update(product_params)
+      sleep(3)
+      redirect_to admin_product_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   def destroy
