@@ -29,7 +29,6 @@
       <%= link_to admin_orders_path(page: 'today') do %>
         <li>本日の注文　<%= @orders.count %>件</li>
       <% end %>
-      <li>未確認の注文</li>
     </ul>
   </div>
   <div class="col-4">
@@ -38,7 +37,6 @@
       <%= link_to admin_entries_path(page: 'today') do %>
         <li>本日の応募　<%= @entries.count %>件</li>
       <% end %>
-      <li>未確認の応募</li>
     </ul>
   </div>
 </div>
