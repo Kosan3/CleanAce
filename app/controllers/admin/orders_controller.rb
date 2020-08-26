@@ -12,5 +12,6 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_products = Order.find(params[:id]).order_products.includes(:product_detail)
   end
 end
