@@ -4,7 +4,19 @@
       <tbody>
         <tr>
           <td id="one">購入日時</td>
-          <td id="two"><%= @order.user.full_name %></td>
+          <td id="two"><%= @order.created_at.strftime("%m/%d　%k:%M") %></td>
+        </tr>
+        <tr>
+          <td>購入者</td>
+          <td><%= @order.user.last_name + '　' + @order.user.first_name %></td>
+        </tr>
+        <tr>
+          <td>購入商品</td>
+          <td>
+            <% @order_products.each do |order_product| %>
+              <p><%= order_product.product_detail.product.product_name + '　' + 'x' + '　' + order_product.quantity.to_s %></p>
+            <% end %>
+          </td>
         </tr>
       </tbody>
     </table>
