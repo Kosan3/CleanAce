@@ -62,3 +62,9 @@ $(function(){
     event.preventDefault();
   });
 });
+
+$(function(){
+  $('.window_alert').on('click', function() {
+    window.alert('本来であれば、ここで他アプリに偏移します。');
+  });
+});
