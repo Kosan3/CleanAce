@@ -1,0 +1,45 @@
+<div class="row">
+  <%= render 'shared/side' %>
+
+  <div class="col-9">
+    <table class="table table-bordered cart-table">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>サイズ</th>
+          <th>カラー</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @total_price = 0 %>
+        <% @order_products.each do |order_product| %>
+        <tr>
+          <td class="table-light align-middle">
+            <%= attachment_image_tag order_product.product_detail.product, :image, :fill, 50, 50, format: 'jpeg'%>
+
+            <%= order_product.product_detail.product.product_name %>
+          </td>
+          <td class="table-light align-middle">
+            <% tax_price = order_product.product_detail.non_taxed_price * 1.1 %>
+            <%= tax_price.floor.to_s(:delimited) %>
+          </td>
+          <td id="cart_size"><%= order_product.product_detail.product_size.size %></td>
+          <td id="cart_color"><%= order_product.product_detail.product_color.color %></td>
+          <td class="table-light align-middle"><%= order_product.quantity %></td>
+          <% subtotal = tax_price * order_product.quantity %>
+          <td class="table-light align-middle"><%= subtotal.floor.to_s(:delimited) %>円</td>
+        </tr>
+        <% @total_price += subtotal %>
+        <% end %>
+        <tr class="total-price">
+          <td colspan="2">ご注文日時:　<%= @order.created_at.strftime("%m/%d %k時%M分") %></td>
+          <td colspan="3">商品合計</td>
+          <td colspan="1"><%= @total_price.floor.to_s(:delimited) %>円</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
