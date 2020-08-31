@@ -9,6 +9,15 @@ class User < ApplicationRecord
   has_many :orders
   has_many :favorites, dependent: :destroy
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :kana_last_name, presence: true
+  validates :kana_first_name, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+
+
 
   def has_in_cart(value)
     carts.find_by(product_detail_id: value.id)

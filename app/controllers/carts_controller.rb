@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   before_action :cart_authenticate_user!
   before_action :set_current_user
+  before_action :admin_block
 
   def index
     @carts = @user.carts.includes(product_detail: [:product, :product_color, :product_size])
@@ -52,6 +53,12 @@ class CartsController < ApplicationController
   def cart_authenticate_user!
     unless current_user
       redirect_to sign_in_path, alert: "カートを利用するにはログインしてください"
+    end
+  end
+
+  def admin_block
+    if current_user.admin?
+      redirect_back(fallback_location: root_path)
     end
   end
 

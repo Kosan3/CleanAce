@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   get '/search', to: 'search#search', as: 'search'
   # 会社
   get '/overview', to: 'company#overview', as: 'overview'
+  # クリーンエースとは
+  get '/team', to: 'team_introduction#top', as: 'team'
 
   # 管理者側
   namespace :admin do

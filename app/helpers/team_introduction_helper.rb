@@ -1,0 +1,2 @@
+module TeamIntroductionHelper
+end
