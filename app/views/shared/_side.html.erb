@@ -1,11 +1,10 @@
 <div class="col-3 side-bar">
   <div class="box">
-    <p>大雨によるお荷物のお届けについて>></p>
+    <p>熱中症にお気を付けください</p>
   </div>
   <div class="side-pickup">
     <ul>
       <%= link_to root_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  CleanAceについて</li><% end %>
-      <%= link_to '#', class: "side-link window_alert" do %><li><i class="fas fa-baseball-ball"></i>  ユニフォーム工程紹介</li><% end %>
       <%= link_to members_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  チームメンバー</li><% end %>
       <%= link_to results_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  チーム戦績</li><% end %>
       <%= link_to new_entry_path, class: "side-link" do %><li><i class="fas fa-baseball-ball"></i>  メンバー募集</li><% end %>
@@ -23,7 +22,6 @@
         <%= link_to orders_path, class: "side-link" do %><li><i class="fas fa-caret-right"></i> 注文履歴</li><% end %>
       <% end %>
       <%= link_to overview_path, class: "side-link" do %><li><i class="fas fa-caret-right"></i> お問い合わせ</li><% end %>
-      <li><i class="fas fa-caret-right"></i> 小坂店長ブログ</li>
       <% if Product.last.present? %>
         <%= link_to product_path(Product.last), class: "side-link" do %><li><i class="fas fa-caret-right"></i> 新商品</li><% end %>
       <% end %>
@@ -34,9 +32,8 @@
   <div class="side-bar-bar"><p>ご案内</p></div>
   <div class="side-bar-list">
     <ul>
-      <li>スタッフ紹介</li>
-      <li>町おこし</li>
-      <%= link_to "https://www.city.hanyu.lg.jp/" do %><li>鬼が住む町、羽生</li><% end %>
+      <%= link_to '#', class: 'window_alert' do %><li>姉妹店ホームページ</li><% end %>
+      <%= link_to "https://www.city.hanyu.lg.jp/" do %><li>羽生市</li><% end %>
     </ul>
   </div>
 </div>
