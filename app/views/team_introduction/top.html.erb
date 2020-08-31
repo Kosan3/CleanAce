@@ -7,5 +7,24 @@
     <div class="introduction">
       <p>羽生市を中心に活動している軟式野球チームです。現在在籍は11人。 社会人中心のメンバー構成です。平均年齢28才の若さあふれる仲間たち。 忙しいなか練習を続け、一歩一歩成長しています。 最近では結果もそれなりに出るようになってきましたが、 何よりもみんなで野球を楽しむことを第一に、これからも頑張っていきます。応援よろしく！！！</p>
     </div>
+    <div class="kanyu">
+      <h1>現在メンバー募集中！！！</h1>
+    </div>
+    <div class="images-quattro clearfix">
+      <ul>
+        <li  class="padding">
+          <%= link_to results_path do %>
+            <div class="image"><%= image_tag "d1437536651306d6cd5c46c0a20c0499_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">チーム戦績</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_entry_path do %>
+            <div class="image"><%= image_tag "6f1e6899140bfa633be57d17ad530602_w.jpg", style: "width: 100%; height: 100%;" %></div>
+            <p class="image-title">メンバー募集</p>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -68,3 +68,17 @@ $(function(){
     window.alert('本来であれば、ここで他アプリに偏移します。');
   });
 });
+
+$(function() {
+  $('.kanyu').fadeOut(500, function() {
+    $(this).fadeIn(500, function() {
+      $(this).fadeOut(500, function() {
+        $(this).fadeIn(500, function() {
+          $(this).fadeOut(500, function() {
+            $(this).fadeIn(500)
+          });
+        });
+      });
+    });
+  });
+});

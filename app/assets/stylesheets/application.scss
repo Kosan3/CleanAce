@@ -779,7 +779,34 @@ footer {
 
 // チーム説明
 .team-wrapper {
+  font-family: Yu Mincho;
   .bar {
     margin-bottom: 15px;
+  }
+  .kanyu {
+    text-align: center;
+    color: red;
+  }
+  .images-quattro {
+    ul {
+      padding: 0;
+      li {
+        width: 49%;
+        height: 220px;
+        display: block;
+        float: left;
+
+        .image {
+          height: 168px;
+        }
+        .image-title {
+          height: 52px;
+          color: black;
+        }
+      }
+    }
+    .padding {
+      margin-right: 2%;
+    }
   }
 }
