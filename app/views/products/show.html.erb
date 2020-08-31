@@ -43,9 +43,11 @@
               <%= f.select :color, @product.product_colors.distinct.pluck(:color), include_blank: "選択してください" %>
             </div>
             <div><span>購入数:  </span><%= f.select :quantity, [*(1..10)], {selected: 1} %></div>
-            <div class="submit">
-              <%= f.submit 'カートに入れる' %>
-            </div>
+            <% unless current_user&.admin? %>
+              <div class="submit">
+                <%= f.submit 'カートに入れる' %>
+              </div>
+            <% end %>
           <% end %>
 
           <!-- いいね -->
