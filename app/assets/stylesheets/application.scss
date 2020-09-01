@@ -24,9 +24,12 @@
 }
 
 // トップページに戻るボタン
-.back_button {
+.back_button_wrapper {
+  margin-top: 20px;
+  .back_button {
   background-color: #ccc;
   color: black;
+  }
 }
 
 // スライド
