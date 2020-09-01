@@ -6,5 +6,6 @@ class ProductDetail < ApplicationRecord
   has_many :order_products
   accepts_nested_attributes_for  :product_size, :product_color
 
-  validates :non_taxed_price, presence: true
+  validates :non_taxed_price, format: { with: /\d+/, message: '数字で入力してください。'}
+
 end

@@ -18,10 +18,10 @@ class Order < ApplicationRecord
       self.address = resource.address
       self.address_name = resource.name
     end
+  end
 
-    def break_postal_code
-      self.postal_code.first(3) + "-" + self.postal_code.last(4)
-    end
+  def break_postal_code
+    self.postal_code.first(3) + "-" + self.postal_code.last(4)
   end
 
   def create_order_products(user)
