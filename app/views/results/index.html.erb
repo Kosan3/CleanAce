@@ -50,5 +50,9 @@
         <div class="result-description"><%= simple_format(h(result.description), {}, sanitize: false, wrapper_tag: "div") %></div>
       </div>
     <% end %>
+
+    <div class="back_button_wrapper">
+      <%= link_to 'トップページに戻る', root_path, class: 'back_button' %>
+    </div>
   </div>
 </div>

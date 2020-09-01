@@ -23,6 +23,12 @@
   }
 }
 
+// トップページに戻るボタン
+.back_button {
+  background-color: #ccc;
+  color: black;
+}
+
 // スライド
 .top-image {
   height: 330px;
@@ -726,7 +732,6 @@ header {
 
   .search-index {
     width: 100%;
-    background-color: red;
 
     ul {
       padding: 0;
