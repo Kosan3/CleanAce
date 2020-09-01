@@ -4,7 +4,7 @@
   <div class="col-9 search">
     <p class="search-title">商品一覧</p>
     <div class="sort"><%= sort_link @q, :type_name, '商品名', {}, id: 'sort-link' %></div>
-    <div class="search-index">
+    <div class="search-index clearfix">
       <ul>
         <% @products.each do |product| %>
           <li class="marging">
@@ -15,5 +15,9 @@
           </li>
         <% end %>
       </ul>
+    </div>
+    <div class="back_button_wrapper">
+      <%= link_to 'トップページに戻る', root_path, class: 'back_button' %>
+    </div>
   </div>
 </div>

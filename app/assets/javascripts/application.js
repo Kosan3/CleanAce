@@ -82,3 +82,9 @@ $(function() {
     });
   });
 });
+
+$(function() {
+  $('.back_button').on('mouseover', function() {
+    $(this).css({'color':'black'});
+  });
+});
