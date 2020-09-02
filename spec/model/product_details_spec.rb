@@ -31,11 +31,12 @@ describe 'ProductDetailモデルのテスト', type: :model do
   end
 
   describe 'バリデーションのテスト' do
-    let!(:test_product_detail) { build(:product_detail) }
+    let(:test_product_detail) { build(:product_detail) }
+    subject { test_product_detail.valid? }
     context 'non_taxed_priceカラムのテスト' do
       it '空白でないこと' do
         test_product_detail.non_taxed_price = ''
-        expect(test_product_detail.valid?).to eq false;
+        is_expected.to eq false;
       end
     end
   end

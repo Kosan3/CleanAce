@@ -5,9 +5,9 @@ class Entry < ApplicationRecord
   validates :kana_last_name, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: 'は全角カタカナを入力してください' }
   validates :kana_first_name, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: 'は全角カタカナを入力してください' }
   validates :age, presence: true
-  validates :postal_code, format: { with: /\d{7}/, message: 'は7桁の数字を入力してください'}
+  validates :postal_code, format: { with: /\A\w{7}\z/, message: 'が数字ではありません'}
   validates :address, presence: true
-  validates :email, presence: true
+  validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }
   validates :phone_number, format: { with: /\d{10,11}/, message: 'が間違っています'}
 
 

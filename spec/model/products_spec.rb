@@ -32,24 +32,25 @@ describe 'Productモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
     let(:test_product) { FactoryBot.build(:product) }
+    subject { test_product.valid? }
     context 'product_nameカラムのテスト' do
       it 'カラムが有効であるか' do
         test_product.product_name = 'テスト'
-        expect(test_product.valid?).to eq true;
+        is_expected.to eq true;
       end
       it '空欄でないこと' do
         test_product.product_name = ''
-        expect(test_product.valid?).to eq false;
+        is_expected.to eq false;
       end
     end
     context 'introductionカラムのテスト' do
       it 'カラムが有効であるか' do
         test_product.introduction = 'テストテストテスト'
-        expect(test_product.valid?).to eq true;
+        is_expected.to eq true;
       end
       it '空欄でないこと' do
         test_product.introduction = ''
-        expect(test_product.valid?).to eq false;
+        is_expected.to eq false;
       end
     end
   end

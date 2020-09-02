@@ -4,67 +4,72 @@ describe 'Userモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
     let(:test_user) { FactoryBot.build(:user) }
-    context '正常データの場合' do
-      it 'バリデーションが有効' do
-        expect(test_user.valid?).to eq true;
+    subject { test_user.valid? }
+    context 'テストデータの確認' do
+      it 'テストデータが有効であるか' do
+        is_expected.to eq true;
       end
     end
     context 'last_nameカラム' do
       it '空欄でないこと' do
         test_user.last_name = ''
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
     end
     context 'first_nameカラム' do
       it '空欄でないこと' do
         test_user.first_name = ''
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
     end
     context 'kana_last_nameカラム' do
       it '空欄でないこと' do
         test_user.kana_last_name = ''
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
       it '全角カタカナであること' do
         test_user.kana_last_name = 'テすと'
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
     end
     context 'kana_first_nameカラム' do
       it '空欄でないこと' do
         test_user.kana_first_name = ''
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
       it '全角カタカナであること' do
         test_user.kana_first_name = 'テすと'
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
     end
     context 'postal_codeカラム' do
       it '空欄でないこと' do
         test_user.postal_code = ''
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
       it '7桁の数字であること' do
         test_user.postal_code = '123456'
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
+      end
+      it '有効であること' do
+        test_user.postal_code = '1234567'
+        is_expected.to eq true;
       end
     end
     context 'addressカラム' do
       it '空欄でないこと' do
         test_user.address = ''
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
     end
     context 'phone_numberカラム' do
       it '空欄でないこと' do
         test_user.phone_number = ''
-        expect(test_user.valid?).to eq false;
+        is_expected.to eq false;
       end
       it '10桁or11桁の数字であること' do
-        test_user.phone_number = '012345678'
-        expect(test_user.valid?).to eq false;
+        test_user.phone_number = '090123456789090'
+        is_expected.to eq false;
       end
     end
   end
