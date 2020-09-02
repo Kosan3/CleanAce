@@ -4,7 +4,7 @@
       <%= form_with model: @product_detail, url: admin_product_details_path, method: :post, local: true do |f| %>
 
         <div class="form">
-          <%= f.label :type_id, '商品名' %><br>
+          <%= f.label :product_id, '商品名' %><br>
           <%= f.collection_select :product_id, Product.all, :id, :product_name, prompt: "--選択してください--", class: "collection_select" %>
         </div>
         <br>
