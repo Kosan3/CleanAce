@@ -3,7 +3,7 @@
     <h4>親商品新規登録</h4>
     <%= form_with model: @product, url: admin_products_path, method: :post, local: true do |f| %>
       <div class="form">
-        <%= f.label :type_name, '商品名' %><br>
+        <%= f.label :product_name, '商品名' %><br>
         <%= f.text_field :product_name %>
       </div>
 
