@@ -84,3 +84,4 @@ end
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
 gem 'refile-s3'
+gem 'rubocop-airbnb'

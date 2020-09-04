@@ -36,8 +36,12 @@ class Admin::ProductDetailsController < ApplicationController
   end
 
   private
+
   def product_detail_params
-    params.require(:product_detail).permit(:introduction, :image, :non_taxed_price, product_size_attributes: [:size], product_color_attributes: [:color]).merge(product_id: params[:product_id])
+    params.require(:product_detail).permit(:introduction,
+                                           :image, :non_taxed_price,
+                                           product_size_attributes: [:size],
+                                           product_color_attributes: [:color]).merge(product_id: params[:product_id])
   end
 
   def set_product_data

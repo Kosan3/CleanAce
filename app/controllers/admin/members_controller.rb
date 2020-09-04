@@ -1,7 +1,7 @@
 class Admin::MembersController < ApplicationController
   before_action :authenticate_user!
   before_action :protect_admin
-  before_action :set_all_members, only: [:new,:create]
+  before_action :set_all_members, only: [:new, :create]
 
   def new
     @member = Member.new
@@ -38,7 +38,7 @@ class Admin::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name,:en_name,:position,:introduction,:uniform_number)
+    params.require(:member).permit(:name, :en_name, :position, :introduction, :uniform_number)
   end
 
   def set_all_members
