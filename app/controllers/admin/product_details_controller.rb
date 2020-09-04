@@ -5,8 +5,17 @@ class Admin::ProductDetailsController < ApplicationController
 
   def create
     @product_detail = ProductDetail.new(product_detail_params)
-    @product_detail.save
-    redirect_to admin_product_path(params[:product_id])
+    if @product_detail.save
+      redirect_to admin_product_path(params[:product_id])
+    else
+      @product = Product.find(params[:product_id])
+      @product_details = ProductDetail.where(product_id: params[:product_id]).includes(:product_color, :product_size)
+      @image = ProductImage.new
+      @images = ProductImage.where(product_id: params[:product_id])
+      @product_image_url = "https://dmm-test-rsize.s3-ap-northeast-1.amazonaws.com/store/" + @product.image_id + "-thumbnail."
+      @image_url = "https://dmm-test-rsize.s3-ap-northeast-1.amazonaws.com/store/" + @product.image_id + "-thumbnail."
+      render 'admin/products/show'
+    end
   end
 
   def edit

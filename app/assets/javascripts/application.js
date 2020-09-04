@@ -16,6 +16,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
+// スライド
 $(function() {
     $('#top-images').slick({
         dots: true,
@@ -27,6 +29,7 @@ $(function() {
     });
 });
 
+// スライドの矢印をアレンジ
 $(function(){
   $('#top-images').mouseover(function(){
     $('#top-images').css({
@@ -46,7 +49,7 @@ $(function(){
   });
 });
 
-
+// Google Map
 function initMap(){
   var map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 36.161411, lng: 139.507679 },
@@ -54,6 +57,7 @@ function initMap(){
   });
 };
 
+// 最上部に戻るボタン
 $(function(){
   $('#top_back a').on('click', function(event){
     $('body, html').animate({
@@ -63,12 +67,14 @@ $(function(){
   });
 });
 
+// アラート
 $(function(){
   $('.window_alert').on('click', function() {
     window.alert('本来であれば、ここで他アプリに偏移します。');
   });
 });
 
+// 要素を点滅
 $(function() {
   $('.kanyu').fadeOut(500, function() {
     $(this).fadeIn(500, function() {
