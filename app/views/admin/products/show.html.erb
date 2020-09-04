@@ -54,11 +54,11 @@
     <h3><%= @product.product_name %>　<span id="product_delete">　<%= link_to '編集する', edit_admin_product_path(@product) %></span><span id="product_delete">　<%= link_to '削除する', admin_product_path(@product), method: :delete, data: { confirm: "本当に削除しますか?" } %></span></h3>
 
     <%= link_to @product.image_url, 'data-lightbox' => @product.image_id do %>
-      <%= image_tag @product_image_url, style: 'height: 200px; width: 191px;' %>
+      <%= attachment_image_tag @product, :image, style: 'height: 200px; width: 191px;' %>
     <% end %>
     <% @images.each do |image| %>
       <%= link_to image.image_url, 'data-lightbox' => image.image_id do %>
-        <%= image_tag @image_url, style: 'height: 200px; width: 191px;' %>
+        <%= attachment_image_tag image, :image, style: 'height: 200px; width: 191px;' %>
       <% end %>
     <% end %>
     <p>商品説明</p>
