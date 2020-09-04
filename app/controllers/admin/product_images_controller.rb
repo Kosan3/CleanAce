@@ -5,8 +5,11 @@ class Admin::ProductImagesController < ApplicationController
   def create
     image = ProductImage.new(product_image_params)
     image.product_id = params[:product_id]
-    image.save
-    redirect_to admin_product_path(params[:product_id])
+    if image.save
+      redirect_to admin_product_path(params[:product_id])
+    else
+      redirect_to admin_product_path(params[:product_id]), alert: '写真を選択してください。'
+    end
   end
 
   private

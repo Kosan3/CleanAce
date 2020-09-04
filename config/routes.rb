@@ -60,6 +60,8 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :create, :show, :edit, :update, :destroy] do
       # 商品詳細
       resources :product_details, only: [:create, :edit, :update, :destroy]
+      # 商品写真
+      post '/image', to: 'product_images#create'
     end
     # オーダー
     resources :orders, only: [:index, :show]
@@ -69,8 +71,6 @@ Rails.application.routes.draw do
     resources :members, only: [:new, :create, :edit, :update, :destroy]
     # 募集
     resources :entries, only: [:index, :show]
-    # 写真
-    post '/image', to: 'product_images#create'
   end
 
 end

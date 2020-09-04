@@ -27,8 +27,11 @@ class CartsController < ApplicationController
   def update
     cart_product = @user.carts.find_by(product_detail_id: params[:id])
     update_quantity = cart_params[:quantity].to_i
-    cart_product.update(quantity: update_quantity)
-    redirect_to carts_path
+    if cart_product.update(quantity: update_quantity)
+      redirect_to carts_path
+    else
+      redirect_to carts_path
+    end
   end
 
   def destroy
