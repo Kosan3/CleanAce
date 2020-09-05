@@ -2,26 +2,29 @@
   <%= render 'admin/shared/side' %>
 
   <div class="col-9">
+    <% if params[:status] != 'cancel' %>
+      <h3>注文一覧</h3>
+    <% else %>
+      <h3>注文一覧(キャンセル)</h3>
+    <% end %>
     <table class="table table-hover">
       <thead>
         <tr>
-          <th></th>
+          <th>注文番号</th>
           <th>名前</th>
           <th>受信時刻</th>
           <th>購入数</th>
         </tr>
       </thead>
-      <% count = 1 %>
       <% @orders.each do |order| %>
         <tbody>
           <tr>
-            <td><%= link_to count, admin_order_path(order) %></td>
+            <td><%= link_to order.id, admin_order_path(order) %></td>
             <td><%= link_to order.user.full_name, admin_order_path(order) %></td>
             <td><%= link_to order.created_at.strftime("%m/%d　%k:%M"), admin_order_path(order) %></td>
             <td><%= link_to order.order_products.sum(:quantity), admin_order_path(order) %></td>
           </tr>
         </tbody>
-        <% count += 1 %>
       <% end %>
     </table>
   </div>

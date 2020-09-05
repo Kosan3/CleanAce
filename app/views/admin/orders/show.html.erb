@@ -2,8 +2,17 @@
   <%= render 'admin/shared/side' %>
 
   <div class="admin-entry-form col-4">
+    <% if @order.cancel == false %>
+      <h3>注文詳細</h3>
+    <% else %>
+      <h3>注文詳細(キャンセル)</h3>
+    <% end %>
     <table>
       <tbody>
+        <tr>
+          <td>注文番号</td>
+          <td><%= @order.id %></td>
+        </tr>
         <tr>
           <td id="one">購入日時</td>
           <td id="two"><%= @order.created_at.strftime("%m/%d　%k:%M") %></td>
