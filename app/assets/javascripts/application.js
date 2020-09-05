@@ -94,3 +94,16 @@ $(function() {
     $(this).css({'color':'black'});
   });
 });
+
+
+
+$(function() {
+  $('input:radio[name="designated_key"]').change(function() {
+    var a = $('input:radio[name="designated_key"]:checked').val();
+    if (a === 'no_designated') {
+      $('#date-field').css({'display':'none'});
+    } else if (a === 'designated') {
+      $('#date-field').css({'display':'block'})
+    }
+  });
+});

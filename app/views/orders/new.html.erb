@@ -47,9 +47,10 @@
 
     <span>ご購入手続き</span><br><br>
 
+    <span>お届け先</span>
     <%= form_with model: @order, url: confirmation_new_order_path, local: true do |f| %>
 
-      <label><%= radio_button_tag :address_key, 'my_address', checked: "checked" %> ご自身の住所に送る</label>
+      <label><%= radio_button_tag :address_key, 'my_address', checked = true %> ご自身の住所に送る</label>
       <table class="order-table my-address">
         <tbody>
           <tr>
@@ -96,8 +97,17 @@
         </table>
       </div><br>
 
+      <span>希望配送日</span><br>
+
+      <div id="designated_date">
+        <label><%= radio_button_tag :designated_key, 'no_designated', checked = true %> 配送日を指定しない</label><br>
+        <label id="change"><%= radio_button_tag :designated_key, 'designated', checked = false, id: 'designated_target' %> 配送日を指定する</label>
+        <div id="date-field">
+          <%= f.date_field :designated_date %>
+        </div>
+      </div>
+
       <%= f.submit "次へ", class: "submit", style: 'width: 300px;' %>
-
     <% end %>
-
+  </div>
 </div>
