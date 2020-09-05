@@ -4,10 +4,10 @@ class Admin::OrdersController < ApplicationController
 
   def index
     if params[:page] == 'today'
-      if params[:status] == 'cancel'
-        @orders = Order.where(cancel: true).today_orders
+      if params[:status] != 'cancel'
+        @orders = Order.today_orders
       else
-        @orders = Order.where(cancel: false).today_orders
+        @orders = Order.today_cancels
       end
     else
       @orders = Order.all
