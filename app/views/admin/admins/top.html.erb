@@ -12,7 +12,7 @@
     <h4>キャンセル情報</h4>
     <ul>
       <%= link_to admin_orders_path(page: 'today', status: 'cancel') do %>
-        <li>本日のキャンセル　<%= @orders.where(cancel: true).count %>件</li>
+        <li>本日のキャンセル　<%= @cancels.where(cancel: true).count %>件</li>
       <% end %>
     </ul>
   </div>

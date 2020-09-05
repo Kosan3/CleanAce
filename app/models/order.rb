@@ -5,7 +5,8 @@ class Order < ApplicationRecord
 
   enum payment_method: { credit_card: 0, transfer: 1 }
 
-  scope :today_orders, -> { where(created_at: Time.zone.now.all_day) }
+  scope :today_orders, -> { where(cancel: false, created_at: Time.zone.now.all_day) }
+  scope :today_cancels, -> { where(cancel: true, updated_at: Time.zone.now.all_day) }
 
   def get_shipping_informations_from(resource)
     class_name = resource.class.name
