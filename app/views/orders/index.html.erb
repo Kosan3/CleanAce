@@ -2,7 +2,11 @@
   <%= render 'shared/side' %>
 
   <div class="col-9">
-    <p>注文履歴一覧</p>
+    <% if params[:status] != 'cancel' %>
+      <p>注文履歴一覧</p>
+    <% else %>
+      <p>キャンセル一覧</p>
+    <% end %>
     <table class="table table-bordered cart-table">
       <thead>
         <tr>
