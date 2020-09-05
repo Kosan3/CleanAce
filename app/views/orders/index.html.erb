@@ -10,6 +10,7 @@
     <table class="table table-bordered cart-table">
       <thead>
         <tr>
+          <th>注文No.</th>
           <th>注文日</th>
           <th>配送先</th>
           <th>注文商品</th>
@@ -20,6 +21,7 @@
       <tbody>
         <% @orders.each do |order| %>
           <tr>
+            <td><%= order.id %></td>
             <td><%= order.created_at.strftime('%Y/%-m/%-d') %></td>
             <td><%= order.address %></td>
             <td>
@@ -28,7 +30,7 @@
               <% end %>
             </td>
             <td><%= order.billing_total.floor.to_s(:delimited) %></td>
-            <td><%= link_to "詳細画面", order_path(order) %></td>
+            <td><%= link_to "詳細", order_path(order) %></td>
           </tr>
         <% end %>
       </tbody>

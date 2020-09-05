@@ -35,8 +35,9 @@
         <% @total_price += subtotal %>
         <% end %>
         <tr class="total-price">
-          <td colspan="2">ご注文日時:　<%= @order.created_at.strftime("%m/%d %k時%M分") %></td>
-          <td colspan="3">商品合計</td>
+          <td colspan="2">ご注文日時:　<%= @order.created_at.strftime("%-m/%-d %-k時%-M分") %></td>
+          <td colspan="2">希望配送日:　<%= @order.get_designated_date %></td>
+          <td colspan="1">商品合計</td>
           <td colspan="1"><%= @total_price.floor.to_s(:delimited) %>円</td>
         </tr>
       </tbody>
