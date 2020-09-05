@@ -29,6 +29,7 @@ class OrdersController < ApplicationController
     else params[:address_key] == "new_address"
 
     end
+    @order.designated_date = nil if params[:designated_key] == 'no_designated'
   end
 
   def create
@@ -71,6 +72,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:postal_code,:address,:address_name)
+    params.require(:order).permit(:postal_code, :address, :address_name, :designated_date)
   end
 end
