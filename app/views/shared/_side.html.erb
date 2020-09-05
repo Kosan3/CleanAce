@@ -20,6 +20,7 @@
       <% if signed_in? %>
         <%= link_to users_path, class: "side-link" do %><li><i class="fas fa-caret-right"></i> マイページ</li><% end %>
         <%= link_to orders_path, class: "side-link" do %><li><i class="fas fa-caret-right"></i> 注文履歴</li><% end %>
+        <%= link_to orders_path(status: 'cancel'), class: "side-link" do %><li><i class="fas fa-caret-right"></i> キャンセル済み注文</li><% end %>
       <% end %>
       <%= link_to overview_path, class: "side-link" do %><li><i class="fas fa-caret-right"></i> お問い合わせ</li><% end %>
       <% if Product.last.present? %>

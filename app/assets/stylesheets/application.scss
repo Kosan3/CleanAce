@@ -818,3 +818,11 @@ footer {
     }
   }
 }
+
+// キャンセル
+.alert-container {
+  .cancel-alert {
+    display: inline-block;
+    border: 1px solid black;
+  }
+}

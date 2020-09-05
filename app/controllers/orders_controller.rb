@@ -3,7 +3,11 @@ class OrdersController < ApplicationController
   TAX = 1.1
 
   def index
-    @orders = @user.orders.includes(order_products: [product_detail: [ :product]])
+    if (params[:status] != 'cancel')
+      @orders = @user.orders.where(cancel: false).includes(order_products: [product_detail: [ :product]])
+    else
+      @orders = @user.orders.where(cancel: true).includes(order_products: [product_detail: [ :product]])
+    end
   end
 
   def show
@@ -39,6 +43,21 @@ class OrdersController < ApplicationController
   end
 
   def complete
+  end
+
+  def cancel
+    order = Order.find(params[:id])
+    order_date = order.created_at.to_date
+    today = Date.current
+    difference = (today - order_date).to_i
+    if (difference < 3)
+      order.cancel = true
+      order.save
+      redirect_to order_path(order), notice: "注文をキャンセルしました。"
+    else
+      redirect_to order_path(order), notice: "こちらの注文商品は発送済みです。\n
+      お手数ですが、注文商品キャンセルの場合は、弊社までご連絡ください。"
+    end
   end
 
   private

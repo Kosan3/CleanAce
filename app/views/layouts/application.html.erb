@@ -36,7 +36,7 @@
           <% if signed_in? %>
             <% if current_user.admin? %>
               <ul>
-                <%= link_to admin_admin_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> トップ</li><% end %>
+                <%= link_to admin_admin_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-home"></i></i> 管理者</li><% end %>
                 <%= link_to carts_path, class: 'header-link' do %><li class="gray-link"><i class="fas fa-shopping-cart"></i> カート</li><% end %>
                 <%= link_to sign_out_path, method: :delete, class: 'header-link' do %><li class="gray-link"><i class="fas fa-sign-in-alt"></i> ログアウト</li><% end %>
                 <%= link_to '#', class: "jafit-link window_alert" do %><li class="right-link">JAFIT ホームページ <span><i class="fas fa-greater-than"></i></span></li><% end %>

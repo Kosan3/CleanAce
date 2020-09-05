@@ -4,7 +4,11 @@ class Admin::OrdersController < ApplicationController
 
   def index
     if params[:page] == 'today'
-      @orders = Order.today_orders
+      if params[:status] == 'cancel'
+        @orders = Order.where(cancel: true).today_orders
+      else
+        @orders = Order.where(cancel: false).today_orders
+      end
     else
       @orders = Order.all
     end

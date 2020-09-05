@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :new, :create, :show] do
     post :confirmation, on: :new
     get :complete, on: :collection
+    post :cancel, on: :member
   end
   # 試合結果
   resources :results, only: [:index, :show]
