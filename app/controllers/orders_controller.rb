@@ -4,15 +4,15 @@ class OrdersController < ApplicationController
 
   def index
     if (params[:status] != 'cancel')
-      @orders = @user.orders.where(cancel: false).includes(order_products: [product_detail: [ :product]])
+      @orders = @user.orders.where(cancel: false).includes(order_products: [product_detail: [:product]])
     else
-      @orders = @user.orders.where(cancel: true).includes(order_products: [product_detail: [ :product]])
+      @orders = @user.orders.where(cancel: true).includes(order_products: [product_detail: [:product]])
     end
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_products = Order.find(params[:id]).order_products
+    @order_products = Order.find(params[:id]).order_products.includes(product_detail: [:product, :product_color, :product_size])
   end
 
   def new

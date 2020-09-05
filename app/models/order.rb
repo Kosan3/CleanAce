@@ -44,4 +44,12 @@ class Order < ApplicationRecord
       '指定なし'
     end
   end
+
+  def get_shipping
+    if self.shipping == true
+      '発送済み'
+    else
+      '発送準備中'
+    end
+  end
 end

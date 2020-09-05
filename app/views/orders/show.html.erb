@@ -1,7 +1,6 @@
 <div class="row">
-  <%= render 'shared/side' %>
 
-  <div class="col-9">
+  <div class="col-12">
     <table class="table table-bordered cart-table">
       <thead>
         <tr>
@@ -11,6 +10,7 @@
           <th>カラー</th>
           <th>数量</th>
           <th>小計</th>
+          <th>配送状況</th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +31,7 @@
           <td class="table-light align-middle"><%= order_product.quantity %></td>
           <% subtotal = tax_price * order_product.quantity %>
           <td class="table-light align-middle"><%= subtotal.floor.to_s(:delimited) %>円</td>
+          <td class="table-light align-middle"><%= @order.get_shipping %></td>
         </tr>
         <% @total_price += subtotal %>
         <% end %>
@@ -39,6 +40,7 @@
           <td colspan="2">希望配送日:　<%= @order.get_designated_date %></td>
           <td colspan="1">商品合計</td>
           <td colspan="1"><%= @total_price.floor.to_s(:delimited) %>円</td>
+          <td colspan="1"></td>
         </tr>
       </tbody>
     </table>
@@ -47,16 +49,21 @@
         <div class="cancel-alert"><%= flash.notice %></div>
       <% end %>
     </div>
-    <% if @order.cancel == false %>
+    <% if @order.cancel == false && @order.shipping == false %>
       <div class="cancel">
         <%= link_to cancel_order_path(@order), method: :post, data: { confirm: 'この注文をキャンセルしますか？' } do %>
           <p>この注文をキャンセルする</p>
         <% end %>
       </div>
+    <% elsif @order.shipping == true %>
     <% else %>
       <div class="cancel">
         <p>この注文は既にキャンセルされています。</p>
       </div>
     <% end %>
+
+    <div class="back_button_wrapper">
+      <%= link_to '一覧へ戻る', orders_path, class: 'back_button' %>
+    </div>
   </div>
 </div>
