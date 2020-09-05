@@ -36,4 +36,12 @@ class Order < ApplicationRecord
       )
     end
   end
+
+  def get_designated_date
+    if self.designated_date
+      self.designated_date.strftime('%-m月%-d日')
+    else
+      '指定なし'
+    end
+  end
 end
