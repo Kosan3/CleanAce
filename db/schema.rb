@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_053333) do
+ActiveRecord::Schema.define(version: 2020_09_05_115702) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
@@ -74,6 +74,9 @@ ActiveRecord::Schema.define(version: 2020_09_05_053333) do
     t.datetime "updated_at", null: false
     t.boolean "cancel", default: false, null: false
     t.date "designated_date"
+    t.boolean "shipping", default: false, null: false
+    t.boolean "order_checked", default: false, null: false
+    t.boolean "cancel_checked", default: false, null: false
   end
 
   create_table "product_colors", force: :cascade do |t|

@@ -4,7 +4,9 @@ class Admin::AdminsController < ApplicationController
 
   def top
     @entries = Entry.today_entries
-    @orders = Order.today_orders
-    @cancels = Order.today_cancels
+    @orders = Order.all
+    @finish_orders = Order.finish_orders
+    @cancels = Order.where(cancel: true, cancel_checked: false)
+    @finish_cancels = Order.finish_cancels
   end
 end

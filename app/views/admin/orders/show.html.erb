@@ -35,5 +35,21 @@
         </tr>
       </tbody>
     </table>
+    <br>
+    <div class="checked">
+      <% if @order.cancel == true %>
+        <% if @order.cancel_checked == false %>
+          <%= link_to 'キャンセル確認済みに移動する', admin_order_check_path(@order), method: :post, data: { confirm: '移動させますか？' } %>
+        <% end %>
+      <% elsif @order.cancel == false %>
+        <% if @order.order_checked == false %>
+          <%= link_to '注文確認済みに移動する', admin_order_check_path(@order), method: :post, data: { confirm: '移動させますか？'} %>
+        <% elsif @order.order_checked == true %>
+          <% if @order.shipping == false %>
+            <%= link_to '発送済みに移動する', admin_order_check_path(@order), method: :post, data: { confirm: '移動させますか？' } %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
