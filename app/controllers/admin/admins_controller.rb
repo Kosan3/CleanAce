@@ -4,7 +4,7 @@ class Admin::AdminsController < ApplicationController
 
   def top
     @entries = Entry.today_entries
-    @orders = Order.today_orders
+    @orders = Order.all
     @cancels = Order.today_cancels
   end
 end

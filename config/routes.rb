@@ -65,7 +65,9 @@ Rails.application.routes.draw do
       post '/image', to: 'product_images#create'
     end
     # オーダー
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show] do
+      post '/check', to: 'orders#check'
+    end
     # 試合結果
     resources :results, only: [:new, :create, :edit, :update, :destroy]
     # メンバー

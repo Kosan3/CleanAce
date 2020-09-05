@@ -35,5 +35,13 @@
         </tr>
       </tbody>
     </table>
+    <br>
+    <div class="checked">
+      <% if @order.order_checked == false %>
+        <%= link_to '確認済みに移動する', admin_order_check_path(@order), method: :post, data: { confirm: '移動させますか？'} %>
+      <% else %>
+        <%= link_to '発送済みに移動する', admin_order_check_path(@order), method: :post, data: { confirm: '移動させますか？' } %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -5,7 +5,13 @@
     <h4>注文情報</h4>
     <ul>
       <%= link_to admin_orders_path(page: 'today') do %>
-        <li>本日の注文　<%= @orders.where(cancel: false).count %>件</li>
+        <li>本日の注文　<%= @orders.where(cancel: false, order_checked: false).count %>件</li>
+      <% end %>
+      <%= link_to admin_orders_path(page: 'checked') do %>
+        <li>確認済み（未発送） <%= @orders.where(order_checked: true, shipping: false).count %>件</li>
+      <% end %>
+      <%= link_to admin_orders_path(page: 'shipping') do %>
+        <li>発送済み（本日） <%= @orders.where(cancel: false, shipping: true).count %>件</li>
       <% end %>
     </ul>
     <br>
@@ -13,6 +19,9 @@
     <ul>
       <%= link_to admin_orders_path(page: 'today', status: 'cancel') do %>
         <li>本日のキャンセル　<%= @cancels.where(cancel: true).count %>件</li>
+      <% end %>
+      <%= link_to admin_orders_path(page: 'checked', status: 'cancel') do %>
+        <li>キャンセル確認済み（本日）</li>
       <% end %>
     </ul>
   </div>
