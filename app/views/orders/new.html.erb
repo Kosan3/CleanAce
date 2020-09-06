@@ -72,10 +72,12 @@
         </tbody>
       </table><br><br>
 
-      <div>
-        <label><%= radio_button_tag :address_key, 'other_address' %> 登録済みの住所から選択する</label><br>
-        <%= f.collection_select :ship, @user.ships, :id, :order_address_data, include_blank: "選択してください", class:"aaa" %>
-      </div><br><br>
+      <% if current_user.ships.present? %>
+        <div>
+          <label><%= radio_button_tag :address_key, 'other_address' %> 登録済みの住所から選択する</label><br>
+          <%= f.collection_select :ship, @user.ships, :id, :order_address_data, include_blank: "選択してください", class:"aaa" %>
+        </div><br><br>
+      <% end %>
 
       <div>
         <label><%= radio_button_tag :address_key, 'new_address' %> 別の住所へ送る</label>

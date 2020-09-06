@@ -20,25 +20,34 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-    @order = Order.new(order_params)
+    @order = @user.orders.new(order_params)
     if params[:address_key] == "my_address"
       @order.get_shipping_informations_from(@user)
+      session[:ship_data] = false
     elsif params[:address_key] == "other_address"
-      select_address = @user.ships.find(params[:order][:ship])
-      @order.get_shipping_informations_from(select_address)
+      if params[:order][:ship].present?
+        select_address = @user.ships.find(params[:order][:ship])
+        @order.get_shipping_informations_from(select_address)
+        session[:ship_data] = false
+      else
+        render :new
+      end
     else params[:address_key] == "new_address"
-
+      render :new unless @order.valid?
+      session[:ship_data] = true
     end
     @order.designated_date = nil if params[:designated_key] == 'no_designated'
   end
 
   def create
+    ship_data = session[:ship_data]
     order = @user.orders.new(order_params)
     order.fare = 800
     order.billing_total = order.fare + @carts.sum(&:subtotal) * TAX
     order.payment_method = "transfer"
     OrderMailer.creation_email(order).deliver_now if order.save
-    order.create_order_products(current_user)
+    order.create_order_products(@user)
+    order.create_ship(@user, ship_data)
     @carts.each(&:destroy)
     redirect_to complete_orders_path
   end
