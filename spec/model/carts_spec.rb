@@ -24,7 +24,9 @@ describe 'Cartモデルのテスト', type: :model do
     let!(:cart_a) { FactoryBot.create(:cart, user: user_a, product_detail: product_detail_a) }
     context 'subotalメソッドのテスト' do
       it 'non_taxed_priceとquantityの積が返る' do
+        p product_a.errors.full_messages
         expect(cart_a.subtotal).to eq 500
+
       end
     end
   end

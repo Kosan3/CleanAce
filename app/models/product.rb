@@ -8,7 +8,7 @@ class Product < ApplicationRecord
 
   validates :product_name, presence: true
   validates :introduction, presence: true
-  validates :image, presence: true
+  validates :image_id, presence: true
 
   def squeeze_product(params)
     product_details.includes(:product_size, :product_color).find_by(product_sizes: { size: params[:cart][:size] }, product_colors: { color: params[:cart][:color] })

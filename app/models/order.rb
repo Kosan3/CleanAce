@@ -3,6 +3,8 @@ class Order < ApplicationRecord
   has_many :order_products
   belongs_to :user
 
+  
+
   enum payment_method: { credit_card: 0, transfer: 1 }
 
   scope :finish_orders, -> { where(cancel: false, order_checked: true, shipping: true, updated_at: Time.zone.now.all_day) }
@@ -33,6 +35,17 @@ class Order < ApplicationRecord
         product_detail_id: cart.product_detail.id,
         quantity: cart.quantity,
         taxed_price: cart.product_detail.non_taxed_price
+      )
+    end
+  end
+
+  def create_ship(user, session)
+    if session == true
+      Ship.create!(
+        user_id: user.id,
+        name: self.address_name,
+        postal_code: self.postal_code,
+        address: self.address
       )
     end
   end
