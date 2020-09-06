@@ -99,12 +99,17 @@
 
       <span>希望配送日</span><br>
 
-      <div id="designated_date">
+      <div id="designated">
         <label><%= radio_button_tag :designated_key, 'no_designated', checked = true %> 配送日を指定しない</label><br>
         <label id="change"><%= radio_button_tag :designated_key, 'designated', checked = false, id: 'designated_target' %> 配送日を指定する</label>
-        <div id="date-field">
-          <%= f.date_field :designated_date, min: Date.today + 2, max: Date.today + 14 %>
-        </div>
+      </div>
+
+
+      <div class="input-group" data-target-input="nearest" id="date-field">
+          <%= f.text_field :designated_date, id: "designated_date", class: "datepicker", data: { target: '#designated_date'} %>
+          <div class="input-group-append" data-target="#designated_date" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
       </div>
 
       <%= f.submit "次へ", class: "submit", style: 'width: 300px;' %>

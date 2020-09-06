@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import "font-awesome";
+@import "tempusdominus-bootstrap-4.css";
 
 // 全体
 * {
@@ -40,7 +42,7 @@
 .top-images {
   position: relative;
 }
-.prev {
+.slide_prev {
   position: absolute;
   z-index: 10;
   top: 100px;
@@ -57,7 +59,7 @@
   display: none;
 }
 
-.next {
+.slide_next {
   position: absolute;
   z-index: 10;
   top: 100px;
