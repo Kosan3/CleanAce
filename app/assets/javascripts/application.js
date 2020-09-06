@@ -10,12 +10,42 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery3
+
+//= require popper
+//= require bootstrap-sprockets
+
+//= require moment
+//= require moment/ja.js
+
+//= require tempusdominus-bootstrap-4.js
 //= require rails-ujs
 //= require activestorage
-//= require jquery
-//= require bootstrap-sprockets
 //= require_tree .
 
+$(function () {
+  var today = new Date();
+  if ((today.getDay() === 5) || (today.getDay() === 6) || (today.getDay() === 0)) {
+    today.setDate(today.getDate() + 3);
+    $('.datepicker').datetimepicker({
+    daysOfWeekDisabled: [0],
+    format: 'L',
+    minDate: today.toLocaleDateString(),
+    maxDate: '2020/10/1',
+    defaultDate: today.toLocaleDateString()
+  });
+  } else {
+    today.setDate(today.getDate() + 2);
+    $('.datepicker').datetimepicker({
+    daysOfWeekDisabled: [0],
+    format: 'L',
+    minDate: today.toLocaleDateString(),
+    maxDate: '2020/10/1',
+    defaultDate: today.toLocaleDateString()
+  });
+  }
+});
 
 // スライド
 $(function() {
@@ -23,8 +53,8 @@ $(function() {
         dots: true,
         autoplay: true,
         autoplaySpeed: 2500,
-        prevArrow:'<div class="prev"><i class="fas fa-angle-left" id="prev-arrow"></i></div>',
-        nextArrow:'<div class="next"><i class="fas fa-angle-right" id="next-arrow"></i></div>',
+        prevArrow:'<div class="slide_prev"><i class="fas fa-angle-left" id="prev-arrow"></i></div>',
+        nextArrow:'<div class="slide_next"><i class="fas fa-angle-right" id="next-arrow"></i></div>',
         pauseOnHover: false
     });
 });
@@ -107,3 +137,4 @@ $(function() {
     }
   });
 });
+
