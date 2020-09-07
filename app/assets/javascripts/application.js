@@ -27,19 +27,19 @@
 $(function () {
   var today = new Date();
   if ((today.getDay() === 5) || (today.getDay() === 6) || (today.getDay() === 0)) {
-    today.setDate(today.getDate() + 3);
+    today.setDate(today.getUTCDate() + 3);
     $('.datepicker').datetimepicker({
     daysOfWeekDisabled: [0],
-    format: 'L',
+    format: 'YYYY-M-D',
     minDate: today.toLocaleDateString(),
     maxDate: '2020/10/1',
     defaultDate: today.toLocaleDateString()
   });
   } else {
-    today.setDate(today.getDate() + 2);
+    today.setDate(today.getUTCDate() + 2);
     $('.datepicker').datetimepicker({
     daysOfWeekDisabled: [0],
-    format: 'L',
+    format: 'YYYY-M-D',
     minDate: today.toLocaleDateString(),
     maxDate: '2020/10/1',
     defaultDate: today.toLocaleDateString()
