@@ -836,5 +836,9 @@ footer {
 .input-group {
   .day {
     cursor: pointer;
+    color: red;
+  }
+  .disabled {
+    color: red;
   }
 }
