@@ -833,6 +833,9 @@ footer {
   display: none;
 }
 
-td .day {
-  cursor: pointer;
+.input-group {
+  .day {
+    color: red;
+    cursor: text;
+  }
 }
