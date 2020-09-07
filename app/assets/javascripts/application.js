@@ -28,19 +28,21 @@ $(function () {
     today.setDate(today.getUTCDate() + 3);
     $('.datepicker').datetimepicker({
     daysOfWeekDisabled: [0],
-    format: 'YYYY-M-D',
+    format: 'YYYY年M月D日',
     minDate: today.toLocaleDateString(),
     maxDate: '2020/10/1',
-    defaultDate: today.toLocaleDateString()
+    defaultDate: today.toLocaleDateString(),
+    inline: true
   });
   } else {
     today.setDate(today.getUTCDate() + 2);
     $('.datepicker').datetimepicker({
     daysOfWeekDisabled: [0],
-    format: 'YYYY-M-D',
+    format: 'YYYY年M月D日',
     minDate: today.toLocaleDateString(),
     maxDate: '2020/10/1',
-    defaultDate: today.toLocaleDateString()
+    defaultDate: today.toLocaleDateString(),
+    inline: true
   });
   }
 });
