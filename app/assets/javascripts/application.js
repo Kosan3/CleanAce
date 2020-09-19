@@ -28,7 +28,7 @@ $(function () {
     today.setDate(today.getUTCDate() + 3);
     $('.datepicker').datetimepicker({
     daysOfWeekDisabled: [0],
-    format: 'YYYY年M月D日',
+    format: 'YYYY-M-D',
     minDate: today.toLocaleDateString(),
     maxDate: '2020/10/1',
     defaultDate: today.toLocaleDateString(),
@@ -38,7 +38,7 @@ $(function () {
     today.setDate(today.getUTCDate() + 2);
     $('.datepicker').datetimepicker({
     daysOfWeekDisabled: [0],
-    format: 'YYYY年M月D日',
+    format: 'YYYY-M-D',
     minDate: today.toLocaleDateString(),
     maxDate: '2020/10/1',
     defaultDate: today.toLocaleDateString(),
