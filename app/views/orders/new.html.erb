@@ -106,7 +106,7 @@
         <label id="change"><%= radio_button_tag :designated_key, 'designated', checked = false, id: 'designated_target' %> 配送日を指定する</label>
       </div>
 
-
+      <!-- datepiccler -->
       <div class="input-group" data-target-input="nearest" id="date-field">
           <%= f.text_field :designated_date, id: "designated_date", class: "datepicker", data: { target: '#designated_date'} %>
           <div class="input-group-append" data-target="#designated_date" data-toggle="datetimepicker">

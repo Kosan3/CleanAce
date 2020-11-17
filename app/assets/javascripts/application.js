@@ -30,7 +30,6 @@ $(function () {
     daysOfWeekDisabled: [0],
     format: 'YYYY-M-D',
     minDate: today.toLocaleDateString(),
-    maxDate: '2020/10/1',
     defaultDate: today.toLocaleDateString(),
     inline: true
   });
@@ -40,7 +39,6 @@ $(function () {
     daysOfWeekDisabled: [0],
     format: 'YYYY-M-D',
     minDate: today.toLocaleDateString(),
-    maxDate: '2020/10/1',
     defaultDate: today.toLocaleDateString(),
     inline: true
   });
